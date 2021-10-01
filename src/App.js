@@ -1,10 +1,13 @@
 import './App.css';
-import Navigationbar from './component/Navigationbar'
+import Navigationbar from './component/Navigationbar';
+import Header from './component/Header';
+import Main from './component/Main';
 
 function App() {
   return (
     <div>
-    <Navigationbar/>
+      <Header />
+      <Main />
     </div>
   );
 }

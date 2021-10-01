@@ -1,0 +1,54 @@
+* {
+    margin: 0 auto;
+}
+
+#header {
+    max-height: 500px;
+    background-color: yellow;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.menu ul li {
+    display: inline-block;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: black;
+    margin: 0 10px;
+}
+
+.logo {
+    font-size: 100px;
+    text-align: center;
+    align-items: center;
+}
+
+.click {
+    display: flex;
+    flex-direction: row;
+    font-size: 40px;
+    align-items: center;
+    float: right;
+    flex-direction: row;
+}
+
+.click ul a {
+    display: inline-block;
+    color: black;
+    margin: 0 10px;
+}
+
+.upload .my-food .my-page{
+    width: 50px;
+}

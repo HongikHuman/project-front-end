@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'react-multi-carousel/lib/styles.css';
 
 ReactDOM.render(
   <React.StrictMode>
