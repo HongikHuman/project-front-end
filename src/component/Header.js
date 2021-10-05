@@ -1,5 +1,6 @@
 // import { Divider } from "antd";
 import { HeartTwoTone, FileAddTwoTone, SmileTwoTone } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import './Header.css';
 const Header = () => {
 
@@ -9,26 +10,26 @@ const Header = () => {
                 <div className="header-icons">
                     <div className="menu">
                         <ul>
-                            <li><a href="#">대학 맛집</a></li>
-                            <li><a href="#">핫 게시판</a></li>
-                            <li><a href="#">음식 카테고리</a></li>
+                            <li><Link to="univside">대학 맛집</Link></li>
+                            <li><Link to="hotpost">핫 게시판</Link></li>
+                            <li><Link to="category">음식 카테고리</Link></li>
                         </ul>
                     </div>
                     <div className="logo">
-                        <span>로고</span>
+                        <Link to="/">로고</Link>
                     </div>
                     <div className="click">
                         <ul>
-                            <a href="#" >
+                            <Link to="newpost">
                                 <FileAddTwoTone />
-                            </a>
-                            <a href="#" >
+                            </Link>
+                            <Link to="likes">
                                 <HeartTwoTone />
-                            </a>
+                            </Link>
                             {/* <Divider /> */}
-                            <a href="#" >
+                            <Link to="info">
                                 <SmileTwoTone />
-                            </a>
+                            </Link>
                         </ul>
                     </div>
                 </div>

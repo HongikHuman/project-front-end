@@ -10,6 +10,10 @@
 .header-icons {
     display: flex;
     align-items: center;
+    justify-content:center;
+    flex-basis: 33.3%;
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 
 .menu {
@@ -32,6 +36,10 @@
     font-size: 100px;
     text-align: center;
     align-items: center;
+}
+.logo a, .logo a:hover, .logo a:visited{
+    text-decoration: none;
+    color: black;
 }
 
 .click {
