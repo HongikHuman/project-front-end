@@ -1,16 +1,25 @@
 import React from 'react';
-export default function Card(probs){
-    const style={
-        display: 'flex',
-        alignItems: 'center',
-        justifyContents: 'center',
-        background: `url(${probs.url})`,
-        border: '1px solid black',
-        height: '400px'
-    };
+import styled from 'styled-components';
+export default function Card(props){
+
     return(
-        <div style={style}>
-            <span stlye={{textAlign: 'center'}}>{probs.text}</span>
-        </div>
+        <CardWrap url={props.url}>
+            <p>{props.text}</p>
+        </CardWrap>
     );
 }
+
+const CardWrap = styled.div`
+    display: flex;
+    align-items: center;
+    justify-contents: center;
+    background: url(${(props) => props.url});
+    border: 1px solid black;
+    user-select: none;
+    height: 400px;
+
+    & > p{
+        font-size: 2em;
+        margin: 0 auto;
+    }
+`;

@@ -1,10 +1,10 @@
 import React from 'react';
-export default function Univlogo(probs){
+export default function Univlogo(props){
     const style={
-        width: `${probs.width}px`,
-        height: `${probs.height}px`,
+        width: `${props.width}px`,
+        height: `${props.height}px`,
         borderRadius: '100%',
-        background: `url(${probs.url}) 100% 100% / contain no-repeat`,
+        background: `url(${props.url}) 100% 100% / contain no-repeat`,
     };
     return(
         <div style={style}>

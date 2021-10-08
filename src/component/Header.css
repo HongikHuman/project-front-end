@@ -7,6 +7,7 @@
     background-color: yellow;
 }
 
+
 .header-icons {
     display: flex;
     align-items: center;
@@ -20,6 +21,7 @@
     flex-direction: row;
     align-items: center;
     margin-left: 15px;
+    width: 33.3%;
 }
 
 .menu ul li {
@@ -36,6 +38,7 @@
     font-size: 100px;
     text-align: center;
     align-items: center;
+    width: 33.4%;
 }
 .logo a, .logo a:hover, .logo a:visited{
     text-decoration: none;
@@ -43,11 +46,11 @@
 }
 
 .click {
+    width: 33.3%;
     display: flex;
     flex-direction: row;
     font-size: 40px;
     align-items: center;
-    float: right;
     flex-direction: row;
 }
 
