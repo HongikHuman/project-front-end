@@ -1,43 +1,103 @@
 // import { Divider } from "antd";
 import { HeartTwoTone, FileAddTwoTone, SmileTwoTone } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import './Header.css';
-const Header = () => {
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+
+export default function Header(){
 
     return (
-        <div>
-            <section id="header">
-                <div className="header-icons">
-                    <div className="menu">
+        <Container>
+            <HeaderWrap>
+                <HeaderIconsWrap>
+                    <MenuWrap>
                         <ul>
-                            <li><Link to="univside">대학 맛집</Link></li>
-                            <li><Link to="hotpost">핫 게시판</Link></li>
-                            <li><Link to="category">음식 카테고리</Link></li>
+                            <li><NavLink to="/univside" activeClassName="active">대학 맛집</NavLink></li>
+                            <li><NavLink to="/top10" activeClassName="active">Top 10</NavLink></li>
+                            <li><NavLink to="/hotpost" activeClassName="active">핫 게시판</NavLink></li>
                         </ul>
-                    </div>
-                    <div className="logo">
-                        <Link to="/">로고</Link>
-                    </div>
-                    <div className="click">
+                    </MenuWrap>
+                    <LogoWrap>
+                        <NavLink to="/">자맛추</NavLink>
+                    </LogoWrap>
+                    <ClickWrap>
                         <ul>
-                            <Link to="newpost">
+                            <NavLink to="newpost">
                                 <FileAddTwoTone />
-                            </Link>
-                            <Link to="likes">
+                            </NavLink>
+                            <NavLink to="likes">
                                 <HeartTwoTone />
-                            </Link>
+                            </NavLink>
                             {/* <Divider /> */}
-                            <Link to="info">
+                            <NavLink to="mypage">
                                 <SmileTwoTone />
-                            </Link>
+                            </NavLink>
                         </ul>
-                    </div>
-                </div>
-                
-            </section>
-        </div>
+                    </ClickWrap>
+                </HeaderIconsWrap>
+            </HeaderWrap>
+        </Container>
     );
-
 }
 
-export default Header;
+// styled component
+const Container = styled.div`
+    margin: 0 auto;
+`;
+
+const HeaderWrap = styled.div`
+    max-height: 500px;
+    background-color: yellow;
+`;
+
+const HeaderIconsWrap = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-basis: 33.3%;
+    flex-grow: 1;
+    flex-shrink: 0;
+`;
+
+const MenuWrap = styled.div`
+    flex-direction: row;
+    align-items: center;
+    margin-left: 15px;
+    width: 33.3%;
+
+    & ul li {
+        display: inline-block; 
+    }
+
+    & ul li a {
+        text-decoration: none;
+        color: black;
+        margin: 0 10px;
+    }
+`;
+
+const LogoWrap = styled.div`
+    font-size: 100px;
+    text-align: center;
+    align-items: center;
+    width: 33.4%;
+
+    & a, & a:hover, & a:visited{
+        text-decoration: none;
+        color: black;
+    }
+`;
+
+const ClickWrap = styled.div`
+    width: 33.3%;
+    display: flex;
+    flex-direction: row;
+    font-size: 40px;
+    align-items: center;
+    flex-direction: row;
+
+    & ul a {
+        display: inline-block;
+        color: black;
+        margin: 0 10px;
+    }
+`;
