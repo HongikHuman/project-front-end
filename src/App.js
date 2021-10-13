@@ -4,13 +4,13 @@ import Header from './component/Header';
 import Main from './component/Main';
 import Top10_page from './pages/Top10_page';
 import Footer from './component/Footer';
+import Univside from './pages/Univside';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-
 
 export default function App() {
   return (
@@ -26,7 +26,11 @@ export default function App() {
             <h1>likes!</h1>
           </Route>
 
-          <Route path="/" exact>
+          <Route path="/univside" exact>
+            <Univside />
+          </Route>
+
+          <Route path="/">
             <Main />
           </Route>
         </Switch>

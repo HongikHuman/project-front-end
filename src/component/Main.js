@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Carousel from 'react-multi-carousel';
 
 import Univlogo from './Univlogo';
-import Card from './Card';
+import Card from 'react-bootstrap/Card';
 
 //db example
 const dummyDb = {
@@ -53,7 +53,18 @@ export default function Main(){
 
         dummyDb.famous.forEach((a)=>{famousList.push(<Univlogo key={a.url} width={a.width} height={a.height} url={a.url}></Univlogo>)})
         dummyDb.supported.forEach((a)=>{supportedList.push(<Univlogo key={a.url} width={a.width} height={a.height} url={a.url}></Univlogo>)})
-        dummyDb.weeklyHot.forEach((a)=>{weeklyHotList.push(<Card text={a.text}></Card>)})
+        dummyDb.weeklyHot.forEach((a)=>{weeklyHotList.push(
+            <Card style={{ width: '25rem' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>Card Title</Card.Title>
+                    <Card.Text>
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                    </Card.Text>
+                </Card.Body>
+            </Card>)
+        })
     }, []);
 
 
@@ -85,7 +96,7 @@ export default function Main(){
                     autoPlaySpeed={3000}
                 >
                     {weeklyHotList}
-                </Carousel>;
+                </Carousel>
 
             </WeeklyHotWrap>
         </Container>
