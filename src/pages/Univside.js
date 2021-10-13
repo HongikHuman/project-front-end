@@ -7,9 +7,52 @@ import { GrFilter } from "react-icons/gr";
 
 export default function Univside(){
     
+    let [pageNum, setPageNum] = useState(1);
+    let [pagination, setPagination] = useState([]);
+    const MAXPAGE = 17;
+
     useEffect(() => {
-        // console.log(restaurants);
+        renderPagination(1);
     }, []);
+
+    
+    useEffect(()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        renderPagination(begin);
+    }, [pageNum]);
+
+
+
+    const renderPagination = (begin)=>{
+        if(begin < 1) begin = 1;
+        
+        let item = [];
+        for(let i=begin; i<begin+5; ++i){
+            if(i >= MAXPAGE) break;
+
+            item.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === pageNum}
+                    onClick={()=>{setPageNum(i);}}
+                >
+                    {i}
+                </Pagination.Item>
+            )
+        }
+        setPagination(item);
+    }
+    const setNextPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin + 5 > MAXPAGE) return;
+        else setPageNum(begin+5);
+    }
+    const setPrevPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin - 5 < 1) return;
+        else setPageNum(begin-5);
+    }
+
 
     return (
         <>
@@ -64,26 +107,19 @@ export default function Univside(){
 
             <PaginationWrap>
                 <Pagination>
-                    <Pagination.First />
-                    <Pagination.Prev />
-                    <Pagination.Item>{1}</Pagination.Item>
-                    <Pagination.Ellipsis />
-
-                    <Pagination.Item>{10}</Pagination.Item>
-                    <Pagination.Item>{11}</Pagination.Item>
-                    <Pagination.Item active>{12}</Pagination.Item>
-                    <Pagination.Item>{13}</Pagination.Item>
-                    <Pagination.Item disabled>{14}</Pagination.Item>
-
-                    <Pagination.Ellipsis />
-                    <Pagination.Item>{20}</Pagination.Item>
-                    <Pagination.Next />
-                    <Pagination.Last />
+                    <Pagination.First onClick={()=>setPageNum(1)}/>
+                    <Pagination.Prev onClick={()=>setPrevPagination()}/>
+                    {pagination}
+                    <Pagination.Next onClick={()=>setNextPagination()}/>
+                    <Pagination.Last onClick={()=>setPageNum(MAXPAGE-1)}/>
                 </Pagination>
             </PaginationWrap>
         </>
     );
+
+
 };
+
 
 
 const restaurants = [

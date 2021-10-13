@@ -14,11 +14,11 @@ export default function Footer() {
                 </div>
 
                 <p className="sns-shortcut">
-                    <Link className="btn facebook" to="https://www.facebook.com/mangoplate" target="_blank" onclick="trackEvent('CLICK_SHARE_FACEBOOK');">
+                    <Link className="btn facebook" to="https://www.facebook.com/mangoplate" target="_blank" onClick="trackEvent('CLICK_SHARE_FACEBOOK');">
                         자맛추 페이스북 계정으로 바로가기
                     </Link>
 
-                    <Link className="btn instagram" to="https://instagram.com/mangoplate/" target="_blank" onclick="trackEvent('CLICK_SHARE_INSTA');">
+                    <Link className="btn instagram" to="https://instagram.com/mangoplate/" target="_blank" onClick="trackEvent('CLICK_SHARE_INSTA');">
                         자맛추 인스타그램 계정으로 바로가기
                     </Link>
                 </p>
@@ -71,32 +71,32 @@ export default function Footer() {
                         </li>
 
                         <li>
-                            <Link className="" to="/terms/contract" onclick="trackEvent('CLICK_TERMS', 'contract')" target="_blank">
+                            <Link className="" to="/terms/contract" onClick="trackEvent('CLICK_TERMS', 'contract')" target="_blank">
                                 이용약관
                             </Link>
                         </li>
                         <li>
-                            <Link className="" to="/terms/contract_non_signup" onclick="trackEvent('CLICK_TERMS', 'contract_non_signup')" target="_blank">
+                            <Link className="" to="/terms/contract_non_signup" onClick="trackEvent('CLICK_TERMS', 'contract_non_signup')" target="_blank">
                                 비회원 이용자 이용정책
                             </Link>
                         </li>
                         <li>
-                            <Link className="bold" to="/terms/privacy" onclick="trackEvent('CLICK_TERMS', 'privacy')" target="_blank">
+                            <Link className="bold" to="/terms/privacy" onClick="trackEvent('CLICK_TERMS', 'privacy')" target="_blank">
                                 개인정보처리방침
                             </Link>
                         </li>
                         <li>
-                            <Link className="" to="/terms/location" onclick="trackEvent('CLICK_TERMS', 'location')" target="_blank">
+                            <Link className="" to="/terms/location" onClick="trackEvent('CLICK_TERMS', 'location')" target="_blank">
                                 위치기반서비스 이용약관
                             </Link>
                         </li>
                         <li>
-                            <Link className="" to="/terms/community_guidelines" onclick="trackEvent('CLICK_TERMS', 'community_guidelines')" target="_blank">
+                            <Link className="" to="/terms/community_guidelines" onClick="trackEvent('CLICK_TERMS', 'community_guidelines')" target="_blank">
                                 커뮤니티 가이드라인
                             </Link>
                         </li>
                         <li>
-                            <Link className="" to="/terms/youth_protection" onclick="trackEvent('CLICK_TERMS', 'youth_protection')" target="_blank">
+                            <Link className="" to="/terms/youth_protection" onClick="trackEvent('CLICK_TERMS', 'youth_protection')" target="_blank">
                                 청소년보호정책
                             </Link>
                         </li>
@@ -119,103 +119,103 @@ export default function Footer() {
                     <div className="keyword_wrap">
                         <span className="keyword">자맛추 지원 학교</span>
                         <br /><br />
-                        <Link className="keyword" target="_blank" to="/search/가톨릭" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:0,&quot;keyword&quot;:&quot;이태원&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/가톨릭" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:0,&quot;keyword&quot;:&quot;이태원&quot;})">
                             가톨릭대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/건대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:1,&quot;keyword&quot;:&quot;홍대&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/건대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:1,&quot;keyword&quot;:&quot;홍대&quot;})">
                             건대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/경희대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:2,&quot;keyword&quot;:&quot;강남역&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/경희대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:2,&quot;keyword&quot;:&quot;강남역&quot;})">
                             경희대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/고려대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:3,&quot;keyword&quot;:&quot;가로수길&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/고려대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:3,&quot;keyword&quot;:&quot;가로수길&quot;})">
                             고려대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/국민대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:4,&quot;keyword&quot;:&quot;신촌&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/국민대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:4,&quot;keyword&quot;:&quot;신촌&quot;})">
                             국민대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/덕성여대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:5,&quot;keyword&quot;:&quot;명동&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/덕성여대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:5,&quot;keyword&quot;:&quot;명동&quot;})">
                             덕성여대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/동국대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:6,&quot;keyword&quot;:&quot;대학로&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/동국대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:6,&quot;keyword&quot;:&quot;대학로&quot;})">
                             동국대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/동덕여대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:7,&quot;keyword&quot;:&quot;연남동&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/동덕여대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:7,&quot;keyword&quot;:&quot;연남동&quot;})">
                             동덕여대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/명지대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:8,&quot;keyword&quot;:&quot;부산&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/명지대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:8,&quot;keyword&quot;:&quot;부산&quot;})">
                             명지대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/삼육대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:9,&quot;keyword&quot;:&quot;합정&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/삼육대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:9,&quot;keyword&quot;:&quot;합정&quot;})">
                             삼육대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/상명대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:10,&quot;keyword&quot;:&quot;대구&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/상명대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:10,&quot;keyword&quot;:&quot;대구&quot;})">
                             상명대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/서강대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:11,&quot;keyword&quot;:&quot;여의도&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/서강대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:11,&quot;keyword&quot;:&quot;여의도&quot;})">
                             서강대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/성균관대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:12,&quot;keyword&quot;:&quot;건대&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/성균관대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:12,&quot;keyword&quot;:&quot;건대&quot;})">
                             성균관대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/성신여대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:13,&quot;keyword&quot;:&quot;광화문&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/성신여대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:13,&quot;keyword&quot;:&quot;광화문&quot;})">
                             성신여대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/세종대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:14,&quot;keyword&quot;:&quot;일산&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/세종대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:14,&quot;keyword&quot;:&quot;일산&quot;})">
                             세종대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/숙명여대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:15,&quot;keyword&quot;:&quot;제주&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/숙명여대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:15,&quot;keyword&quot;:&quot;제주&quot;})">
                             숙명여대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/숭실대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:16,&quot;keyword&quot;:&quot;경리단길&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/숭실대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:16,&quot;keyword&quot;:&quot;경리단길&quot;})">
                             숭실대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/연세대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:17,&quot;keyword&quot;:&quot;한남동&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/연세대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:17,&quot;keyword&quot;:&quot;한남동&quot;})">
                         연세대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/이화여대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:18,&quot;keyword&quot;:&quot;삼청동&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/이화여대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:18,&quot;keyword&quot;:&quot;삼청동&quot;})">
                             이화여대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/중앙대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:19,&quot;keyword&quot;:&quot;대전&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/중앙대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:19,&quot;keyword&quot;:&quot;대전&quot;})">
                             중앙대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/한국외대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:20,&quot;keyword&quot;:&quot;종로&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/한국외대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:20,&quot;keyword&quot;:&quot;종로&quot;})">
                             한국외대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/한성대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:21,&quot;keyword&quot;:&quot;서촌&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/한성대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:21,&quot;keyword&quot;:&quot;서촌&quot;})">
                             한성대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/한신대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:22,&quot;keyword&quot;:&quot;잠실&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/한신대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:22,&quot;keyword&quot;:&quot;잠실&quot;})">
                             한신대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/힌양대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:23,&quot;keyword&quot;:&quot;사당역&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/힌양대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:23,&quot;keyword&quot;:&quot;사당역&quot;})">
                             한양대
                         </Link>
                         |
-                        <Link className="keyword" target="_blank" to="/search/홍익대" onclick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:24,&quot;keyword&quot;:&quot;인천&quot;})">
+                        <Link className="keyword" target="_blank" to="/search/홍익대" onClick="trackEvent('CLICK_FOOTER_POPULAR_LOCATION', {&quot;position&quot;:24,&quot;keyword&quot;:&quot;인천&quot;})">
                             홍대
                         </Link>
                     </div>
