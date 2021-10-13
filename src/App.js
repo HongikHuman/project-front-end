@@ -1,6 +1,6 @@
 import './App.css';
 
-import Header from './component/Header';
+import Navigationbar from './component/Navigationbar';
 import Main from './component/Main';
 import Top10_page from './pages/Top10_page';
 import Footer from './component/Footer';
@@ -16,7 +16,7 @@ export default function App() {
   return (
     <Router>
       <div className = "App">
-        <Header />
+        <Navigationbar />
 
         <Switch>
           <Route path="/top10" exact>
@@ -37,3 +37,4 @@ export default function App() {
     </Router>
   );
 }
+

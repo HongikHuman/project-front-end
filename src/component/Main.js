@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Carousel from 'react-multi-carousel';
 
+import Header from './Header';
 import Univlogo from './Univlogo';
 import Card from './Card';
 
@@ -60,34 +61,37 @@ export default function Main(){
 
     return(
         <Container>
-            <FamousWrap>
-                <h1>인기 대학가 TOP 3</h1>
-                <div>
-                    {famousList}
-                </div>
-            </FamousWrap>
+            <Header />
+            <div className="container">
+                <FamousWrap>
+                    <h1>인기 대학가 TOP 3</h1>
+                    <div>
+                        {famousList}
+                    </div>
+                </FamousWrap>
 
-            <SupportedWrap>
-                <h1>지원 대학 리스트</h1>
-                <div>
-                    {supportedList}
-                </div>
-            </SupportedWrap>
+                <SupportedWrap>
+                    <h1>지원 대학 리스트</h1>
+                    <div>
+                        {supportedList}
+                    </div>
+                </SupportedWrap>
 
 
-            <WeeklyHotWrap>
-                <h1>이번 주 HOT 게시글</h1>
+                <WeeklyHotWrap>
+                    <h1>이번 주 HOT 게시글</h1>
 
-                <Carousel 
-                    responsive={responsive}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={3000}
-                >
-                    {weeklyHotList}
-                </Carousel>;
+                    <Carousel 
+                        responsive={responsive}
+                        infinite={true}
+                        autoPlay={true}
+                        autoPlaySpeed={3000}
+                    >
+                        {weeklyHotList}
+                    </Carousel>;
 
-            </WeeklyHotWrap>
+                </WeeklyHotWrap>
+            </div>
         </Container>
     );
 }
