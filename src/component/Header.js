@@ -17,7 +17,7 @@ export default function Header(){
                         </ul>
                     </MenuWrap>
                     <LogoWrap>
-                        <NavLink to="/">자맛추</NavLink>
+                        <NavLink to="/" className="title">자맛추</NavLink>
                     </LogoWrap>
                     <ClickWrap>
                         <ul>
@@ -70,6 +70,7 @@ const MenuWrap = styled.div`
 
     & ul li a {
         text-decoration: none;
+        font-size: 20px;
         color: black;
         margin: 0 10px;
     }
@@ -77,9 +78,14 @@ const MenuWrap = styled.div`
 
 const LogoWrap = styled.div`
     font-size: 100px;
+    font-family: 'NanumMasIssNeunCe';
     text-align: center;
     align-items: center;
     width: 33.4%;
+
+    & .title {
+        background-color: white;
+    }
 
     & a, & a:hover, & a:visited{
         text-decoration: none;

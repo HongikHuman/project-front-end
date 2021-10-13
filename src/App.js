@@ -3,6 +3,7 @@ import './App.css';
 import Header from './component/Header';
 import Main from './component/Main';
 import Top10_page from './pages/Top10_page';
+import Footer from './component/Footer';
 
 import {
   BrowserRouter as Router,
@@ -29,6 +30,8 @@ export default function App() {
             <Main />
           </Route>
         </Switch>
+
+        <Footer />
       </div>
 
     </Router>

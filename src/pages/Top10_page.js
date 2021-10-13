@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Top10 from '../component/Top10';
+import Top10Cards from '../component/Top10Cards';
 
 const top_restaurants = [
     {rank: 1, name: '히메시야', address: '서울특별시 마포구 상수동 독막로15길 3-18', likes: 1232, img_url: 'https://t1.daumcdn.net/cfile/tistory/2345FA3A57BCE6A30F'},
@@ -23,7 +23,7 @@ export default function Top10_page(){
 
     return (
         <>
-            <Top10 restaurants={restaurants}/>
+            <Top10Cards restaurants={restaurants}/>
             <br /><br /><br /><br /><br />
         </>
     );
