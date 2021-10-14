@@ -31,6 +31,21 @@ export default function App() {
           <Route path="/" exact>
             <Main />
           </Route>
+          <Route path="/newpost" exact>
+            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>새로운 게시글을 작성해보세요!</h1>
+          </Route>
+          <Route path="/likes" exact>
+            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>내가 찜한 목록</h1>
+          </Route>
+          <Route path="/my-page/login" exact>
+            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>로그인하세요</h1>
+          </Route>
+          <Route path="/my-page/history" exact>
+            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>나의 히스토리</h1>
+          </Route>
+          <Route path="/my-page/edit-privacy" exact>
+            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>개인정보 수정</h1>
+          </Route>
         </Switch>
         <Footer />
       </div>
