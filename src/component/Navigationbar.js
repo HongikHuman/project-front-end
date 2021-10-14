@@ -5,7 +5,6 @@ import scrollTo from "gatsby-plugin-smoothscroll";
 import { NavDropdown } from 'react-bootstrap';
 import { BiPencil } from 'react-icons/bi';
 import { AiOutlineHeart } from 'react-icons/ai';
-import { IoPersonCircleSharp } from 'react-icons/io5';
 
 export default function Navigationbar () {
   return (
@@ -46,7 +45,6 @@ export default function Navigationbar () {
 };
 
 const NavbarWrap = styled.div`
-    width: 80vw;
     margin-top: 10vh;
     display: flex;
     align-items: center;

@@ -17,7 +17,6 @@ export default function App() {
     <Router>
       <div className = "App">
         <Navigationbar />
-
         <Switch>
           <Route path="/top10" exact>
             <Top10_page />

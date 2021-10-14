@@ -29,7 +29,7 @@ export default function Top10_page(){
                     <h1 className="title">금주의 Top 10</h1>
                     <p className="text">매주 업데이트 되는 새로운 맛집을 만나보세요!</p>
                 </div>
-                <Top10Cards restaurants={restaurants}/>
+                <Top10Cards className="cards" restaurants={restaurants}/>
                 <br /><br /><br /><br /><br />
             </Top10BodyWrap>
         </div>
@@ -49,5 +49,9 @@ const Top10BodyWrap = styled.div`
 
     & .body-text .text {
         font-size: 25px;
+    }
+
+    & .cards {
+        justify-contents: center;
     }
 `;
