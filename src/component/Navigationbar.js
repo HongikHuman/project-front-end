@@ -21,7 +21,7 @@ export default function Navigationbar () {
                 자맛추
             </NavLink>
             <div className="links-wrapper">
-              <button><NavLink to="/universide" className="link">대학 맛집</NavLink></button>
+              <button><NavLink to="/univside" className="link">대학 맛집</NavLink></button>
               <button><NavLink to="/top10" className="link">Top 10</NavLink></button>
               <button><NavLink to="/hotpost" className="link">핫 게시판</NavLink></button>
             </div>

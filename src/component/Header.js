@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export default function Header() {
   return (
     <div className="section" id="home">
-      <Container>
+      <Container className="container">
         <div className="header-wrapper">
           <Fade bottom>
             <h1>

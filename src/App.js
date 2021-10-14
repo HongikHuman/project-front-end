@@ -3,6 +3,7 @@ import './App.css';
 import Navigationbar from './component/Navigationbar';
 import Main from './component/Main';
 import Top10_page from './pages/Top10_page';
+import Univside from './pages/Univside';
 import Footer from './component/Footer';
 
 import {
@@ -18,21 +19,21 @@ export default function App() {
       <div className = "App">
         <Navigationbar />
         <Switch>
+          <Route path="/univside" exact>
+            <Univside />
+          </Route>
           <Route path="/top10" exact>
             <Top10_page />
           </Route>
-          <Route path="/likes" exact>
-            <h1>likes!</h1>
+          <Route path="/hotpost" exact>
+            <h1>hot 게시판</h1>
           </Route>
-
           <Route path="/" exact>
             <Main />
           </Route>
         </Switch>
-
         <Footer />
       </div>
-
     </Router>
   );
 }
