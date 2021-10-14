@@ -26,7 +26,7 @@ export default function App() {
             <Top10_page />
           </Route>
           <Route path="/hotpost" exact>
-            <h1>hot 게시판</h1>
+            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>Hot 게시판</h1>
           </Route>
           <Route path="/" exact>
             <Main />

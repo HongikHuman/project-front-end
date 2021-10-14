@@ -30,13 +30,14 @@ export default function Top10_page(){
                     <p className="text">매주 업데이트 되는 새로운 맛집을 만나보세요!</p>
                 </div>
                 <Top10Cards className="cards" restaurants={restaurants}/>
-                <br /><br /><br /><br /><br />
             </Top10BodyWrap>
         </div>
     );
 };
 
 const Top10BodyWrap = styled.div`
+    margin: 0 0 150px 0;
+
     & .body-text {
         border-bottom: 1px solid #9a9a9a;
         height: 200px;

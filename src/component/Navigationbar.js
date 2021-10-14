@@ -1,12 +1,13 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import scrollTo from "gatsby-plugin-smoothscroll";
-import { NavDropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { BiPencil } from 'react-icons/bi';
+import { BsPerson } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 
 export default function Navigationbar () {
+
   return (
     <div className="section mb-5">
       <div className="container">
@@ -14,7 +15,6 @@ export default function Navigationbar () {
             <NavLink
                 to="/"
                 role="button"
-                onClick={() => scrollTo("#home")}
                 className="name"
                 tabIndex={0}
             >
@@ -30,13 +30,20 @@ export default function Navigationbar () {
                 <button><NavLink to="/newpost" className="click-one"><BiPencil /></NavLink></button>
                 <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
               </div>
-              <NavDropdown title="my page" className="basic-nav-dropdown" style={{color: '#9a9a9a'}}>
-                  <button><NavDropdown.Item to="/login">로그인</NavDropdown.Item></button>
-                  <button><NavDropdown.Item to="/history">히스토리</NavDropdown.Item></button>
-                  <button><NavDropdown.Item to="likes-list">찜한목록</NavDropdown.Item></button>
-                  <NavDropdown.Divider />
-                  <button><NavDropdown.Item to="/edit-privacy">개인정보 수정</NavDropdown.Item></button>
-              </NavDropdown>
+
+              <Dropdown>
+                <Dropdown.Toggle variant="none" id="dropdown-basic" className="click-my-page">
+                  <BsPerson />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item><NavLink to="/my-page/login" className="my-link">로그인</NavLink></Dropdown.Item>
+                  <Dropdown.Item><NavLink to="/my-page/history" className="my-link">히스토리</NavLink></Dropdown.Item>
+                  <Dropdown.Item><NavLink to="/my-page/likes" className="my-link">찜한목록</NavLink></Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item><NavLink to="/my-page/edit-privacy" className="my-link">개인정보 수정</NavLink></Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
         </NavbarWrap>
       </div>
@@ -49,14 +56,22 @@ const NavbarWrap = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    height: 130px;
+    border-bottom: 1px solid #9a9a9a;
+
     & .name {
         text-decoration: none;
         color: black;
         font-weight: 600;
-        font-size: 70px;
+        font-size: 60px;
+        width: 20%
+        text-align: left;
     }
     
+    & .links-wrapper {
+      width: 33.3%
+    }
+
     & .links-wrapper > button {
         padding: 10px;
         opacity: 0.6;
@@ -83,6 +98,7 @@ const NavbarWrap = styled.div`
 
     & .click-bar {
       display: flex;
+      width: 20%
       flex-direction: row;
       align-items: center;
       margin: 0;
@@ -111,6 +127,31 @@ const NavbarWrap = styled.div`
       text-decoration: none;
       color: black;
       font-size: 30px;
+    }
+
+    & .click-bar .btn-group > button {
+        padding: 10px;
+        opacity: 0.6;
+        transition: all 0.2s ease-in-out;
+        font-size: 15px;
+        background-color: transparent;
+        outline: none;
+        border: 0px;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    & .click-bar .click-my-page {
+      text-decoration: none;
+      color: black;
+      font-size: 30px;
+    }
+
+    & .click-bar .my-link {
+      text-decoration: none;
+      color: black;
     }
 
     &. click-bar > NavDropdown {

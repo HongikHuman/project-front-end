@@ -44,7 +44,7 @@ const Container = styled.div`
         height: 400px;
         background-image: url(https://cdn.mkhealth.co.kr/news/photo/201806/img_MKH180615003_0.jpg);
         background-size: cover;
-        opacity: 0.5;
+        opacity: 0.7;
     }
 
     & .header-wrapper::before {

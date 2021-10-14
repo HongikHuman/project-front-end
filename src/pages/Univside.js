@@ -97,7 +97,7 @@ export default function Univside(){
 
 
     return (
-        <Container>
+        <Container className="container">
             <FilterModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
@@ -198,6 +198,7 @@ const restaurants = [
 
 const Container = styled.div`
     margin: 0 auto;
+    margin-bottom: 150px;
 `;
 
 const HeaderWrap = styled.div`
