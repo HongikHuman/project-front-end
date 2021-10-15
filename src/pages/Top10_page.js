@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Top10Cards from '../component/Top10Cards';
+import styled from 'styled-components';
 
 const top_restaurants = [
     {rank: 1, name: '히메시야', address: '서울특별시 마포구 상수동 독막로15길 3-18', likes: 1232, img_url: 'https://t1.daumcdn.net/cfile/tistory/2345FA3A57BCE6A30F'},
@@ -22,9 +23,35 @@ export default function Top10_page(){
     }, []);
 
     return (
-        <>
-            <Top10Cards restaurants={restaurants}/>
-            <br /><br /><br /><br /><br />
-        </>
+        <div className="container">
+            <Top10BodyWrap>
+                <div className="body-text">
+                    <h1 className="title">금주의 Top 10</h1>
+                    <p className="text">매주 업데이트 되는 새로운 맛집을 만나보세요!</p>
+                </div>
+                <Top10Cards className="cards" restaurants={restaurants}/>
+                <br /><br /><br /><br /><br />
+            </Top10BodyWrap>
+        </div>
     );
 };
+
+const Top10BodyWrap = styled.div`
+    & .body-text {
+        border-bottom: 1px solid #9a9a9a;
+        height: 200px;
+    }
+
+    & .body-text .title {
+        height: 100px;
+        font-size: 55px;
+    }
+
+    & .body-text .text {
+        font-size: 25px;
+    }
+
+    & .cards {
+        justify-contents: center;
+    }
+`;
