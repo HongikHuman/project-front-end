@@ -4,6 +4,7 @@ import Navigationbar from './component/Navigationbar';
 import Main from './component/Main';
 import Top10_page from './pages/Top10_page';
 import Univside from './pages/Univside';
+import Hot_Posts from './pages/HotPosts';
 import Footer from './component/Footer';
 
 import {
@@ -26,7 +27,7 @@ export default function App() {
             <Top10_page />
           </Route>
           <Route path="/hotpost" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>Hot 게시판</h1>
+            <Hot_Posts />
           </Route>
           <Route path="/" exact>
             <Main />
