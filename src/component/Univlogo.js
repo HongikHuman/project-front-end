@@ -6,6 +6,7 @@ export default function Univlogo(props){
         borderRadius: '100%',
         background: `url(${props.url}) 100% 100% / contain no-repeat`,
     };
+    
     return(
         <div style={style}>
         </div>

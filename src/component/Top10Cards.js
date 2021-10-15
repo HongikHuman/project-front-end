@@ -8,7 +8,7 @@ export default function Top10 ({ restaurants }){
         <div className="container">
             {restaurants.map(restaurant => {
                 return (
-                    <CardBoxWrap className="card m-3" key={restaurant.rank}>
+                    <CardBoxWrap className="card mt-5" key={restaurant.rank}>
                         <CardWrap className="row g-0">
                             <ImageBoxWrap className="col-md-4">
                                 <img src={restaurant.img_url} className="img-fluid rounded-start" alt="..." />
@@ -33,7 +33,7 @@ export default function Top10 ({ restaurants }){
 
 const CardBoxWrap = styled.div`
     max-width: 100vh;
-    height: 300px
+    height: 300px;
 `;
 
 const CardWrap = styled.div`
