@@ -13,7 +13,6 @@ import {
   Route
 } from 'react-router-dom';
 
-
 export default function App() {
   return (
     <Router>
@@ -29,7 +28,12 @@ export default function App() {
           <Route path="/hotpost" exact>
             <Hot_Posts />
           </Route>
-          <Route path="/" exact>
+
+          <Route path="/univside" exact>
+            <Univside />
+          </Route>
+
+          <Route path="/">
             <Main />
           </Route>
           <Route path="/newpost" exact>

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Carousel from 'react-multi-carousel';
 
-import Header from './Header';
 import Univlogo from './Univlogo';
 import Card from 'react-bootstrap/Card';
 
@@ -72,37 +71,34 @@ export default function Main(){
 
     return(
         <Container>
-            <Header />
-            <div className="container">
-                <FamousWrap>
-                    <h1>인기 대학가 TOP 3</h1>
-                    <div>
-                        {famousList}
-                    </div>
-                </FamousWrap>
+            <FamousWrap>
+                <h1>인기 대학가 TOP 3</h1>
+                <div>
+                    {famousList}
+                </div>
+            </FamousWrap>
 
-                <SupportedWrap>
-                    <h1>지원 대학 리스트</h1>
-                    <div>
-                        {supportedList}
-                    </div>
-                </SupportedWrap>
+            <SupportedWrap>
+                <h1>지원 대학 리스트</h1>
+                <div>
+                    {supportedList}
+                </div>
+            </SupportedWrap>
 
 
-                <WeeklyHotWrap>
-                    <h1>이번 주 HOT 게시글</h1>
+            <WeeklyHotWrap>
+                <h1>이번 주 HOT 게시글</h1>
 
-                    <Carousel 
-                        responsive={responsive}
-                        infinite={true}
-                        autoPlay={true}
-                        autoPlaySpeed={3000}
-                    >
-                        {weeklyHotList}
-                    </Carousel>
+                <Carousel 
+                    responsive={responsive}
+                    infinite={true}
+                    autoPlay={true}
+                    autoPlaySpeed={3000}
+                >
+                    {weeklyHotList}
+                </Carousel>
 
-                </WeeklyHotWrap>
-            </div>
+            </WeeklyHotWrap>
         </Container>
     );
 }
@@ -129,7 +125,7 @@ const responsive = {
 //styled components
 const Container = styled.div`
     min-width: 80vw;
-    margin: 0 50px 100px 50px;
+    margin: 0 50px 0 50px;
 `;
 
 const FamousWrap = styled.div`
