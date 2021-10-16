@@ -62,9 +62,10 @@ const NavbarWrap = styled.div`
         text-decoration: none;
         color: black;
         font-weight: 600;
-        font-size: 60px;
+        font-size: 80px;
         width: 20%
         text-align: left;
+        font-family: 'NanumAGiSaRangCe';
     }
     
     & .links-wrapper {
