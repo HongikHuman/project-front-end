@@ -128,7 +128,7 @@ const responsive = {
 //styled components
 const Container = styled.div`
     min-width: 80vw;
-    margin: 0 50px 0 50px;
+    margin: 0 50px 150px 50px;
 `;
 
 const FamousWrap = styled.div`

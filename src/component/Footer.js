@@ -13,108 +13,6 @@ export default function Footer() {
                     <p className="subtitle">자, 여기 맛집 추천!</p>
                 </div>
 
-                <p className="sns-shortcut">
-                    <Link className="btn facebook" to="https://www.facebook.com/mangoplate" target="_blank" onClick="trackEvent('CLICK_SHARE_FACEBOOK');">
-                        자맛추 페이스북 계정으로 바로가기
-                    </Link>
-
-                    <Link className="btn instagram" to="https://instagram.com/mangoplate/" target="_blank" onClick="trackEvent('CLICK_SHARE_INSTA');">
-                        자맛추 인스타그램 계정으로 바로가기
-                    </Link>
-                </p>
-
-                <nav className="links-external">
-                    <ul className="list-links">
-                        <li>
-                            <Link to="/company">
-                                회사소개
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link to="/careers">
-                                자맛추 채용
-                            </Link>
-                        </li>
-
-                            <li>
-                            <Link to="/investment">
-                                투자 정보
-                            </Link>
-                            </li>
-
-                        <li className="only-desktop">
-                            <Link to="/etc/download_company_ci" target="_blank">
-                                브랜드 가이드라인
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link to="https://www.mangoforbiz.com/?utm_campaign=main_bottom_business&amp;utm_medium=bizhome&amp;utm_source=web" target="_blank">
-                                자맛추 비즈니스
-                            </Link>
-                        </li>
-                        
-                        <li>
-                            <Link to="https://www.mangoforbiz.com/?utm_campaign=20180116v1&amp;utm_medium=main_bottom_adinquiry&amp;utm_source=mp_web" target="_blank">
-                                광고 문의
-                            </Link>
-                        </li>
-
-                    </ul>
-
-                    <ul className="list-links">
-                        <li>
-                            <Link to="/notice" target="_blank">
-                                공지사항
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link className="" to="/terms/contract" onClick="trackEvent('CLICK_TERMS', 'contract')" target="_blank">
-                                이용약관
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="" to="/terms/contract_non_signup" onClick="trackEvent('CLICK_TERMS', 'contract_non_signup')" target="_blank">
-                                비회원 이용자 이용정책
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="bold" to="/terms/privacy" onClick="trackEvent('CLICK_TERMS', 'privacy')" target="_blank">
-                                개인정보처리방침
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="" to="/terms/location" onClick="trackEvent('CLICK_TERMS', 'location')" target="_blank">
-                                위치기반서비스 이용약관
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="" to="/terms/community_guidelines" onClick="trackEvent('CLICK_TERMS', 'community_guidelines')" target="_blank">
-                                커뮤니티 가이드라인
-                            </Link>
-                        </li>
-                        <li>
-                            <Link className="" to="/terms/youth_protection" onClick="trackEvent('CLICK_TERMS', 'youth_protection')" target="_blank">
-                                청소년보호정책
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link to="https://brunch.co.kr/@mangoplate/14" target="_blank">
-                                홀릭 소개
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link to="/company#contact">
-                                문의하기
-                            </Link>
-                        </li>
-                    </ul>
-                </nav>
-
                 <div className="sitemap-location-keywords">
                     <div className="keyword_wrap">
                         <span className="keyword">자맛추 지원 학교</span>
@@ -222,20 +120,6 @@ export default function Footer() {
                 </div>
 
                 <div className="language-copyrights">
-                    <p className="select-language">
-                        <Link to="/" className="selected">
-                        한국어
-                        </Link>
-
-                        <Link to="/en">
-                        English
-                        </Link>
-
-                        <Link to="/zh">
-                        简体中文
-                        </Link>
-                    </p>
-
                     <small>
                         <p> 
                             ㈜ 고스락컴퍼니<br />서울특별시 마포구 상수동 와우산로 94<br />대표이사: 채승희<br />사업자 등록번호: 02-320-1114 <Link to="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=7428600224" target="_blank">[사업자정보확인]</Link><br />고객센터: 02-123-4567<br /><br />
@@ -266,6 +150,8 @@ const InnerWrap = styled.div`
         display: inline-block;
         margin-right: 168px;
         vertical-align: top;
+        margin-bottom: 30px;
+        padding-top: 15px;
     }
 
     & .zmc-logo .title{
@@ -283,52 +169,6 @@ const InnerWrap = styled.div`
         padding-top: 15px;
         font-size: 0.875rem;
         color: #6a6a6a;
-    }
-
-    & .sns-shortcut {
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-
-    & .sns-shortcut .btn {
-        margin-left: 30px;
-        display: inline-block;
-        text-indent: -9999px;
-    }
-
-    & .sns-shortcut .btn.facebook {
-        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
-        background-position: -106px -866px;
-        width: 46px;
-        height: 46px;
-    }
-
-    & .sns-shortcut .btn.instagram {
-        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
-        background-position: -259px -866px;
-        width: 46px;
-        height: 46px;
-    }
-
-    & .links-external {
-        display: inline-block;
-        width: 614px;
-        margin-bottom: 10px;
-        overflow: hidden;
-    }
-
-    & .links-external .list-links{
-        float: left;
-    }
-    
-    & .links-external .list-links > li > a{
-        text-decoration: none;
-        font-size: 1rem;
-        line-height: 35px;
-        color: #9b9b9b;
     }
     
     & .sitemap-location-keywords {
@@ -356,34 +196,12 @@ const InnerWrap = styled.div`
         padding: 36px 0 42px 0;
     }
 
-    & .language-copyrights .select-language {
-        position: absolute;
-        top: 47px;
-        right: 0;
-    }
-
-    & .language-copyrights .select-language a {
-        color: #9b9b9b;
-    }
-
     p {
         display: block;
         margin-block-start: 1em;
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-    }
-
-    & .language-copyrights .select-language a.selected {
-        color: #ffffff;
-        border-left: 0px;
-    }
-
-    & .language-copyrights .select-language a {
-        font-size: 1rem;
-        text-decoration: none;
-        border-left: 1px solid #6a6a6a;
-        padding: 0 10px 0 10px
     }
 
     & .language-copyrights  small {
