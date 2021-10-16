@@ -33,7 +33,7 @@ export default function App() {
             <Univside />
           </Route>
 
-          <Route path="/">
+          <Route path="/" exact>
             <Main />
           </Route>
           <Route path="/newpost" exact>
