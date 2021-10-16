@@ -71,10 +71,6 @@ export default function Main(){
     var container = document.getElementById('map');
     return(
         <Container>
-            <div id="map" style={{width: "500px", height: "400px"}}>
-
-            </div>
-
             <Header />
             <div className="container">
                 <FamousWrap>
