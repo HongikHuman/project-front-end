@@ -6,7 +6,7 @@ export default function HotPost ({ hotposts }){
     return (
         <Container>  {/*div*/} 
             <Whole_Post>   {/*div*/} 
-                 <PostsList>   {/*ul*/} 
+                 <PostsList className="container">   {/*ul*/} 
                     {hotposts.map(hotpost => {
                         return (
                           <APost>  {/*list*/}
@@ -63,7 +63,6 @@ const Container = styled.div`
 const Whole_Post = styled.div`
     display: flex;
     margin-top: 5px;
-    width: 774px;
 `;
 
 const PostsList = styled.ul`
