@@ -3,10 +3,12 @@ import styled from 'styled-components';
 
 import {Form, Card, Col, Row, Pagination, Modal} from 'react-bootstrap';
 import { GrFilter } from "react-icons/gr";
-import {GiBowlOfRice} from "react-icons/gi";
+
 
 import FilterModal from '../component/FilterModal';
 import { filter } from 'dom-helpers';
+
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 
 export default function Univside(){
@@ -119,7 +121,18 @@ export default function Univside(){
 
 
     return (
+        
+
         <Container className="container">
+                <Map
+                    center={{ lat: 37.55019, lng: 126.92462 }}
+                    style={{ width: "100%", height: "360px"}}
+                >
+                    <MapMarker position={{ lat: 37.55019, lng: 126.92462 }}>
+                        <div style={{color:"#000", textAlign:"center"}}><p>홍익대학교 T동</p></div>
+                    </MapMarker>
+                </Map>
+
             <FilterModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
