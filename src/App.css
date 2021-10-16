@@ -20,6 +20,7 @@ table {	border-collapse: collapse;	border-spacing: 0;}
   font-family: 'Noto Sans CJK KR';
   font-style: normal;
 
+  scroll-behavior: smooth;
   height: 100vh;
 }
 a, a:visited{ text-decoration: none; }

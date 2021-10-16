@@ -17,6 +17,7 @@ export default function Navigationbar () {
                 role="button"
                 className="name"
                 tabIndex={0}
+             
             >
                 자맛추
             </NavLink>
@@ -65,6 +66,8 @@ const NavbarWrap = styled.div`
         font-size: 60px;
         width: 20%
         text-align: left;
+
+        font-family: 'NanumAGiSaRangCe';
     }
     
     & .links-wrapper {

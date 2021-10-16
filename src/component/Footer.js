@@ -7,7 +7,7 @@ export default function Footer() {
         <FooterWrap>
             <InnerWrap>
                 <div className="zmc-logo">
-                    <Link to="/" className="title">
+                    <Link to="/" className="title" onClick={()=>window.scrollTo(0, 0)}>
                         자맛추
                     </Link>
                     <p className="subtitle">자, 여기 맛집 추천!</p>

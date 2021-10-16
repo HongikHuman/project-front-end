@@ -29,6 +29,9 @@ export default function Univside(){
 
 
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
     useEffect(() => {
         if(isAuth===true)
             setFilteredData(filterAuth(true));
@@ -105,6 +108,7 @@ export default function Univside(){
             )
         }
         setPagination(item);
+        window.scrollTo(0, 0);
     }
 
     const setNextPagination = ()=>{

@@ -20,7 +20,7 @@ export default function Hot_Posts() {
     const [posts, setHotPosts] = useState(hot_posts);
     console.log(posts);
     useEffect(() => {   
-        
+        window.scrollTo(0, 0);
     }, []);
 
     return (

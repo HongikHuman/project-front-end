@@ -20,6 +20,7 @@ export default function Top10_page(){
     
     useEffect(() => {
         // console.log(restaurants);
+        window.scrollTo(0, 0);
     }, []);
 
     return (

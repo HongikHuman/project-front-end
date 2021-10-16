@@ -49,6 +49,7 @@ export default function Main(){
 
         //axios
         setMainData();
+        window.scrollTo(0, 0);
 
         console.log(mainData);
 
