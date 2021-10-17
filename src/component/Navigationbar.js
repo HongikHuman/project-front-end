@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Dropdown } from 'react-bootstrap';
-import { BiPencil } from 'react-icons/bi';
+import { BiSearch, BiPencil } from 'react-icons/bi';
 import { BsPerson } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 
@@ -28,6 +28,7 @@ export default function Navigationbar () {
             </div>
             <div className="click-bar">
               <div className="click">
+                <button><NavLink to="/search" className="click-one"><BiSearch /></NavLink></button>
                 <button><NavLink to="/newpost" className="click-one"><BiPencil /></NavLink></button>
                 <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
               </div>

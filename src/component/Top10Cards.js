@@ -32,7 +32,6 @@ export default function Top10 ({ restaurants }){
 };
 
 const CardBoxWrap = styled.div`
-    max-width: 100vh;
     height: 300px;
 `;
 
