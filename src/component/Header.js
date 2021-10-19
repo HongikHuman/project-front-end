@@ -2,6 +2,8 @@ import React from "react";
 import Fade from "react-reveal/Fade";
 import styled from 'styled-components';
 
+import LoginModal from './LoginModal';
+
 export default function Header() {
   return (
     <div className="section" id="home">
