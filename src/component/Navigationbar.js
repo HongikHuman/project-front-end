@@ -29,7 +29,7 @@ export default function Navigationbar () {
             <div className="click-bar">
               <div className="click">
                 <button><NavLink to="/search" className="click-one"><BiSearch /></NavLink></button>
-                <button><NavLink to="/newpost" className="click-one"><BiPencil /></NavLink></button>
+                <button><NavLink to="/writepost" className="click-one"><BiPencil /></NavLink></button>
                 <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
               </div>
 
@@ -40,9 +40,9 @@ export default function Navigationbar () {
 
                 <Dropdown.Menu>
                   <Dropdown.Item><NavLink to="/login" className="my-link">로그인</NavLink></Dropdown.Item>
-                  <Dropdown.Item><NavLink to="/my-page/history" className="my-link">히스토리</NavLink></Dropdown.Item>
+                  <Dropdown.Item><NavLink to="/my/history" className="my-link">히스토리</NavLink></Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item><NavLink to="/my-page/edit-privacy" className="my-link">개인정보 수정</NavLink></Dropdown.Item>
+                  <Dropdown.Item><NavLink to="/my/edit" className="my-link">개인정보 수정</NavLink></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
