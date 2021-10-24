@@ -60,8 +60,6 @@ export default function Navigationbar () {
                   </div>
                 </button>
                 { openSearchModal(modalOn) }
-                <button><NavLink to="/newpost" className="click-one"><BiPencil /></NavLink></button>
-                <button><NavLink to="/search" className="click-one"><BiSearch /></NavLink></button>
                 <button><NavLink to="/writepost" className="click-one"><BiPencil /></NavLink></button>
                 <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
               </div>
