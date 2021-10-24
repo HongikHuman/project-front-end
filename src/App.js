@@ -46,7 +46,7 @@ export default function App() {
             <Hot_Posts />
           </Route>
           <Route path="/restaurant" exact>
-           <Restaurant resInfo={db_restaurants[0]}/>
+           <Restaurant resInfo={db_restaurants[1]}/>
           </Route>
 
           <Route path="/univside" exact>
