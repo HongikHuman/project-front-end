@@ -6,6 +6,9 @@ import Top10_page from './pages/Top10_page';
 import Univside from './pages/Univside';
 import Hot_Posts from './pages/HotPosts';
 import Footer from './component/Footer';
+import Login from './pages/Login';
+import MyPage from './pages/MyPage';
+import WritePost from './pages/WritePost';
 
 import {
   BrowserRouter as Router,
@@ -36,21 +39,34 @@ export default function App() {
           <Route path="/" exact>
             <Main />
           </Route>
-          <Route path="/newpost" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>새로운 게시글을 작성해보세요!</h1>
+          <Route path="/writepost" exact>
+            <WritePost />
           </Route>
           <Route path="/likes" exact>
             <h1 style={{fontSize: '50px', marginBottom: '150px'}}>내가 찜한 목록</h1>
           </Route>
-          <Route path="/my-page/login" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>로그인하세요</h1>
+          <Route path="/login" exact>
+            <Login/>
           </Route>
-          <Route path="/my-page/history" exact>
+          <Route path="/my/history" exact>
             <h1 style={{fontSize: '50px', marginBottom: '150px'}}>나의 히스토리</h1>
           </Route>
-          <Route path="/my-page/edit-privacy" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>개인정보 수정</h1>
+
+          <Route path="/my/edit" exact>
+            <MyPage link='edit'/>
           </Route>
+          <Route path="/my/post" exact>
+            <MyPage link='post'/>
+          </Route>
+          <Route path="/my/reply" exact>
+            <MyPage link='reply'/>
+          </Route>
+          <Route path="/my/likes" exact>
+            <MyPage link='likes'/>
+          </Route>
+          <Route path="/logout" exact>
+            <Main />
+          </Route>                              
         </Switch>
         <Footer />
       </div>
