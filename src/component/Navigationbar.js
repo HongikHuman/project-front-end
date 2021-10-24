@@ -1,12 +1,37 @@
-import React from "react";
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { BiSearch, BiPencil } from 'react-icons/bi';
 import { BsPerson } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
+import SearchModal from './SearchModal';
 
 export default function Navigationbar () {
+
+  const [modalOn, setModalOn] = useState(false);
+
+  const handleSearchModal = () => {
+      setModalOn(!modalOn);
+  };
+
+  const openSearchModal = (modalOn) => {
+    if (modalOn) {
+      return (
+        <SearchModal 
+          modalOn={modalOn} 
+          handleSearchModal={handleSearchModal}
+        />
+      );
+    }
+    else {
+      return null
+    }
+  };
+
+  useEffect(() => {
+    openSearchModal(modalOn);
+  }, [modalOn]);
 
   return (
     <div className="section mb-5">
@@ -17,7 +42,6 @@ export default function Navigationbar () {
                 role="button"
                 className="name"
                 tabIndex={0}
-             
             >
                 자맛추
             </NavLink>
@@ -28,6 +52,15 @@ export default function Navigationbar () {
             </div>
             <div className="click-bar">
               <div className="click">
+                <button 
+                  onClick={() => handleSearchModal()}
+                >
+                  <div className="click-one">
+                    <BiSearch />
+                  </div>
+                </button>
+                { openSearchModal(modalOn) }
+                <button><NavLink to="/newpost" className="click-one"><BiPencil /></NavLink></button>
                 <button><NavLink to="/search" className="click-one"><BiSearch /></NavLink></button>
                 <button><NavLink to="/writepost" className="click-one"><BiPencil /></NavLink></button>
                 <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
@@ -64,7 +97,7 @@ const NavbarWrap = styled.div`
         text-decoration: none;
         color: black;
         font-weight: 600;
-        font-size: 80px;
+        font-size: 100px;
         width: 20%
         text-align: left;
         font-family: 'NanumAGiSaRangCe';
