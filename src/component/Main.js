@@ -69,7 +69,6 @@ export default function Main(){
         })
     }, []);
 
-    var container = document.getElementById('map');
     return(
         <Container>
             <Header />

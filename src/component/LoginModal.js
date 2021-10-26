@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {Button, ToggleButtonGroup, ToggleButton, Form, Card, Col, Row, Pagination, Modal} from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 
 
 export default function LoginModal(props){

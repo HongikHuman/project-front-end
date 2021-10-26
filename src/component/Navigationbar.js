@@ -70,8 +70,10 @@ export default function Navigationbar () {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item><NavLink to="/login" className="my-link">로그인</NavLink></Dropdown.Item>
+                  <Dropdown.Item style={{width:"100%"}}><NavLink to="/login" className="my-link">로그인</NavLink></Dropdown.Item>
+                  <Dropdown.Item><NavLink to="/register" className="my-link">회원가입</NavLink></Dropdown.Item>
                   <Dropdown.Item><NavLink to="/my/history" className="my-link">히스토리</NavLink></Dropdown.Item>
+                  
                   <Dropdown.Divider />
                   <Dropdown.Item><NavLink to="/my/edit" className="my-link">개인정보 수정</NavLink></Dropdown.Item>
                 </Dropdown.Menu>
@@ -183,6 +185,7 @@ const NavbarWrap = styled.div`
     }
 
     & .click-bar .my-link {
+      width: 100%;
       text-decoration: none;
       color: black;
     }

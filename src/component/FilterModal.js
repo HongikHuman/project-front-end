@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {Button, ToggleButtonGroup, ToggleButton, Form, Card, Col, Row, Pagination, Modal} from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 
 import {MdRiceBowl} from "react-icons/md";
 import {GiSushis, GiNoodles} from "react-icons/gi";

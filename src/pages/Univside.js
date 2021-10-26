@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import {Form, Card, Col, Row, Pagination, Modal} from 'react-bootstrap';
+import {Form, Card, Col, Row, Pagination } from 'react-bootstrap';
 import { GrFilter } from "react-icons/gr";
 
 
 import FilterModal from '../component/FilterModal';
-import { filter } from 'dom-helpers';
-
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 

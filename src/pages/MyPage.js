@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import {Form, ListGroup, Button, Col, Row, Pagination, Modal} from 'react-bootstrap';
+import {Form, ListGroup, Col, Row} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function MyPage(props){
