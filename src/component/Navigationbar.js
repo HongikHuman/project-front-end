@@ -10,6 +10,9 @@ import SearchModal from './SearchModal';
 export default function Navigationbar () {
 
   const [modalOn, setModalOn] = useState(false);
+  
+  const handleClose = () => setModalOn(false);
+  const handleShow = () => setModalOn(true);
 
   const handleSearchModal = () => {
       setModalOn(!modalOn);
@@ -53,7 +56,7 @@ export default function Navigationbar () {
             <div className="click-bar">
               <div className="click">
                 <button 
-                  onClick={() => handleSearchModal()}
+                  onClick={() => handleShow()}
                 >
                   <div className="click-one">
                     <BiSearch />
@@ -91,7 +94,6 @@ const NavbarWrap = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 130px;
-    border-bottom: 1px solid #9a9a9a;
 
     & .name {
         text-decoration: none;

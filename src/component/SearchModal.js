@@ -49,7 +49,7 @@ const top_restaurants = [
 ]
 
 
-export default function SearchModal({ modalOn, handleSearchModal }) {
+export default function SearchModal({ modalOn, handleClose, handleShow, handleSearchModal }) {
     const [keyWord, setKeyWord] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
