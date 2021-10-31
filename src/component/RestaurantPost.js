@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import Info from './RestaurantInfos';
 import Review from './RestaurantReviews';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { Form } from 'react-bootstrap';
 
 export default function RestaurantPost ({ Information }) {
     const [info, setInfo] = useState(Information);
+    let [isAuth, setIsAuth] = useState(false); //인증 리뷰만 보여줄것인지
+    useEffect(() => {
+        if(isAuth===true) ;
+
+    }, [isAuth]);
+
     const category = ['주소', '전화번호', '음식 종류', '주차가능여부', '예약가능여부', '영업시간', '식당 사이트', '대표메뉴', '휴무일'];
     const hot_reviews = [  //업로드한 날짜 빠르면 제일 밑에
         {date: '2021-10-15', user_name: '노경민', user_id: "noh", title: '노경민의 맛집추천', user_img_url: 'https://mblogthumb-phinf.pstatic.net/20150427_261/ninevincent_1430122791768m7oO1_JPEG/kakao_1.jpg?type=w2', review: "한강 눈에 비친 서울은 리빌딩 올림픽 대로는 터질 듯이 막혀 siri Play me something chill It's 6pm 노을 빛은 핑크색 도로 위에 줄 지은 빨간색 실 I'm stressing out I was stressing out 못 가 제시간에 하지만 괜찮아 남보다 느린 대신에 사고만 안 나면 됐잖아 Back when I was in 철원 그 느린 시간도 때웠잖아 Man fuck time 나는 벽 타듯이 시간을 넘어왔다 이걸 너가 모른다면 난 너랑 할 말 없다 드디어 봄날 옴 고마워 기다려줘서 날 Still having good time"},
@@ -68,6 +75,14 @@ export default function RestaurantPost ({ Information }) {
                 <Reviews className="reviews">
                     <div style={{borderBottom: "1px solid rgb(219, 219, 219)" , paddingBottom: "15px"}}>
                         <span>리뷰({info.reviews})</span>
+                        <Form style={{marginRight: '20px'}}>
+                            <Form.Check 
+                                type="switch"
+                                id="authenticated-post"
+                                label="학교 인증 리뷰만 보기"
+                                onChange={()=>setIsAuth(!isAuth)}
+                            />
+                        </Form>
                     </div>
                     <Review reviewinfos={hot_reviews} />
                 </Reviews>
