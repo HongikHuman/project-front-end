@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import WritePost from './pages/WritePost';
 import Restaurant from './pages/RestaurantPage';
+import History from './pages/History';
 import Register from './pages/Register';
 
 export default function Router(){
@@ -44,9 +45,7 @@ export default function Router(){
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
 
-          <Route path="/my/history" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>나의 히스토리</h1>
-          </Route>
+          <Route path="/my/history" exact component={History}></Route>
 
           <Route path="/my/edit" exact>
             <MyPage link='edit'/>

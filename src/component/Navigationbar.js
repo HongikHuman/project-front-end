@@ -47,8 +47,8 @@ export default function Navigationbar () {
             </NavLink>
             <div className="links-wrapper">
               <button><NavLink to="/univside" className="link">대학 맛집</NavLink></button>
-              <button><NavLink to="/top10" className="link">Top 10</NavLink></button>
-              <button><NavLink to="/hotpost" className="link">핫 게시판</NavLink></button>
+              <button><NavLink to="/top10" className="link">맛집 랭킹</NavLink></button>
+              <button><NavLink to="/hotpost" className="link">핫 리뷰</NavLink></button>
             </div>
             <div className="click-bar">
               <div className="click">
