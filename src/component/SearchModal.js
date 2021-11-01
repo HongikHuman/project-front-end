@@ -3,6 +3,7 @@ import SearchDataList from "./SearchDataList";
 import styled from "styled-components";
 import { BiSearch } from 'react-icons/bi';
 import { ImCancelCircle } from 'react-icons/im';
+import Offcanvas from 'react-bootstrap/Offcanvas'
 
 const restaurants = [
     {key: 1, univ: "홍익대학교", name: '히메시야', address: '서울특별시 마포구 상수동 독막로15길 3-18', likes: 1232, authenticated: false, img: 'https://t1.daumcdn.net/cfile/tistory/2345FA3A57BCE6A30F'},
@@ -49,7 +50,7 @@ const top_restaurants = [
 ]
 
 
-export default function SearchModal({ modalOn, handleSearchModal }) {
+export default function SearchModal({ modalOn, handleClose, handleShow, handleSearchModal }) {
     const [keyWord, setKeyWord] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
@@ -73,34 +74,37 @@ export default function SearchModal({ modalOn, handleSearchModal }) {
 
     return (
       <WrapSearchModal>
-        <SearchWrap>
-            <BiSearch size="35" color="gray" />
-            <SearchInput
-                type="text"
-                placeholder="대학교명, 음식점 이름 등"
-                onChange={keyWordInput}
-                value={keyWord}
-            />
-            {modalOn ? (
-                <button onClick={handleSearchModal}><ImCancelCircle /></button>
-            ) : null}
-        </SearchWrap>
-        {keyWord ? (
-            <div>
-                <SearchDataList filteredData={filteredData} />
-            </div>
-            ) : (
-            <ImgArea>
-                <Top5List>
-                {top_restaurants.map(t_res => (
-                    <Top5 id={t_res.rank} key={t_res.rank}>
-                    <Top5Img alt={t_res.name} src={t_res.img_url} />
-                    <Top5Name>{t_res.name}</Top5Name>
-                    </Top5>
-                ))}
-                </Top5List>
-            </ImgArea>
-        )}
+        <Offcanvas show={modalOn} onHide={handleClose} placement="top">
+          <Offcanvas.Header closeButton>
+            <SearchWrap>
+              <BiSearch size="35" color="gray"/>
+              <SearchInput
+                  type="text"
+                  placeholder="대학교명, 음식점 이름 등"
+                  onChange={keyWordInput}
+                  value={keyWord}
+              />
+            </SearchWrap>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            {keyWord ? (
+                <div>
+                    <SearchDataList filteredData={filteredData} />
+                </div>
+                ) : (
+                <ImgArea>
+                    <Top5List>
+                    {top_restaurants.map(t_res => (
+                        <Top5 id={t_res.rank} key={t_res.rank}>
+                        <Top5Img alt={t_res.name} src={t_res.img_url} />
+                        <Top5Name>{t_res.name}</Top5Name>
+                        </Top5>
+                    ))}
+                    </Top5List>
+                </ImgArea>
+            )}
+          </Offcanvas.Body>
+        </Offcanvas>
       </WrapSearchModal>
     );
 };
@@ -125,20 +129,6 @@ const SearchWrap = styled.div`
   height: 90px;
   align-items: center;
   background-color: white;
-
-  & > button {
-    padding: 10px;
-    opacity: 0.6;
-    transition: all 0.2s ease-in-out;
-    font-size: 20px;
-    background-color: transparent;
-    outline: none;
-    border: 0px;
-    cursor: pointer;
-    &:hover {
-        opacity: 1;
-    }
-}
 `;
 
 const SearchInput = styled.input`
