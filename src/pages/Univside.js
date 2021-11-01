@@ -6,6 +6,7 @@ import { GrFilter } from "react-icons/gr";
 
 
 import FilterModal from '../component/FilterModal';
+import GeoLocation from '../component/GeoLocation';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
 
@@ -126,14 +127,14 @@ export default function Univside(){
         
 
         <Container className="container">
-                <Map
-                    center={{ lat: 37.55019, lng: 126.92462 }}
-                    style={{ width: "100%", height: "360px"}}
-                >
-                    <MapMarker position={{ lat: 37.55019, lng: 126.92462 }}>
-                        <div style={{color:"#000", textAlign:"center"}}><p>홍익대학교 T동</p></div>
-                    </MapMarker>
-                </Map>
+            <Map
+                center={{ lat: 37.55019, lng: 126.92462 }}
+                style={{ width: "100%", height: "360px"}}
+            >
+                <MapMarker position={{ lat: 37.55019, lng: 126.92462 }}>
+                    <div style={{color:"#000", textAlign:"center"}}><p>홍익대학교 T동</p></div>
+                </MapMarker>
+            </Map>
 
             <FilterModal
                 show={modalShow}

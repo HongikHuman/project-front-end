@@ -38,6 +38,12 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1af76652bbfbc36864175831a32e06b6">
     </script>
+    <script type="text/javascript">
+      kakao.maps.load(function() {
+          // v3가 모두 로드된 후, 이 콜백 함수가 실행됩니다.
+          var map = new kakao.maps.Map(node, options);
+      });
+      </script>
 
     <link
     rel="stylesheet"

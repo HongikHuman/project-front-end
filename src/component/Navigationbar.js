@@ -22,7 +22,8 @@ export default function Navigationbar () {
     if (modalOn) {
       return (
         <SearchModal 
-          modalOn={modalOn} 
+          modalOn={modalOn}
+          handleClose={handleClose} 
           handleSearchModal={handleSearchModal}
         />
       );
@@ -56,7 +57,7 @@ export default function Navigationbar () {
             <div className="click-bar">
               <div className="click">
                 <button 
-                  onClick={() => handleShow()}
+                  onClick={handleShow}
                 >
                   <div className="click-one">
                     <BiSearch />
