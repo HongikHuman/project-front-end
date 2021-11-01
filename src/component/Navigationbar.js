@@ -74,12 +74,12 @@ export default function Navigationbar () {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item style={{width:"100%"}}><NavLink to="/login" className="my-link">로그인</NavLink></Dropdown.Item>
-                  <Dropdown.Item><NavLink to="/register" className="my-link">회원가입</NavLink></Dropdown.Item>
-                  <Dropdown.Item><NavLink to="/my/history" className="my-link">히스토리</NavLink></Dropdown.Item>
+                <Dropdown.Item className="dropdown-item"><NavLink to="/login" className="my-link"><button style={{width: "100%"}}>로그인</button></NavLink></Dropdown.Item>
+                  <Dropdown.Item className="dropdown-item"><NavLink to="/register" className="my-link"><button style={{width: "100%"}}>회원가입</button></NavLink></Dropdown.Item>
+                  <Dropdown.Item className="dropdown-item"><NavLink to="/my/history" className="my-link"><button style={{width: "100%"}}>히스토리</button></NavLink></Dropdown.Item>
                   
-                  <Dropdown.Divider />
-                  <Dropdown.Item><NavLink to="/my/edit" className="my-link">개인정보 수정</NavLink></Dropdown.Item>
+                  <Dropdown.Divider style={{margin: "4px auto"}}/>
+                  <Dropdown.Item><NavLink to="/my/edit" className="my-link"><button style={{width: "100%"}}>개인정보 수정</button></NavLink></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
@@ -160,7 +160,6 @@ const NavbarWrap = styled.div`
         }
     }
 
-
     & .click-bar .click .click-one {
       text-decoration: none;
       color: black;
@@ -191,6 +190,21 @@ const NavbarWrap = styled.div`
       width: 100%;
       text-decoration: none;
       color: black;
+    }
+
+    & .click-bar .my-link > button {
+        padding: 10px;
+        height: 20px;
+        opacity: 0.6;
+        transition: all 0.2s ease-in-out;
+        font-size: 15px;
+        background-color: transparent;
+        outline: none;
+        border: 0px;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+        }
     }
 
     &. click-bar > NavDropdown {
