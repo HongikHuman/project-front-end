@@ -27,8 +27,8 @@ export default function Top10_page(){
         <div className="container">
             <Top10BodyWrap>
                 <div className="body-text">
-                    <h1 className="title">금주의 Top 10</h1>
-                    <p className="text">매주 업데이트 되는 새로운 맛집을 만나보세요!</p>
+                    <h1 className="title">금주의 맛집 랭킹</h1>
+                    <p className="text">매주 업데이트 되는 새로운 맛집 랭킹을 만나보세요!</p>
                 </div>
                 <Top10Cards className="cards" restaurants={restaurants}/>
             </Top10BodyWrap>

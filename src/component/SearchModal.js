@@ -51,19 +51,19 @@ const top_restaurants = [
 
 
 export default function SearchModal({ modalOn, handleClose, handleShow, handleSearchModal }) {
+    
     const [keyWord, setKeyWord] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
     const keyWordInput = e => {
-        setKeyWord(e.target.value);
-        handleSearch(e);
-    }
+      setKeyWord(e.target.value);
+    };
 
     const handleSearch = e => {
         let result = [];
-        result = restaurants.filter((restaurants) => {
-            return restaurants.name.search(keyWord) !== -1 
-                || restaurants.univ.search(keyWord) !== -1;
+        result = restaurants.filter((restaurant) => {
+            return restaurant.name.search(keyWord) !== -1
+                || restaurant.univ.search(keyWord) !== -1;
         });
         setFilteredData(result);   
     };
@@ -71,6 +71,12 @@ export default function SearchModal({ modalOn, handleClose, handleShow, handleSe
     const reset = () => {
         setFilteredData([]);
     };
+
+    useEffect(() => {
+      handleSearch(keyWord);
+      console.log(keyWord);
+      console.log()
+    }, [keyWord]);
 
     return (
       <WrapSearchModal>
