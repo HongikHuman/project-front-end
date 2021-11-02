@@ -74,8 +74,6 @@ export default function SearchModal({ modalOn, handleClose, handleShow, handleSe
 
     useEffect(() => {
       handleSearch(keyWord);
-      console.log(keyWord);
-      console.log()
     }, [keyWord]);
 
     return (
