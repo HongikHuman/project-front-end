@@ -4,7 +4,7 @@ import {
     Route,
   } from 'react-router-dom';
 
-import Main from './component/Main';
+import Main from './pages/Main';
 import Top10_page from './pages/Top10_page';
 import Univside from './pages/Univside';
 import Hot_Posts from './pages/HotPosts';
@@ -31,7 +31,7 @@ export default function Router(){
     return(
 
         <Switch>
-          <Route path="/univside" exact component={Univside}/>
+          <Route path="/univside/:universityName" exact component={Univside}/>
           <Route path="/top10" exact component={Top10_page}/>
           <Route path="/hotpost" exact component={Hot_Posts}/>
           <Route path="/restaurant" exact><Restaurant resInfo={db_restaurants[1]}/></Route>
