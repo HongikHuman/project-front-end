@@ -8,25 +8,7 @@ export default function Header() {
     <div className="section" id="home">
       <Container>
         <div className="header-wrapper">
-          <TimeSearchBanner />          
-          {/* <Fade bottom>
-            <h1>
-              자! 여기 맛집 추천
-              <span role="img" aria-label="Emoji">
-                👋
-              </span>
-            </h1>
-          </Fade>
-          <Fade bottom cascade>
-            <div className="heading-wrapper">
-              <h1>
-                안녕
-              </h1>
-            </div>
-          </Fade>
-          <Fade bottom>
-            <p>헤더 paragraph</p>
-          </Fade> */}
+          <TimeSearchBanner />
         </div>
       </Container>
     </div>
@@ -35,7 +17,7 @@ export default function Header() {
 
 const Container = styled.div`
     & .header-wrapper {
-        height: 600px;
+        height: 700px;
         background-image: url(https://src.hidoc.co.kr/image/lib/2020/11/9/1604911318873_0.jpg);
         background-size: cover;
     }

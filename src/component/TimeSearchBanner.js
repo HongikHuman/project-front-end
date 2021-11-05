@@ -2,16 +2,20 @@ import React from 'react';
 import { Dropdown } from 'react-dropdown-now';
 import 'react-dropdown-now/style.css';
 import styled from 'styled-components';
-import { BsArrowRight } from 'react-icons/bs'
+import { BsArrowRight } from 'react-icons/bs';
+import Fade from "react-reveal/Fade";
+import GeoLocation from './GeoLocation';
 
 
 const times = ['10분', '20분', '30분', '40분', '50분', '60분', '70분', '80분', '90분', '100분', '110분', '120분']
 
-export default function TimeSearchBanner() {
+export default function TimeSearchBanner({ }) {
     return (
         <BannerContainerWrap className="container">
             <SelectTimeWrap>
-                <h1>바쁜 당신을 위한 타임어택 맛집 추천!</h1>
+                <Fade bottom>
+                    <h1>바쁜 당신을 위한 타임어택 맛집 추천!</h1>
+                </Fade>
                 <div className="time-select">
                     <div className="time-selection">
                         <Dropdown
@@ -25,6 +29,7 @@ export default function TimeSearchBanner() {
                             onOpen={() => console.log('open!')}
                         />
                     </div>
+                    <GeoLocation />
                     <div className="find-button">
                         <button type="button" className="btn btn-dark">맛집 보러가기 <BsArrowRight /></button>
                     </div>
@@ -50,7 +55,7 @@ const SelectTimeWrap = styled.div`
     
     & .time-select {
         background-color: rgb(203,88,20);
-        height: 300px;
+        height: 400px;
         padding: 50px;
     }
 
