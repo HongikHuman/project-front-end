@@ -4,13 +4,14 @@ import {
     Route,
   } from 'react-router-dom';
 
-import Main from './component/Main';
+import Main from './pages/Main';
 import Top10_page from './pages/Top10_page';
 import Univside from './pages/Univside';
 import Hot_Posts from './pages/HotPosts';
 
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
+import MyLikes from './pages/MyLikes';
 import WritePost from './pages/WritePost';
 import Restaurant from './pages/RestaurantPage';
 import History from './pages/History';
@@ -31,7 +32,7 @@ export default function Router(){
     return(
 
         <Switch>
-          <Route path="/univside" exact component={Univside}/>
+          <Route path="/univside/:universityName" exact component={Univside}/>
           <Route path="/top10" exact component={Top10_page}/>
           <Route path="/hotpost" exact component={Hot_Posts}/>
           <Route path="/restaurant" exact><Restaurant resInfo={db_restaurants[1]}/></Route>
@@ -39,9 +40,7 @@ export default function Router(){
           <Route path="/" exact component={Main}/>
 
           <Route path="/writepost" exact component={WritePost}/>
-          <Route path="/likes" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>내가 찜한 목록</h1>
-          </Route>
+          <Route path="/likes" exact component={MyLikes}></Route>
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
 

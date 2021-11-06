@@ -1,34 +1,25 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
+import { FcSearch } from "react-icons/fc";
 
 export default function Review({ reviewinfos }) {
     const [reviewinfo, setReviewInfos] = useState(reviewinfos);
 
-    // 배열 거꾸로
-    const reverse = [...reviewinfo].reverse();
-    
     return (
-        <ReviewContainer>
-            {reverse.map(info => {
-
-                return (
-                    <ReviewBox>
-                        <UserInfo>
-                            <UserPhoto>
-                                <img src={info.user_img_url} />
-                                <span>{info.user_id}</span>
-                            </UserPhoto>      
-                        </UserInfo>
-                        <div className="datatitlewrap">
-                            <span className="date">{info.date}</span>
-                            <span className="title">{info.title}</span>
-                        </div>
-                        <div className="review">{info.review.slice(0, 190)}</div>
-                    </ReviewBox>
-                );
-                
-            })}
-        </ReviewContainer>
+         <ReviewBox>
+            <UserInfo>
+                <UserPhoto>
+                    <img src={reviewinfo.user_img_url} />
+                    <span>{reviewinfo.user_id}</span>
+                </UserPhoto>      
+                </UserInfo>
+                    <div className="datatitlewrap">
+                        <span className="date">{reviewinfo.date}</span>
+                        <span className="title">{reviewinfo.title}</span>
+                        <div><FcSearch />{reviewinfo.views}</div>
+                    </div>
+                <div className="review">{reviewinfo.review.slice(0, 190)}...</div>
+        </ReviewBox>
     );
 };
 
