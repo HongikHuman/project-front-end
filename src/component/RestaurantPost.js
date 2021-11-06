@@ -5,12 +5,14 @@ import Review from './RestaurantReviews';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { Form } from 'react-bootstrap';
 import { RiVipCrownFill } from "react-icons/ri";
-import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
+import { FaSmileBeam, FaRegSmileBeam } from "react-icons/fa";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { HiOutlinePencilAlt } from "react-icons/hi";
 
 export default function RestaurantPost ({ Information }) {
     const [info, setInfo] = useState(Information);
     const [thumbClick, setThumbClick] = useState(false);
+    const [heartClick, setHeartClick] = useState(false);
 
     let [isAuth, setIsAuth] = useState(false); //인증 리뷰만 보여줄것인지
     useEffect(() => {
@@ -41,6 +43,14 @@ export default function RestaurantPost ({ Information }) {
 
         if(thumbClick === true) {
             setThumbClick(false);
+        }
+    };
+
+    const handleHeartClick = (e) => {
+        setHeartClick(true);
+
+        if(heartClick === true) {
+            setHeartClick(false);
         }
     };
 
@@ -117,11 +127,17 @@ export default function RestaurantPost ({ Information }) {
                                 <p className="para">리뷰수</p>
                             </LikeBox>
                             <LikeBox>
+                                <button type="button" onClick={handleHeartClick}>
+                                { heartClick ? <AiFillHeart size='32px'/> : <AiOutlineHeart size='32px'/> }
+                                </button>
+                                <p className="para">찜하기</p>    
+                            </LikeBox>
+                            <LikeBox>
                                 <p className="likes">{info.likes}</p>
                                 <button type="button" onClick={handleThumbClick}>
-                                { thumbClick ? <FaThumbsUp size='32px'/> : <FaRegThumbsUp size='32px'/> }
+                                { thumbClick ? <FaSmileBeam size='32px'/> : <FaRegSmileBeam size='32px'/> }
                                 </button>
-                                <p className="para">공감해요</p>    
+                                <p className="para">맛집이에요</p>    
                             </LikeBox>
                         </ButtonBox>    
                     </TitleBar>
@@ -189,12 +205,14 @@ const TitleBar = styled.div`
 const ButtonBox = styled.div`
     display: flex;
     justify-content: space-evenly;
+    padding: 0 0 10px 0;
 `;
 
 const LikeBox = styled.div`
     margin-right: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: end;
 
     & > button {
         background: none;
