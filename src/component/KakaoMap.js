@@ -21,7 +21,7 @@ export default function KakaoMap({props}){
       if (!map) return
       const ps = new window.kakao.maps.services.Places()
 
-      ps.keywordSearch("홍대 술집", (data, status, _pagination) => {
+      ps.keywordSearch(`서울 ${props.name} 맛집`, (data, status, _pagination) => {
 
           //console.log(data);//
           //해당 페이지로 이동하는 함수 -> _pagination.gotoPage(2);

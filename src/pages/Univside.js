@@ -9,9 +9,8 @@ import FilterModal from '../component/FilterModal';
 import KakaoMap from '../component/KakaoMap';
 
 
-
 export default function Univside(){
-    
+
     let [pageNum, setPageNum] = useState(1);    //현재 페이지
 
     let [elements, setElements] = useState([]); //식당 요소 jsx 객체
@@ -135,7 +134,7 @@ export default function Univside(){
 
     return (
         <Container className="container">
-            <KakaoMap props={university.find((data)=>data.title===universityName)}/>
+            <KakaoMap props={university.find((data)=>data.title===universityName) ?? university[0]}/>
 
             <FilterModal
                 show={modalShow}
