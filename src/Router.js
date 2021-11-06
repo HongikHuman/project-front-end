@@ -11,6 +11,7 @@ import Hot_Posts from './pages/HotPosts';
 
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
+import MyLikes from './pages/MyLikes';
 import WritePost from './pages/WritePost';
 import Restaurant from './pages/RestaurantPage';
 import History from './pages/History';
@@ -39,9 +40,7 @@ export default function Router(){
           <Route path="/" exact component={Main}/>
 
           <Route path="/writepost" exact component={WritePost}/>
-          <Route path="/likes" exact>
-            <h1 style={{fontSize: '50px', marginBottom: '150px'}}>내가 찜한 목록</h1>
-          </Route>
+          <Route path="/likes" exact component={MyLikes}></Route>
           <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
 

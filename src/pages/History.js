@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import HistoryCards from '../component/HistoryCards';
-import UserInfoBox from '../component/HistUserBox';
+import UserInfoBox from '../component/UserInfoBox';
 
 export default function History() {
 
     let [elements, setElements] = useState(restaurants);
     
-    const rendering = () => {
+    const showRestaurants = () => {
 
         let idx = 0; let cnt = 0;
         let tmp = []; let result = [];
         
-        while(idx < 30) {
+        while(idx < 12) {   //더 늘릴 수 있음
              tmp.push(
                  <CardWrap>
                      <HistoryCards element={elements[idx]} />
@@ -30,12 +30,13 @@ export default function History() {
     
     return (
         <div>
-            <UserInfoBox className="container" user_info={user_infos[0]}/>
+            <UserInfoBox className="container"/>
             <PageTitle className="container">
                 <p>최근 본 음식점</p>
+                <p className="resCounts"></p>
             </PageTitle>
             <Container className="container">
-                {rendering()}
+                {showRestaurants()}
             </Container>
         </div>
     );
@@ -55,16 +56,19 @@ const CardWrap = styled.div`
 const PageTitle = styled.div`
     margin-bottom: 50px;
     border-bottom: 3px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     & > p {
         font-size: 25px;
         text-align: left;
     }
-`;
 
-const user_infos = [
-    {name: '자맛추', user_img: 'https://mblogthumb-phinf.pstatic.net/20150427_261/ninevincent_1430122791768m7oO1_JPEG/kakao_1.jpg?type=w2', howmanyreviews: '12', likes: '28', school: '홍익대', recommend: '16'}
-];
+    .resCounts {
+        font-size: 20px;
+    }
+`;
 
 
 const restaurants = [
