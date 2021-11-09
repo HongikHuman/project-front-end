@@ -15,6 +15,7 @@
     "create-react-app": "^4.0.3",
     "daum-map-api": "^1.0.2",
     "gatsby-plugin-smoothscroll": "^1.2.0",
+    "images-scraper": "^6.4.0",
     "kakao-map-api": "0.0.3",
     "navbar": "^2.1.0",
     "offcanvas": "^3.2.2",

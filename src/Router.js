@@ -9,7 +9,6 @@ import Top10_page from './pages/Top10_page';
 import Univside from './pages/Univside';
 import Hot_Posts from './pages/HotPosts';
 
-import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import MyLikes from './pages/MyLikes';
 import WritePost from './pages/WritePost';
@@ -41,7 +40,6 @@ export default function Router(){
 
           <Route path="/writepost" exact component={WritePost}/>
           <Route path="/likes" exact component={MyLikes}></Route>
-          <Route path="/login" exact component={Login}/>
           <Route path="/register" exact component={Register}/>
 
           <Route path="/my/history" exact component={History}></Route>

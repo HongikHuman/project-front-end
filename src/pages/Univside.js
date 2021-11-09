@@ -8,7 +8,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import FilterModal from '../component/FilterModal';
 import KakaoMap from '../component/KakaoMap';
 
-
 export default function Univside(){
 
     let [pageNum, setPageNum] = useState(1);    //현재 페이지
@@ -60,6 +59,19 @@ export default function Univside(){
     //db에서 데이터 추출
     const filterUniv = (value)=> restaurants.filter((elem)=>elem.univ === value);
     const filterAuth = (value)=> restaurants.filter((elem)=>elem.authenticated === value);
+
+     /*
+    const google = new Scraper({
+        puppeteer: {
+            headless: false,
+        },
+    })
+    (async () => {
+        const results = await google.scrape('banana', 200);
+        console.log('results', results);
+      })();
+    */
+
 
 
     const renderElements = (ARRAY)=>{
@@ -235,16 +247,15 @@ const restaurants = [
 const university = [
     {name: '가톨릭대학교 성의교정', title: 'catholic', address: '서울 서초구 반포대로 222', lng: '127.005860604348', lat: '37.5023936158073'},
     {name: '광운대학교', title: 'gwangwoon', address: '서울 노원구 광운로 20', lng: '127.058338066917', lat: '37.6193203481648'},
-    {name: '명지대학교', title: 'myongji', address: '서울 서대문구 거북골로 34', lng: '126.921348530876', lat: '37.5803770223812'},
+    {name: '명지대학교 서울캠퍼스', title: 'myongji', address: '서울 서대문구 거북골로 34', lng: '126.921348530876', lat: '37.5803770223812'},
     {name: '한성대학교', title: 'hansung', address: '서울 성북구 삼선교로16길 116', lng: '127.010390004805', lat: '37.5832358514072'},
     {name: '이화여자대학교', title: 'ehwa', address: '서울 서대문구 이화여대길 52', lng: '126.950288837762', lat: '37.5644645178259'},
-    {name: '동국대학교', title: 'dongduk', address: '서울 성북구 화랑로13길 60', lng: '127.041176301847', lat: '37.6068148327539'},
     {name: '한국외국어대학교', title: 'hankukforeign', address: '서울 동대문구 이문로 10', lng: '127.054575167653', lat: '37.5886909174089'},
     {name: '상명대학교', title: 'sangmyung', address: '서울 종로구 홍지문2길 20', lng: '126.955159496571', lat: '37.604108905882'},
     {name: '중앙대학교', title: 'chungang', address: '서울 동작구 흑석로 84', lng: '126.953833907628', lat: '37.5047267237807'},
-    {name: '동국대학교', title: 'dongguk', address: '서울 중구 필동로1길 30', lng: '126.998737605491', lat: '37.5589366401553'},
+    {name: '동국대학교 서울캠퍼스', title: 'dongguk', address: '서울 중구 필동로1길 30', lng: '126.998737605491', lat: '37.5589366401553'},
     {name: '덕성여자대학교', title: 'ducksung', address: '서울 도봉구 삼양로144길 33', lng: '127.016395230087', lat: '37.6495090772702'},
-    {name: '홍익대학교', title: 'hongik', address: '서울 마포구 와우산로 94', lng: '126.924990619497', lat: '37.5525192523979'},
+    {name: '홍익대학교 서울캠퍼스', title: 'hongik', address: '서울 마포구 와우산로 94', lng: '126.924990619497', lat: '37.5525192523979'},
     {name: '경희대학교 서울캠퍼스', title: 'kyunghee', address: '서울 동대문구 경희대로 26', lng: '127.054890960564', lat: '37.5939491407769'},
     {name: '세종대학교', title: 'sejong', address: '서울 광진구 능동로 209', lng: '127.073183188315', lat: '37.5516081379459'},
     {name: '서울과학기술대학교', title: 'seoultech', address: '서울 노원구 공릉로 232', lng: '127.076794742851', lat: '37.6330789279387'},
