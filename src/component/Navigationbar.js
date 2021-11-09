@@ -6,8 +6,11 @@ import { BiSearch, BiPencil } from 'react-icons/bi';
 import { BsPerson } from 'react-icons/bs';
 import { AiOutlineHeart } from 'react-icons/ai';
 import SearchModal from './SearchModal';
+import LoginModal from './LoginModal';
 
 export default function Navigationbar () {
+
+  //search modal
 
   const [modalOn, setModalOn] = useState(false);
   
@@ -37,9 +40,23 @@ export default function Navigationbar () {
     openSearchModal(modalOn);
   }, [modalOn]);
 
+
+  //login modal
+  const [modalShow, setModalShow] = useState(false); //모달창 상태
+
+
+
+  //render
+
   return (
     <div className="section mb-5">
       <div className="container">
+
+        <LoginModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+        />
+
         <NavbarWrap>
             <NavLink
                 to="/"
@@ -74,12 +91,11 @@ export default function Navigationbar () {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Dropdown.Item className="dropdown-item"><NavLink to="/login" className="my-link"><button style={{width: "100%"}}>로그인</button></NavLink></Dropdown.Item>
-                  <Dropdown.Item className="dropdown-item"><NavLink to="/register" className="my-link"><button style={{width: "100%"}}>회원가입</button></NavLink></Dropdown.Item>
+                <Dropdown.Item className="dropdown-item"><NavLink to="#" className="my-link"><button onClick={() => setModalShow(true)}style={{width: "100%"}}>로그인</button></NavLink></Dropdown.Item>
                   <Dropdown.Item className="dropdown-item"><NavLink to="/my/history" className="my-link"><button style={{width: "100%"}}>히스토리</button></NavLink></Dropdown.Item>
                   
                   <Dropdown.Divider style={{margin: "4px auto"}}/>
-                  <Dropdown.Item><NavLink to="/my/edit" className="my-link"><button style={{width: "100%"}}>개인정보 수정</button></NavLink></Dropdown.Item>
+                  <Dropdown.Item><NavLink to="/my/edit" className="my-link"><button style={{width: "100%"}}>마이페이지</button></NavLink></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
