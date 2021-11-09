@@ -16,6 +16,8 @@ import WritePost from './pages/WritePost';
 import Restaurant from './pages/RestaurantPage';
 import History from './pages/History';
 import Register from './pages/Register';
+import TimeSearchPage from './pages/TimeSearchPage';
+import TimeSearchBanner from "./component/TimeSearchBanner";
 
 export default function Router(){
     const db_restaurants = [
@@ -38,6 +40,8 @@ export default function Router(){
           <Route path="/restaurant" exact><Restaurant resInfo={db_restaurants[1]}/></Route>
           <Route path="/univside" exact component={Univside}/>
           <Route path="/" exact component={Main}/>
+
+          <Route path="/time-search/list" exact component={TimeSearchPage}/>
 
           <Route path="/writepost" exact component={WritePost}/>
           <Route path="/likes" exact component={MyLikes}></Route>
