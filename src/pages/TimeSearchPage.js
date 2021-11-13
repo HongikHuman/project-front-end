@@ -28,6 +28,28 @@ const restaurants = [
 ];
 
 export default function TimeSearchPage() {
+
+    const mod = 3 - restaurants.length % 3;
+
+    const callEmptyBox = () => {
+        console.log(mod);
+        if (mod === 2){
+            return (
+                <>
+                    <CardBoxWrap className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px' }} />
+                    <CardBoxWrap className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px' }} />
+                </>
+            );
+        }
+        else if (mod === 1){
+            return (
+                <>
+                    <CardBoxWrap className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px' }} />
+                </>
+            );
+        }
+    }
+
     return (
         <div>
             <PageWrap className="container">
@@ -35,7 +57,7 @@ export default function TimeSearchPage() {
                     <h1 className="title">바쁜 당신을 위한 타임어택 맛집 추천!</h1>
                     <p className="text">내 주위의 가까운 맛집을 즐겨보세요!</p>
                 </div>
-                <Row xs={1} md={3} className="g-4">
+                <Row xs={1} md={3} className="g-4" style={{display: 'flex'}}>
                     {restaurants.map(restaurant => {
                         return (
                             <CardBoxWrap  key={restaurant.key} className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px'}}>
@@ -53,6 +75,7 @@ export default function TimeSearchPage() {
                             </CardBoxWrap>
                         );
                     })}
+                    {callEmptyBox()}
                 </Row>
             </PageWrap>
         </div>
@@ -61,21 +84,22 @@ export default function TimeSearchPage() {
 
 const PageWrap = styled.div`
     align-items: center;
-    justify-contents: space-between;
+    margin-bottom: 150px;
 
     & .g-4 {
-        display: flex;
         justify-contents: space-between;
         align-items: center;
     }
 
     & .body-text {
+        border-top: 1px solid #9a9a9a;
         border-bottom: 1px solid #9a9a9a;
-        height: 200px;
+        height: 250px;
         margin-bottom: 30px;
     }
 
     & .body-text .title {
+        margin-top: 50px;
         height: 100px;
         font-size: 55px;
     }
@@ -91,8 +115,8 @@ const CardBoxWrap = styled.div`
     margin: 0 auto;
     padding: 0;
     margin-top: 30px;
-    justify-contents: center;
     border-radius: 20%;
+    background-color: red;
 
     & .btn-wrap {
         margin: 5px;
