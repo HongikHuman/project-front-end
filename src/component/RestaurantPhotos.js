@@ -25,19 +25,19 @@ export default function Photos({ Information }) {
     ]
   
     return (
-            <PhotoContainer>
-                <Slider {...settings}>
-                    {images.map((item, index) => {
-                        return (
-                            <PhotoLine>
-                                <PhotoCard key={index}>
-                                    <img src={item} />
-                                </PhotoCard>
-                            </PhotoLine>
-                        );
-                    })}
-                </Slider>
-            </PhotoContainer>
+        <PhotoContainer>
+            <Slider {...settings}>
+                {images.map((item, index) => {
+                    return (
+                        <PhotoLine>
+                            <PhotoCard key={index}>
+                                <img src={item} />
+                            </PhotoCard>
+                        </PhotoLine>
+                    );
+                })}
+            </Slider>
+        </PhotoContainer>
     );
 };
 

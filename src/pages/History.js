@@ -30,7 +30,6 @@ export default function History() {
     
     return (
         <div>
-            <UserInfoBox className="container"/>
             <PageTitle className="container">
                 <p>최근 본 음식점</p>
                 <p className="resCounts"></p>
