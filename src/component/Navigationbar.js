@@ -67,7 +67,7 @@ export default function Navigationbar () {
                 자맛추
             </NavLink>
             <div className="links-wrapper">
-              <button><NavLink to="/univside" className="link">대학 맛집</NavLink></button>
+              <button><NavLink to="/univ" className="link">대학 맛집</NavLink></button>
               <button><NavLink to="/top10" className="link">맛집 랭킹</NavLink></button>
               <button><NavLink to="/hotpost" className="link">핫 리뷰</NavLink></button>
             </div>

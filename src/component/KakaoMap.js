@@ -1,70 +1,70 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Component} from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-export default function KakaoMap({props}){
-    //props.name => 목표 대학교 한글 이름
-    //props.title => 대학교 영문
-    //props.address => 지도 중심으로 설정할 도로명 주소
-    //props.lng
-    //props.lat
 
+export default function KakaoMap(props){
+    //props.univ.name => 목표 대학교 한글 이름
+    //props.univ.title => 대학교 영문
+    //props.univ.address => 지도 중심으로 설정할 도로명 주소
+    //props.univ.lng
+    //props.univ.lat
+
+    //props.restaurant => 식당 좌표 배열
+    //props.restaurant[idx].title => 식당 이름
+    //props.restaurant[idx].xcoord => 경도
+    //props.restaurant[idx].ycoord => 위도
     const [info, setInfo] = useState()
     const [markers, setMarkers] = useState([])
     const [map, setMap] = useState()
   
-    const [centerPos, setCenterPos] = useState({x: !props.lng?126.9786567:props.lng, y: !props.lat?37.566826:props.lat});
+    const [centerPos, setCenterPos] = useState({x: !props.univ.lng?126.9786567:props.univ.lng, y: !props.univ.lat?37.566826:props.univ.lat});
+    const [restaurants, setRestaurants] = useState(props.restaurants);
+
+    useEffect(()=>{
+      if (!map) return
+      const bounds = new window.kakao.maps.LatLngBounds()
+      let markers = []
+      bounds.extend(new window.kakao.maps.LatLng(centerPos.y, centerPos.x));
+      markers.push({
+        position: {
+          lat: centerPos.y,
+          lng: centerPos.x,
+        },
+        content: props.univ.name,
+      });
+      props.restaurants.forEach((elem)=>{
+        bounds.extend(new window.kakao.maps.LatLng(elem.y, elem.x));
+        markers.push({
+          position: {
+            lat: elem.y,
+            lng: elem.x
+          },
+          content: elem.title,
+        });        
+      })
+      setMarkers(markers);
+      map.setBounds(bounds);
+    }, [props.restaurants])
 
     
+
     useEffect(() => {
-
-
       if (!map) return
-      const ps = new window.kakao.maps.services.Places()
-
-      ps.keywordSearch(`${props.name} 주변 맛집`, (data, status, _pagination) => {
-
-          console.log(data);//
-          //해당 페이지로 이동하는 함수 -> _pagination.gotoPage(2);
-          //console.log(_pagination);//
-          //_pagination.gotoPage(3);
-
-        if (status === window.kakao.maps.services.Status.OK) {
-          // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-          // LatLngBounds 객체에 좌표를 추가합니다
-          const bounds = new window.kakao.maps.LatLngBounds()
-          let markers = []
-          
-
-          //타겟 대학교 지도에 표시
-          bounds.extend(new window.kakao.maps.LatLng(centerPos.y, centerPos.x));
-          markers.push({
-            position: {
-              lat: centerPos.y,
-              lng: centerPos.x,
-            },
-            content: props.name,
-          });
-          //
-
-          for (var i = 0; i < data.length; i++) {
-            // @ts-ignore
-            markers.push({
-              position: {
-                lat: data[i].y,
-                lng: data[i].x,
-              },
-              content: data[i].place_name + data[i].road_address_name,
-            })
-            // @ts-ignore
-            bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x))
-          }
-          setMarkers(markers)
-  
-          // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-          map.setBounds(bounds)
-        }
-      })
-    }, [map])
+      const bounds = new window.kakao.maps.LatLngBounds()
+      let markers = []
+      //타겟 대학교 지도에 표시
+      bounds.extend(new window.kakao.maps.LatLng(centerPos.y, centerPos.x));
+      markers.push({
+        position: {
+          lat: centerPos.y,
+          lng: centerPos.x,
+        },
+        content: props.univ.name,
+      });
+      setMarkers(markers);
+      // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+      map.setBounds(bounds);
+    }, [map]);
 
     return (
       <Map // 로드뷰를 표시할 Container
@@ -79,7 +79,9 @@ export default function KakaoMap({props}){
         level={3}
         onCreate={setMap}
       >
+        
         {markers.map((marker) => (
+
           <MapMarker
             key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
             position={marker.position}

@@ -22,7 +22,7 @@ const UnivLogo = (props) =>{
     for(const item in images){
         if(requireAll){
             components.push(
-                <Link to={`univside/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
+                <Link to={`univ/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
                     <Image src={images[item].default}
                         style={
                             {width: `${!props.width ? 100 : props.width}px`,
@@ -33,7 +33,7 @@ const UnivLogo = (props) =>{
             );
         } else{
             if(item.indexOf(props.name) > -1) components.push(
-                <Link to={`univside/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
+                <Link to={`univ/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
                     <Image src={images[item].default}
                         style={
                             {width: `${!props.width ? 100 : props.width}px`,

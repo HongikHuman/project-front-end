@@ -7,7 +7,7 @@ import {
 
 import Main from './pages/Main';
 import Top10_page from './pages/Top10_page';
-import Univside from './pages/Univside';
+import Univ from './pages/Univ';
 import Hot_Posts from './pages/HotPosts';
 
 import MyPage from './pages/MyPage';
@@ -39,11 +39,11 @@ export default function Router(){
     return(
 
         <Switch>
-          <Route path="/univside/:universityName" exact component={Univside}/>
+          <Route path="/univ/:universityName" exact component={Univ}/>
           <Route path="/top10" exact component={Top10_page}/>
           <Route path="/hotpost" exact component={Hot_Posts}/>
           <Route path="/restaurant/:res_id" exact component={Restaurants} />
-          <Route path="/univside" exact component={Univside}/>
+          <Route path="/univ" exact component={Univ}/>
           <Route path="/" exact component={Main}/>
 
           <Route path="/writepost" exact component={WritePost}/>
