@@ -16,6 +16,8 @@ import WritePost from './pages/WritePost';
 import Restaurant from './pages/RestaurantPage';
 import History from './pages/History';
 import Register from './pages/Register';
+import TimeSearchPage from './pages/TimeSearchPage';
+import TimeSearchBanner from "./component/TimeSearchBanner";
 
 export default function Router(){
     const db_restaurants = [
@@ -45,6 +47,8 @@ export default function Router(){
           <Route path="/restaurant/:res_id" exact component={Restaurants} />
           <Route path="/univ" exact component={Univ}/>
           <Route path="/" exact component={Main}/>
+
+          <Route path="/time-search/list" exact component={TimeSearchPage}/>
 
           <Route path="/writepost" exact component={WritePost}/>
           <Route path="/likes" exact component={MyLikes}></Route>

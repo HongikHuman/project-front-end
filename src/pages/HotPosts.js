@@ -43,7 +43,7 @@ export default function Hot_Posts() {
             <HotPostsContainer>
                 <div className="body-text">
                     <h1 className="title">Hot 리뷰 게시판</h1>
-                    <p className="text">수많은 맛집러들에게 인정받은 맛집 리뷰를 소개합니다!</p>
+                    <p className="text">많은 공감을 받은 리뷰를 소개합니다!</p>
                 </div>
                 <div className="posts">
                     {showPosts()}

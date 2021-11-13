@@ -75,15 +75,17 @@ export default function MyLikes() {
         let tmp = []; let result = [];
         
         while(idx < 8) {   //더 늘릴 수 있음
-             tmp.push(
-                 <CardWrap>
-                     <LikesCard element={pagedRests[idx]} />
-                     <LikesCard element={pagedRests[idx+1]} />
+
+            tmp.push(
+                <CardWrap>
+                    <LikesCard element={pagedRests[idx]} />
+                    <LikesCard element={pagedRests[idx+1]} />
                 </CardWrap>
             )
             result.push(tmp[cnt]);
             idx = idx + 2;    
             cnt++;
+            
         }
         
         return result;

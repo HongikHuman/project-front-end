@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import Info from './RestaurantInfos';
 import Review from './RestaurantReviews';
-import ReviewPagination from'../component/LikesPagination';
 import _ from 'lodash';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { Form } from 'react-bootstrap';
@@ -186,14 +185,6 @@ export default function RestaurantPost ({ Information }) {
                         </Form>
                     </div>
                     {showReviews()}
-                    <div className="paginationWrap">
-                        <ReviewPagination 
-                            itemsCount={count}
-                            pageSize={reviews.pageSize}
-                            currentPage={currentPage}
-                            onPageChange={handlePageChange} 
-                        />
-                    </div>
                 </ReviewContainer>
             </Inner>
             <SideWrap className="sidewrap">

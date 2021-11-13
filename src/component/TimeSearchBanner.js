@@ -5,13 +5,13 @@ import styled from 'styled-components';
 import { BsArrowRight } from 'react-icons/bs';
 import Fade from "react-reveal/Fade";
 import GeoLocation from './GeoLocation';
-
+import { Link } from 'react-router-dom';
 
 const times = ['10분', '20분', '30분', '40분', '50분', '60분', '70분', '80분', '90분', '100분', '110분', '120분']
 
-export default function TimeSearchBanner({ }) {
+export default function TimeSearchBanner() {
     return (
-        <BannerContainerWrap className="container">
+        <BannerContainerWrap>
             <SelectTimeWrap>
                 <Fade bottom>
                     <h1>바쁜 당신을 위한 타임어택 맛집 추천!</h1>
@@ -31,7 +31,7 @@ export default function TimeSearchBanner({ }) {
                     </div>
                     <GeoLocation />
                     <div className="find-button">
-                        <button type="button" className="btn btn-dark">맛집 보러가기 <BsArrowRight /></button>
+                        <Link className="btn-link" to="/time-search/list"><button type="button" className="btn btn-dark">맛집 보러가기 <BsArrowRight /></button></Link>
                     </div>
                 </div>
             </SelectTimeWrap>
@@ -68,7 +68,7 @@ const SelectTimeWrap = styled.div`
         float: right;
     }
     
-    & .time-select .find-button > button {
+    & .time-select .find-button .btn-link > button {
         width: 200px;
         height: 50px;
         font-size: 20px;

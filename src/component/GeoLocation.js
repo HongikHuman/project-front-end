@@ -5,20 +5,16 @@ import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
 export default function GeoLocation() {
-    const [state, setState] = useState({
-      center: {
-        lat: 33.450701,
-        lng: 126.570667,
-      },
-      errMsg: null,
-      isLoading: true,
+    const [center, setCenter] = useState({
+      lat: 33.450701,
+      lng: 126.570667
     });
     const [click, setClick] = useState(false);
     const [address, setAddress] = useState('');
 
     const clickBtn = () => {
       setClick(true);
-      console.log(state);
+      console.log(center.lat, center.lng, address, click);
     };
 
     useEffect(() => {
@@ -26,32 +22,26 @@ export default function GeoLocation() {
         // GeoLocation을 이용해서 접속 위치를 얻어옵니다
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            setState((prev) => ({
-              ...prev,
-              center: {
-                lat: position.coords.latitude, // 위도
-                lng: position.coords.longitude, // 경도
-              },
-              isLoading: false,
-            }))
-          },
-          (err) => {
-            setState((prev) => ({
-              ...prev,
-              errMsg: err.message,
-              isLoading: false,
-            }))
+            setCenter({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            });
           }
-        )   
-      } else {
-        // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-        setState((prev) => ({
-          ...prev,
-          errMsg: "geolocation을 사용할수 없어요..",
-          isLoading: false,
-        }))
+        ) 
+        
+        var geocoder = new window.kakao.maps.services.Geocoder();
+
+        var coord = new window.kakao.maps.LatLng(center.lat, center.lng);
+        var callback = (result, status) => {
+            if (status === window.kakao.maps.services.Status.OK) {
+                setAddress(result[0].address.address_name);
+            }
+        };
+
+        geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+
       }
-    }, [])
+    }, [center]);
     
     return (
       <div>
@@ -67,7 +57,7 @@ export default function GeoLocation() {
           <MdDoubleArrow className="location-arrow" />
           <FormWrap>
             {click ? (
-              <div className="location-text">{`위도 : ${state.center.lat}, 경도 : ${state.center.lng}`}</div>
+              <div className="location-text">{address}</div>
             ):(
               <div className="location-text"></div>
             )}
