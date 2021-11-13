@@ -23,11 +23,12 @@ export default function History() {
                 )
             }
 
-            else if(!elements[idx+2]) {
+            else if(!elements[idx+2] && elements[idx+1]) {
                 tmp.push(
                     <CardWrap>
                         <HistoryCards element={elements[idx]} />
                         <HistoryCards element={elements[idx+1]} />
+                        <DummyDiv></DummyDiv>
                     </CardWrap>
                 )
             }
@@ -91,6 +92,11 @@ const PageTitle = styled.div`
     }
 `;
 
+const DummyDiv = styled.div`
+    width: 400px;
+    height: 250px;
+`;
+
 
 const restaurants = [
     {key: 1, name: '히메시야', address: '서울특별시 마포구 상수동 독막로15길 3-18', school: "홍익대", img_url: 'https://t1.daumcdn.net/cfile/tistory/2345FA3A57BCE6A30F'},
@@ -121,6 +127,6 @@ const restaurants = [
     {key: 26, name: '광안리', address: '서교동 396-44번지 하동 1층 마포구 서울특별시', school: "홍익대", img_url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbNVCxf%2FbtqK2YEGvLt%2FkPN1iP54SLYHdQdCBD0Yb0%2Fimg.jpg'},
     {key: 27, name: '노가리 천원', address: '서울특별시 마포구 서교동 어울마당로 149-3', school: "홍익대", img_url: 'https://t1.daumcdn.net/cfile/tistory/275F6E3B57472E300A'},
     {key: 28, name: '동경야시장', address: '서울특별시 마포구 서교동 어울마당로 144', school: "홍익대", img_url: 'https://3.bp.blogspot.com/-ZixoRowq_MQ/Wkv2MbKyZtI/AAAAAAAAADU/SHcd9K1pCeMZxWs8hL37VBFrD51UtcieQCLcBGAs/s1600/SAM_0495.JPG'},
-    {key: 29, name: '제순식당', address: '서울특별시 마포구 서교동 번지 지층 409-20', school: "홍익대", img_url: 'https://emmaru.com/matzip/include/pics/2020/01/30/m_06872D180137_1.jpg'},
+    // {key: 29, name: '제순식당', address: '서울특별시 마포구 서교동 번지 지층 409-20', school: "홍익대", img_url: 'https://emmaru.com/matzip/include/pics/2020/01/30/m_06872D180137_1.jpg'},
     // {key: 30, name: '부라문 야시장', address: '서울특별시 마포구 서교동 어울마당로 35', school: "홍익대", img_url: 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/44681_1548831436_ejIiZaxd.JPG'},
 ]
