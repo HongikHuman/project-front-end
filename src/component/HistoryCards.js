@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function HistoryCards( {element} ) {
@@ -12,7 +13,7 @@ export default function HistoryCards( {element} ) {
                 <p className="school">근처 학교: {element.school}</p>
                 <p className="addr">{element.address}</p>
                 <SeeMorePostDiv>
-                    <SeeMorePost>음식점 세부페이지 바로가기></SeeMorePost>
+                <Link to={`/restaurant/${element.res_id}`} style={{textDecoration: "none", color: "black"}}><SeeMorePost>음식점 세부페이지 바로가기></SeeMorePost></Link>
                 </SeeMorePostDiv>
             </Info>
         </Card>

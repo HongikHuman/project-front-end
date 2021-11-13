@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FaThumbsUp, FaRegThumbsUp } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 export default function HotPost ({ hotpost }){
 
     const [thumbClick, setThumbClick] = useState(false);
     const [seeMoreClick, setSeeMoreClick] = useState(true);
+    let ID = hotpost.res_id;
 
     const handleThumbClick = (e) => {
         setThumbClick(true);
@@ -46,11 +48,11 @@ export default function HotPost ({ hotpost }){
                     </Review>
                 </ReviewContentBox>
                 <SeeMorePostDiv>
-                    <SeeMorePost>이 음식점에 대한 리뷰 더보기></SeeMorePost>
+                    <Link to={`/restaurant/${hotpost.res_id}`}><SeeMorePost>이 음식점에 대한 리뷰 더보기></SeeMorePost></Link>
                 </SeeMorePostDiv>
             </TextBox>
         </PostBox>
-    );
+    ); 
 
 };
 

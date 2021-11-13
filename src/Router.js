@@ -29,12 +29,14 @@ export default function Router(){
         {res_id: 6, name: '광안리', xcoord: '126.917919', ycoord: '37.55029514', address: '서교동 396-44번지 하동 1층 마포구 서울특별시 KR', likes: 729, wish: 200, reviews: 15, img_url: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbNVCxf%2FbtqK2YEGvLt%2FkPN1iP54SLYHdQdCBD0Yb0%2Fimg.jpg', tel: '02-320-1114', foodtype: '한식'},
         {res_id: 7, name: '노가리 천원', xcoord: '126.9254631', ycoord: '37.5556921', address: '서울특별시 마포구 서교동 어울마당로 149-3', likes: 603, wish: 200, reviews: 16, img_url: 'https://t1.daumcdn.net/cfile/tistory/275F6E3B57472E300A', tel: '02-320-1114', foodtype: '한식'},
         {res_id: 8, name: '동경야시장', xcoord: '126.9258341', ycoord: '37.55617563', address: '서울특별시 마포구 서교동 어울마당로 144', likes: 505, wish: 200, reviews: 17, img_url: 'https://3.bp.blogspot.com/-ZixoRowq_MQ/Wkv2MbKyZtI/AAAAAAAAADU/SHcd9K1pCeMZxWs8hL37VBFrD51UtcieQCLcBGAs/s1600/SAM_0495.JPG', tel: '02-320-1114', foodtype: '한식'},
+        {res_id: 9, name: '제순식당', xcoord: '126.9258341', ycoord: '37.55617563', address: '서울특별시 마포구 서교동 어울마당로 144', likes: 505, wish: 200, reviews: 17, img_url: 'https://3.bp.blogspot.com/-ZixoRowq_MQ/Wkv2MbKyZtI/AAAAAAAAADU/SHcd9K1pCeMZxWs8hL37VBFrD51UtcieQCLcBGAs/s1600/SAM_0495.JPG', tel: '02-320-1114', foodtype: '한식'},
+        {res_id: 10, name: '부라문 야시장', xcoord: '126.9258341', ycoord: '37.55617563', address: '서울특별시 마포구 서교동 어울마당로 144', likes: 505, wish: 200, reviews: 17, img_url: 'https://3.bp.blogspot.com/-ZixoRowq_MQ/Wkv2MbKyZtI/AAAAAAAAADU/SHcd9K1pCeMZxWs8hL37VBFrD51UtcieQCLcBGAs/s1600/SAM_0495.JPG', tel: '02-320-1114', foodtype: '한식'},
     ]
 
     const Restaurants = () => {
       const { res_id } = useParams();
       return (
-        <Restaurant resInfo={db_restaurants[res_id]} />
+        <Restaurant resInfo={db_restaurants[res_id - 1]} />
       );
     };
     
