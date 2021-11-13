@@ -1,33 +1,87 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
+import Slider from "react-slick";
 import { FcSearch } from "react-icons/fc";
+import { RiVipCrownFill } from "react-icons/ri";
+import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
-export default function Review({ reviewinfos }) {
+export default function Review({ reviewinfos, reviewphotos }) {
     const [reviewinfo, setReviewInfos] = useState(reviewinfos);
+    const [seeMoreClick, setSeeMoreClick] = useState(true);
+
+    const userPhoto = [];
+
+    const settings = {
+        infinite: false,
+        speed: 500,
+        autoplay: false,
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        initialSlide: 0,
+        prevArrow: <BsFillArrowLeftCircleFill color="black"/>,
+        nextArrow: <BsFillArrowRightCircleFill color="black"/>
+    };
+
+    const handleSeeMoreClick = (e) => {
+        setSeeMoreClick(false);
+    };
+
+    const showUserPhoto = () => {
+
+        if(reviewinfo.Auth === "true") {
+            userPhoto.push(
+                <UserPhoto>
+                    <RiVipCrownFill size='30px' color='gold'/>
+                    <img src={reviewinfo.user_img_url} />
+                    <span>{reviewinfo.user_id}</span>
+                </UserPhoto>
+            )
+        }
+
+        else {
+            userPhoto.push(
+                <UserPhoto>
+                    <img src={reviewinfo.user_img_url} />
+                    <span>{reviewinfo.user_id}</span>
+                </UserPhoto>
+            )
+        }
+
+        return userPhoto;
+    };
 
     return (
          <ReviewBox>
             <UserInfo>
-                <UserPhoto>
-                    <img src={reviewinfo.user_img_url} />
-                    <span>{reviewinfo.user_id}</span>
-                </UserPhoto>      
-                </UserInfo>
-                    <div className="datatitlewrap">
-                        <span className="date">{reviewinfo.date}</span>
-                        <span className="title">{reviewinfo.title}</span>
-                        <div><FcSearch />{reviewinfo.views}</div>
-                    </div>
-                <div className="review">{reviewinfo.review.slice(0, 190)}...</div>
+                {showUserPhoto()}     
+            </UserInfo>
+            <div className="datatitlewrap">
+                <span className="date">{reviewinfo.date}</span>
+                <span className="title">{reviewinfo.title}</span>
+                <div><FcSearch />{reviewinfo.views}</div>
+            </div>
+            { seeMoreClick ? 
+            <div className="sliced_review">{reviewinfo.review.slice(0, 190)}<SeeMore onClick={handleSeeMoreClick}>...더보기</SeeMore></div>
+            : <WholeReview className="whole_review">
+                <div>{reviewinfo.review}</div>
+                <PhotoWrap>
+                    <Slider {...settings}>
+                        {reviewphotos.map((item, index) => {
+                            return (
+                                <PhotoLine>
+                                    <PhotoCard key={index} className="a">
+                                        <img src={item} />
+                                    </PhotoCard>
+                                </PhotoLine>
+                            );
+                        })}
+                    </Slider>
+                </PhotoWrap>
+              </WholeReview>
+            }
         </ReviewBox>
     );
 };
-
-
-const ReviewContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
 
 const ReviewBox = styled.div`
     display: flex;
@@ -42,8 +96,14 @@ const ReviewBox = styled.div`
         font-weight: 500;
     }
 
-    .review {
+    .sliced_review {
         margin-top: -18px;
+        width: 500px;
+    }
+
+    .whole_review {
+        margin-top: -18px;
+        margin-bottom: 18px;
         width: 500px;
     }
 
@@ -58,6 +118,13 @@ const ReviewBox = styled.div`
     }
 `;
 
+const SeeMore = styled.button`
+    display: inline;
+    color: orange;
+    border: none;
+    background: none;
+`;
+
 const UserInfo = styled.div`
     font-size: 30px;
     font-weight: 1000;
@@ -67,7 +134,7 @@ const UserInfo = styled.div`
 const UserPhoto = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: 
+    align-items: center;
     width: 150px;
 
     & > img {
@@ -75,5 +142,29 @@ const UserPhoto = styled.div`
         height: 70px;
         border-radius: 50%;
         margin-right: 5px;
+    }
+`;
+
+const WholeReview = styled.div`
+
+`;
+
+const PhotoWrap = styled.div`
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+`;
+
+const PhotoLine = styled.div`
+`;
+
+const PhotoCard = styled.div`
+    
+    align-items: center;
+
+    & > img {
+        width: 100%;
+        height: 125px;
+        object-fit: cover;
     }
 `;

@@ -19,36 +19,6 @@ export default function Info ({ content, category }) {
                 <InfoTH>{categorys[2]}</InfoTH>
                 <InfoTD>{contents.foodtype}</InfoTD>
             </InfoBox>
-            <InfoBox>
-                <InfoTH>{categorys[3]}</InfoTH>
-                <InfoTD>{contents.parking}</InfoTD>
-            </InfoBox>
-            <InfoBox>
-                <InfoTH>{categorys[4]}</InfoTH>
-                <InfoTD>{contents.reserve}</InfoTD>
-            </InfoBox>
-            <InfoBox>
-                <InfoTH>{categorys[5]}</InfoTH>
-                <InfoTD>{contents.s_time}~{contents.f_time}</InfoTD>
-            </InfoBox>
-            <InfoBox>
-                <InfoTH>{categorys[6]}</InfoTH>
-                <InfoTD>{contents.site}</InfoTD>
-            </InfoBox>
-            <InfoBox>
-                <InfoTH>{categorys[8]}</InfoTH>
-                <InfoTD>{contents.holiday[0]}, {contents.holiday[1]}</InfoTD>
-            </InfoBox>
-            <InfoBox>
-                <InfoTH>{categorys[7]}</InfoTH>
-                <td>
-                    <ul>
-                        <li><span>{contents.famousfood[0]}</span><span>{contents.foodprice[0]}원</span></li>
-                        <li><span>{contents.famousfood[1]}</span><span>{contents.foodprice[1]}원</span></li>
-                        <li><span>{contents.famousfood[2]}</span><span>{contents.foodprice[2]}원</span></li>
-                    </ul>
-                </td>
-            </InfoBox>
         </InfoContainer>
     );
 };
@@ -56,7 +26,6 @@ export default function Info ({ content, category }) {
 const InfoContainer = styled.table `
     display: flex;
     flex-direction: column;
-    height: 365px;
 `;
 
 const InfoBox = styled.tr`

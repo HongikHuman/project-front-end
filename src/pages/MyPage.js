@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import UserInfoBox from '../component/UserInfoBox';
 
 import {Form, ListGroup, Col, Row} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -14,6 +15,7 @@ export default function MyPage(props){
 
     return (
         <Container className="container">
+            {/* <UserInfoBox /> */}
             <MenuList>
                 <ListGroup as="ul" defaultActiveKey="edit">
                     <ListGroup.Item as="li" action href="edit" className="my-link">

@@ -97,6 +97,7 @@ export default function Register(){
         </Container>
     );
 };
+
 //임시 로그인 서버 띄우는 방법 : 새 터미널 열어서 다음과 같이 입력
 //npx json-server ./src/json/tempLogin.json --watch --port 8888
 
