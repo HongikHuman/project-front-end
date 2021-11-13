@@ -6,6 +6,7 @@ import UserInfoBox from '../component/UserInfoBox';
 export default function History() {
 
     let [elements, setElements] = useState(restaurants);
+    const len = elements.length;
     
     const showRestaurants = () => {
 
@@ -13,13 +14,34 @@ export default function History() {
         let tmp = []; let result = [];
         
         while(idx < 12) {   //더 늘릴 수 있음
-             tmp.push(
-                 <CardWrap>
-                     <HistoryCards element={elements[idx]} />
-                     <HistoryCards element={elements[idx+1]} />
-                     <HistoryCards element={elements[idx+2]} />
-                </CardWrap>
-            )
+
+            if(!elements[idx+1] && !elements[idx+2]) {
+                tmp.push(
+                    <CardWrap>
+                        <HistoryCards element={elements[idx]} />
+                    </CardWrap>
+                )
+            }
+
+            else if(!elements[idx+2]) {
+                tmp.push(
+                    <CardWrap>
+                        <HistoryCards element={elements[idx]} />
+                        <HistoryCards element={elements[idx+1]} />
+                    </CardWrap>
+                )
+            }
+
+            else {
+                tmp.push(
+                    <CardWrap>
+                        <HistoryCards element={elements[idx]} />
+                        <HistoryCards element={elements[idx+1]} />
+                        <HistoryCards element={elements[idx+2]} />
+                    </CardWrap>
+                )
+            }
+
             result.push(tmp[cnt]);
             idx = idx + 3;    
             cnt++;
@@ -100,5 +122,5 @@ const restaurants = [
     {key: 27, name: '노가리 천원', address: '서울특별시 마포구 서교동 어울마당로 149-3', school: "홍익대", img_url: 'https://t1.daumcdn.net/cfile/tistory/275F6E3B57472E300A'},
     {key: 28, name: '동경야시장', address: '서울특별시 마포구 서교동 어울마당로 144', school: "홍익대", img_url: 'https://3.bp.blogspot.com/-ZixoRowq_MQ/Wkv2MbKyZtI/AAAAAAAAADU/SHcd9K1pCeMZxWs8hL37VBFrD51UtcieQCLcBGAs/s1600/SAM_0495.JPG'},
     {key: 29, name: '제순식당', address: '서울특별시 마포구 서교동 번지 지층 409-20', school: "홍익대", img_url: 'https://emmaru.com/matzip/include/pics/2020/01/30/m_06872D180137_1.jpg'},
-    {key: 30, name: '부라문 야시장', address: '서울특별시 마포구 서교동 어울마당로 35', school: "홍익대", img_url: 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/44681_1548831436_ejIiZaxd.JPG'},
+    // {key: 30, name: '부라문 야시장', address: '서울특별시 마포구 서교동 어울마당로 35', school: "홍익대", img_url: 'https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_e59809eb-bdc9-44d7-9d8f-2e7f0e47ba91/post_card/44681_1548831436_ejIiZaxd.JPG'},
 ]
