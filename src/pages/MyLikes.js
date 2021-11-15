@@ -76,7 +76,28 @@ export default function MyLikes() {
         
         while(idx < 8) {   //더 늘릴 수 있음
 
-            tmp.push(
+            if (pagedRests[idx] && !pagedRests[idx + 1]) {
+                tmp.push(
+                    <CardWrap>
+                        <Link to={`/restaurant/${pagedRests[idx].res_id}`} style={{textDecoration: "none", color: "black"}}>
+                            <LikesCard element={pagedRests[idx]} />
+                        </Link>
+                        <DummyDiv></DummyDiv>
+                    </CardWrap>
+                )
+            }
+
+            else if (!pagedRests[idx] && !pagedRests[idx + 1]) {
+                tmp.push(
+                    <CardWrap>
+                        <DummyDiv></DummyDiv>
+                        <DummyDiv></DummyDiv>
+                    </CardWrap>
+                )
+            }
+
+            else {
+                tmp.push(
                 
                     <CardWrap>
                         <Link to={`/restaurant/${pagedRests[idx].res_id}`} style={{textDecoration: "none", color: "black"}}>
@@ -87,7 +108,9 @@ export default function MyLikes() {
                         </Link>
                     </CardWrap>
                 
-            )
+                )
+            }
+            
             result.push(tmp[cnt]);
             idx = idx + 2;    
             cnt++;
@@ -202,4 +225,9 @@ const NoItems = styled.div`
         font-weight: 1000;
         font-size: 30px;
     }
+`;
+
+const DummyDiv = styled.div`
+    width: 500px;
+    height: 250px;
 `;
