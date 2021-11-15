@@ -7,6 +7,7 @@ import {
 
 import Main from './pages/Main';
 import Top10_page from './pages/Top10_page';
+import SelectUniv from './pages/SelectUniv';
 import Univ from './pages/Univ';
 import Hot_Posts from './pages/HotPosts';
 
@@ -43,11 +44,11 @@ export default function Router(){
     return(
 
         <Switch>
+          <Route path="/univ" exact component={SelectUniv}/>
           <Route path="/univ/:universityName" exact component={Univ}/>
           <Route path="/top10" exact component={Top10_page}/>
           <Route path="/hotpost" exact component={Hot_Posts}/>
           <Route path="/restaurant/:res_id" exact component={Restaurants} />
-          <Route path="/univ" exact component={Univ}/>
           <Route path="/" exact component={Main}/>
 
           <Route path="/time-search/list" exact component={TimeSearchPage}/>

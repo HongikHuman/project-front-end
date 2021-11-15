@@ -18,7 +18,10 @@ export default function KakaoMap(props){
     const [map, setMap] = useState()
   
     const [centerPos, setCenterPos] = useState({x: !props.univ.lng?126.9786567:props.univ.lng, y: !props.univ.lat?37.566826:props.univ.lat});
-    const [restaurants, setRestaurants] = useState(props.restaurants);
+    
+    useEffect(()=>{
+      setCenterPos({x: !props.univ.lng?126.9786567:props.univ.lng, y: !props.univ.lat?37.566826:props.univ.lat});
+    }, [props.univ])
 
     useEffect(()=>{
       if (!map) return
@@ -44,7 +47,7 @@ export default function KakaoMap(props){
       })
       setMarkers(markers);
       map.setBounds(bounds);
-    }, [props.restaurants])
+    }, [props.restaurants, props.univ])
 
     
 
@@ -65,6 +68,8 @@ export default function KakaoMap(props){
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
       map.setBounds(bounds);
     }, [map]);
+
+
 
     return (
       <Map // 로드뷰를 표시할 Container

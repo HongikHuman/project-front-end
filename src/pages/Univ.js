@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { Spinner, Form, Card, Col, Row, Pagination } from 'react-bootstrap';
+import { Spinner, Button, Card, Col, Row, Pagination } from 'react-bootstrap';
 import { GrFilter } from "react-icons/gr";
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 import FilterModal from '../component/FilterModal';
+import SelectUnivModal from '../component/SelectUnivModal';
 import KakaoMap from '../component/KakaoMap';
 import axios from 'axios';
 
-
+//npx json-server ./src/json/restaurantWgs84.json --watch --port 8888
 export default function Univ(){
 
     let [pageNum, setPageNum] = useState(1);    //현재 페이지
 
     let [elements, setElements] = useState([]); //식당 요소 jsx 객체
+
+    
     let [pagination, setPagination] = useState([]); //페이지네이션 jsx 객체
 
     let [viewNum, setViewNum] = useState(12);   //한번에 보여줄 요소 개수 기본 12
@@ -22,9 +25,12 @@ export default function Univ(){
 
 
     const { universityName } = useParams(); //대학교 이름 params
-    let history = useHistory(); //이벤트 처리를 위한 history
+    const [targetPlace, setTargetPlace] = useState(
+        university.find((data)=>data.title===universityName) ?? university[0]
+    );
 
-    const [modalShow, setModalShow] = useState(false); //모달창 상태
+    const [filterModalShow, setFilterModalShow] = useState(false); //모달창 상태
+    const [selectUnivModalShow, setSelectUnivModalShow] = useState(false); //모달창 상태
 
     const [db, setDb] = useState([]);
     const [currentData, setCurrentData] = useState([]);
@@ -44,7 +50,9 @@ export default function Univ(){
         fetchData();
     }, []);
 
- 
+    useEffect(()=>{
+        setTargetPlace(university.find((data)=>data.title===universityName)??university[0]);
+    }, [universityName]);
 
     
     useEffect(()=>{
@@ -137,42 +145,33 @@ export default function Univ(){
         else setPageNum(begin-5);
     }
 
-    const SelectGroup = ()=>{
-        let elem = [];
-        university.forEach((item)=>{
-            elem.push(
-                <option onClick={()=>{console.log(3)}} selected={item.title===universityName} value={item.title}>{item.name}</option>
-            );
-        });
-        return elem;
-    }
-    
+
     return (
         <Container className="container">
             <KakaoMap
-                univ={university.find((data)=>data.title===universityName) ?? university[0]}
+                univ={targetPlace}
                 restaurants={currentData}
             />
 
             <FilterModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+                show={filterModalShow}
+                onHide={() => setFilterModalShow(false)}
+            />
+            <SelectUnivModal
+                show={selectUnivModalShow}
+                onHide={() => setSelectUnivModalShow(false)}
             />
 
             <HeaderWrap>
                 <UnivSelectWrap>
-                    <Form.Control
-                        style={{width: "200px", textAlign: "center"}} as="select" aria-label="Default select example"
-                        onChange={(e)=>{history.push(`${e.target.value}`);}}
-                    >
-                        <SelectGroup props={university}/>
-                    </Form.Control>
-
+                    <Button variant="light" onClick={()=>setSelectUnivModalShow(true)}>
+                        {targetPlace.name ? targetPlace.name : 'null'}
+                    </Button>
                     <p>주변 맛집입니다</p>
                 </UnivSelectWrap>
 
                 <OptionWrap>
-                    <button onClick={() => setModalShow(true)}><GrFilter/></button>
+                    <button onClick={() => setFilterModalShow(true)}><GrFilter/></button>
                 </OptionWrap>
             </HeaderWrap>
 
@@ -257,6 +256,15 @@ const UnivSelectWrap = styled.div`
     margin: 0 auto;
     display: flex;
     align-items: center;
+
+    & > button{
+        opacity: 0.7;
+        outline: 1px solid gray;
+        transition: 0.3s;
+    }
+    & > button:hover{
+        opacity: 1;
+    }
 
     & > p{
         margin: 0 auto;
