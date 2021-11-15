@@ -1,5 +1,7 @@
 import React, {useState, useEffect, Component} from 'react';
-import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, MapInfoWindow } from 'react-kakao-maps-sdk';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
 
 export default function KakaoMap(props){
@@ -13,28 +15,30 @@ export default function KakaoMap(props){
     //props.restaurant[idx].title => 식당 이름
     //props.restaurant[idx].xcoord => 경도
     //props.restaurant[idx].ycoord => 위도
-    const [info, setInfo] = useState()
-    const [markers, setMarkers] = useState([])
-    const [map, setMap] = useState()
+    const [info, setInfo] = useState();
+    const [markers, setMarkers] = useState([]);
+    const [map, setMap] = useState();
+    const history = useHistory();
   
     const [centerPos, setCenterPos] = useState({x: !props.univ.lng?126.9786567:props.univ.lng, y: !props.univ.lat?37.566826:props.univ.lat});
     
     useEffect(()=>{
       setCenterPos({x: !props.univ.lng?126.9786567:props.univ.lng, y: !props.univ.lat?37.566826:props.univ.lat});
+      console.log(props.univ);
     }, [props.univ])
 
     useEffect(()=>{
       if (!map) return
-      const bounds = new window.kakao.maps.LatLngBounds()
-      let markers = []
+      const bounds = new window.kakao.maps.LatLngBounds();
       bounds.extend(new window.kakao.maps.LatLng(centerPos.y, centerPos.x));
-      markers.push({
+      let markers = [{
         position: {
           lat: centerPos.y,
           lng: centerPos.x,
         },
         content: props.univ.name,
-      });
+      }];
+      
       props.restaurants.forEach((elem)=>{
         bounds.extend(new window.kakao.maps.LatLng(elem.y, elem.x));
         markers.push({
@@ -43,28 +47,27 @@ export default function KakaoMap(props){
             lng: elem.x
           },
           content: elem.title,
+          linkTo: elem.index,
         });        
       })
       setMarkers(markers);
       map.setBounds(bounds);
-    }, [props.restaurants, props.univ])
+    }, [props.restaurants, centerPos])
 
     
 
     useEffect(() => {
       if (!map) return
       const bounds = new window.kakao.maps.LatLngBounds()
-      let markers = []
       //타겟 대학교 지도에 표시
       bounds.extend(new window.kakao.maps.LatLng(centerPos.y, centerPos.x));
-      markers.push({
+      setMarkers([{
         position: {
           lat: centerPos.y,
           lng: centerPos.x,
         },
         content: props.univ.name,
-      });
-      setMarkers(markers);
+      }]);
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
       map.setBounds(bounds);
     }, [map]);
@@ -90,13 +93,24 @@ export default function KakaoMap(props){
           <MapMarker
             key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
             position={marker.position}
-            onClick={() => setInfo(marker)}
+            onMouseOver={() => setInfo(marker)}
+            onClick={()=>{if(marker.linkTo) history.push(`/restaurant/${marker.linkTo}`)}}
           >
             {info &&info.content === marker.content && (
-              <div style={{color:"#000"}}>{marker.content}</div>
+                <Marker>{marker.content}</Marker>
             )}
           </MapMarker>
         ))}
       </Map>
     )
 }
+
+const Marker = styled.div`
+  width: 180px;
+  font-size: 1em;
+  padding: 5px;
+  font-weight: bold;
+  white-space: pre-wrap;
+  text-align: center;
+  color: #000;
+`;

@@ -90,7 +90,7 @@ export default function Univ(){
 
         ARRAY.forEach((elem, idx)=>{
             if(BEGIN <= idx && idx < LEN){
-                data.push({title: elem.title, x: elem.xcoord, y: elem.ycoord});
+                data.push({index: elem.index, title: elem.title, x: elem.xcoord, y: elem.ycoord});
                 item.push(
                 <Col>
                     <Card style={{margin: "0 auto", width: "300px", userSelect:'none'}}>
@@ -247,19 +247,22 @@ const HeaderWrap = styled.div`
     margin: 20px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     & > *{
         margin: 0 auto;
     }
 `;
 
 const UnivSelectWrap = styled.div`
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     align-items: center;
 
     & > button{
+        width: 400px;
         opacity: 0.7;
         outline: 1px solid gray;
+        font-weight: bold;
         transition: 0.3s;
     }
     & > button:hover{
@@ -267,19 +270,19 @@ const UnivSelectWrap = styled.div`
     }
 
     & > p{
-        margin: 0 auto;
-        margin-left: 10px;
+        margin: 0;
     }
 
 `;
 
 const OptionWrap = styled.div`
-    margin: 0 auto;
- 
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+
     & > button{
         background: transparent;
         font-size: 25px;
-        margin: 0 20px 0 20px;
         opacity: 0.4;
         border-radius: 5px;
 
