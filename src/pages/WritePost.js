@@ -31,8 +31,6 @@ export default function WritePost(){
 };
 
 
-
-
 const Container = styled.div`
     margin: 0 auto;
     margin-bottom: 150px;

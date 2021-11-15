@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import HistoryCards from '../component/HistoryCards';
-import UserInfoBox from '../component/UserInfoBox';
 
 export default function History() {
 
