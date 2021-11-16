@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Button, Modal} from 'react-bootstrap';
 
@@ -8,6 +8,13 @@ import {FaHamburger, FaGlobeAsia, FaCoffee, FaBeer} from "react-icons/fa";
 import {BiDish} from "react-icons/bi";
 
 export default function FilterModal(props){
+    const [sortType, setSortType] = useState('1');
+    const sortRadios = [
+      { name: 'latest', title: '최신순', value: '1'},
+      { name: 'nearest', title: '가까운순', value: '2'},
+      { name: 'best', title: '좋아요순', value: '3'}
+    ]
+
     return (
         <>
           <Modal
@@ -24,11 +31,27 @@ export default function FilterModal(props){
 
             <Modal.Body>
               <h4>정렬</h4>
-                <SortSelector/>
-
+              <SortSelectWrap>
+                {
+                  sortRadios.map((elem, idx)=>{
+                    return(
+                      <>
+                        <input
+                          type="radio"
+                          name='sorting'
+                          id={elem.name}
+                          value={elem.value}
+                          checked={elem.value === sortType}
+                        />
+                        <label for="latest" onClick={()=>setSortType(elem.value)}>{elem.title}</label>
+                      </>             
+                    );
+                  })
+                }
+              </SortSelectWrap>
               <p></p>
               <h4>음식종류</h4>
-                <FoodSelector/>
+              <FoodSelector/>
             </Modal.Body>
 
             <Modal.Footer>
@@ -44,6 +67,7 @@ export default function FilterModal(props){
 const SortSelectWrap = styled.p`
   display: flex;
   justify-content: space-around;
+  user-select: none;
 
   font-size: 25px;
   text-align: center;
@@ -68,23 +92,10 @@ const SortSelectWrap = styled.p`
   }
 `;
 
-
-const SortSelector = (props)=>{
-  return(
-      <SortSelectWrap>
-        <input type="radio" name="sorting" id="latest" value="1" checked></input>
-        <label for="latest">최신순</label>
-        <input type="radio" name="sorting" id="nearest" value="2"></input>
-        <label for="nearest">가까운순</label>
-        <input type="radio" name="sorting" id="best" value="3"></input>
-        <label for="best">좋아요순</label>
-      </SortSelectWrap>
-  );
-}
-
 const FoodSelectWrap = styled.p`
     display: flex;
     justify-content: space-around;
+    user-select: none;
   
     font-size: 75px;
     text-align: center;

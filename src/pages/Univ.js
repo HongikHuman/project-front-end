@@ -13,16 +13,7 @@ import axios from 'axios';
 //npx json-server ./src/json/restaurantWgs84.json --watch --port 8888
 export default function Univ(){
 
-    let [pageNum, setPageNum] = useState(1);    //현재 페이지
-
-    let [elements, setElements] = useState([]); //식당 요소 jsx 객체
-
-    
-    let [pagination, setPagination] = useState([]); //페이지네이션 jsx 객체
-
-    let [viewNum, setViewNum] = useState(12);   //한번에 보여줄 요소 개수 기본 12
-    let [maxPage, setMaxPage] = useState(1); //최대 페이지
-
+    const [elements, setElements] = useState([]); //식당 요소 jsx 객체
 
     const { universityName } = useParams(); //대학교 이름 params
     const [targetPlace, setTargetPlace] = useState(
@@ -34,7 +25,17 @@ export default function Univ(){
 
     const [db, setDb] = useState([]);
     const [currentData, setCurrentData] = useState([]);
-    
+
+    const [filter, setFilter] = useState({
+        /*
+            sorting - 1:최신순, 2:가까운순, 3:좋아요순
+            category - []: 전체, [1, 2, 3, ...]: 해당 음식 종류만
+        */
+        sorting: 1,
+        category: [],
+    });
+    //필터링 요소
+
     const fetchData = async ()=>{
         await axios.get('http://localhost:8888/restaurants')
         .then((res)=>{
@@ -42,31 +43,66 @@ export default function Univ(){
             setDb(res.data);
         })
         .catch((err)=>console.log(err));
-
-        //for(let elem in data){}
     }
 
-    useEffect(()=>{
-        fetchData();
-    }, []);
+    useEffect(()=>{ fetchData(); }, []);
 
     useEffect(()=>{
         setTargetPlace(university.find((data)=>data.title===universityName)??university[0]);
     }, [universityName]);
-
-    
-    useEffect(()=>{
-        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        renderElements(db);
-        renderPagination(begin);
-    }, [pageNum]);
-
 
     useEffect(()=>{
         renderElements(db);
         renderPagination(1);
     }, [db]);
 
+
+
+    //Pagination
+    const [pageNum, setPageNum] = useState(1);    //현재 페이지
+    const [viewNum, setViewNum] = useState(12);   //한번에 보여줄 요소 개수 기본 12
+    const [maxPage, setMaxPage] = useState(1); //최대 페이지
+    const [pagination, setPagination] = useState([]); //페이지네이션 jsx 객체
+
+    useEffect(()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        renderElements(db);
+        renderPagination(begin);
+    }, [pageNum]);
+
+    const renderPagination = (begin)=>{
+        if(begin < 1) begin = 1;
+        
+        let item = [];
+        for(let i=begin; i<begin+5; ++i){
+            if(i > maxPage) break;
+
+            item.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === pageNum}
+                    onClick={()=>{setPageNum(i);}}
+                >
+                    {i}
+                </Pagination.Item>
+            )
+        }
+        setPagination(item);
+        window.scrollTo(0, 0);
+    }
+    
+    const setNextPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin + 5 >= maxPage) setPageNum(maxPage);
+        else setPageNum(begin+5);
+    }
+
+    const setPrevPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin - 5 < 1) setPageNum(1);
+        else setPageNum(begin-5);
+    }
+    //Pagination
 
 
     const renderElements = (ARRAY)=>{
@@ -112,40 +148,6 @@ export default function Univ(){
     }
 
 
-    const renderPagination = (begin)=>{
-        if(begin < 1) begin = 1;
-        
-        let item = [];
-        for(let i=begin; i<begin+5; ++i){
-            if(i > maxPage) break;
-
-            item.push(
-                <Pagination.Item
-                    key={i}
-                    active={i === pageNum}
-                    onClick={()=>{setPageNum(i);}}
-                >
-                    {i}
-                </Pagination.Item>
-            )
-        }
-        setPagination(item);
-        window.scrollTo(0, 0);
-    }
-
-    const setNextPagination = ()=>{
-        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        if(begin + 5 >= maxPage) setPageNum(maxPage);
-        else setPageNum(begin+5);
-    }
-
-    const setPrevPagination = ()=>{
-        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        if(begin - 5 < 1) setPageNum(1);
-        else setPageNum(begin-5);
-    }
-
-
     return (
         <Container className="container">
             <KakaoMap
@@ -160,7 +162,7 @@ export default function Univ(){
             <SelectUnivModal
                 show={selectUnivModalShow}
                 onHide={() => setSelectUnivModalShow(false)}
-            />
+            />  
 
             <HeaderWrap>
                 <UnivSelectWrap>
@@ -259,8 +261,9 @@ const UnivSelectWrap = styled.div`
     align-items: center;
 
     & > button{
-        width: 400px;
+        width: 15em;
         opacity: 0.7;
+        font-size: 1em;
         outline: 1px solid gray;
         font-weight: bold;
         transition: 0.3s;
@@ -270,7 +273,7 @@ const UnivSelectWrap = styled.div`
     }
 
     & > p{
-        margin: 0;
+        margin: 5px;
     }
 
 `;
