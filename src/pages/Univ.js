@@ -26,15 +26,21 @@ export default function Univ(){
     const [db, setDb] = useState([]);
     const [currentData, setCurrentData] = useState([]);
 
-    const [filter, setFilter] = useState({
-        /*
-            sorting - 1:최신순, 2:가까운순, 3:좋아요순
-            category - []: 전체, [1, 2, 3, ...]: 해당 음식 종류만
-        */
-        sorting: 1,
-        category: [],
-    });
+    const [filter, setFilter] = useState(
+        JSON.parse(window.localStorage.getItem('jmt.filter'))
+        ?? {
+        
+            /*
+                sorting - 1:최신순, 2:가까운순, 3:좋아요순
+                category - []: 전체, [1, 2, 3, ...]: 해당 음식 종류만
+            */
+            sorting: '1',
+            category: [],
+        }
+    );
     //필터링 요소
+    useEffect(()=>{    console.log(filter);}, [filter])
+
 
     const fetchData = async ()=>{
         await axios.get('http://localhost:8888/restaurants')
@@ -158,6 +164,8 @@ export default function Univ(){
             <FilterModal
                 show={filterModalShow}
                 onHide={() => setFilterModalShow(false)}
+                default={filter}
+                setFilter={setFilter}
             />
             <SelectUnivModal
                 show={selectUnivModalShow}

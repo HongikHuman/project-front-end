@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {Button, Modal} from 'react-bootstrap';
+import {ToggleButton, ToggleButtonGroup, Button, Modal} from 'react-bootstrap';
 
 import {MdRiceBowl} from "react-icons/md";
 import {GiSushis, GiNoodles} from "react-icons/gi";
@@ -8,12 +8,31 @@ import {FaHamburger, FaGlobeAsia, FaCoffee, FaBeer} from "react-icons/fa";
 import {BiDish} from "react-icons/bi";
 
 export default function FilterModal(props){
-    const [sortType, setSortType] = useState('1');
+    const [sortType, setSortType] = useState(props.default.sorting ?? '1');  //정렬기준
+    const [category, setCategory] = useState(props.default.category ?? []);  //음식종류
+    const handleChange = (val) => setCategory(val);
+
     const sortRadios = [
       { name: 'latest', title: '최신순', value: '1'},
       { name: 'nearest', title: '가까운순', value: '2'},
       { name: 'best', title: '좋아요순', value: '3'}
     ]
+
+    const Menu = [
+      {value: 1, name: "한식", icon: <MdRiceBowl/>},
+      {value: 2, name: "중식", icon: <GiNoodles/>},
+      {value: 3, name: "일식", icon: <GiSushis/>},
+      {value: 4, name: "양식", icon: <FaHamburger/>},
+      {value: 5, name: "세계", icon: <FaGlobeAsia/>},
+      {value: 6, name: "뷔페", icon: <BiDish/>},
+      {value: 7, name: "카페", icon: <FaCoffee/>},
+      {value: 8, name: "술집", icon: <FaBeer/>}
+    ]
+
+    useEffect(()=>{
+      console.log(sortType);
+      console.log(category);
+    }, [])
 
     return (
         <>
@@ -22,6 +41,7 @@ export default function FilterModal(props){
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            style={{userSelect: 'none'}}
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
@@ -42,20 +62,46 @@ export default function FilterModal(props){
                           id={elem.name}
                           value={elem.value}
                           checked={elem.value === sortType}
+                          onChange={()=>{}}
                         />
-                        <label for="latest" onClick={()=>setSortType(elem.value)}>{elem.title}</label>
-                      </>             
+                       <label for="latest" onClick={()=>setSortType(elem.value)}>{elem.title}</label>
+                      </>              
                     );
                   })
                 }
               </SortSelectWrap>
               <p></p>
               <h4>음식종류</h4>
-              <FoodSelector/>
+            
+              <FoodSelectWrap>
+                <ToggleButtonGroup type="checkbox" value={category} onChange={handleChange}>
+                    {
+                      Menu.map((elem)=>{
+                        return(
+                            <ToggleButton
+                              id={"food"+elem.value}
+                              value={elem.value}
+                              variant="outline-light"
+                            >
+                              {elem.icon}<p>{elem.name}</p>
+                            </ToggleButton>
+                        );
+                      })
+                    }
+                </ToggleButtonGroup>
+              </FoodSelectWrap>
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="warning" onClick={props.onHide}>적용</Button>
+              <Button variant="warning" onClick={()=>{
+                props.onHide();
+                const filter = {
+                  sorting: sortType,
+                  category: category,
+                }
+                window.localStorage.setItem('jmt.filter', JSON.stringify(filter));
+                props.setFilter(filter);
+              }}>적용</Button>
               <Button variant="light" onClick={props.onHide}>닫기</Button>
             </Modal.Footer>
           </Modal>
@@ -68,7 +114,7 @@ const SortSelectWrap = styled.p`
   display: flex;
   justify-content: space-around;
   user-select: none;
-
+  
   font-size: 25px;
   text-align: center;
   margin: 0 auto;
@@ -92,80 +138,35 @@ const SortSelectWrap = styled.p`
   }
 `;
 
-const FoodSelectWrap = styled.p`
-    display: flex;
-    justify-content: space-around;
-    user-select: none;
-  
-    font-size: 75px;
-    text-align: center;
-    margin: 0 auto;
+const FoodSelectWrap = styled.div`
+    
+    & > div{
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      user-select: none;
+      gap: 10px;
 
-    & > input[type="checkbox"]{
-      display: none;
-    }
+      & label{
+        width:calc((100% / 4) - 10px);
+        height: 2.5em;
+        transition: 0.3s;
+        opacity: 0.4;
+        cursor: pointer;
+        background: transparent;
+        color: gray;
+        font-size: 75px;
+      }
+      & p{
+        font-size: 0.3em;
+      }
+
+      & input[class='btn-check'] + label{
+        background: transparent;
+        color: orange;
+        opacity: 1.0;
+      }
 
 
-    & > label{
-      transition: 0.3s;
-      opacity: 0.4;
-      cursor: pointer;
-    }
-
-    & > label > p{
-      margin: 0 auto;
-      font-size: 25px;
-      display: block;
-      text-align: center;
-      
-    }
-
-    & > input[type="checkbox"]:checked + label{
-      color: orange;
-      opacity: 1.0;
     }
 `;
-
-const FoodSelector = (props)=>{
-  const MenuLine1 = [
-    {key: 1, name: "한식", icon: <MdRiceBowl/>},
-    {key: 2, name: "중식", icon: <GiNoodles/>},
-    {key: 3, name: "일식", icon: <GiSushis/>},
-    {key: 4, name: "양식", icon: <FaHamburger/>},
-  ]
-  const MenuLine2 = [
-    {key: 5, name: "세계", icon: <FaGlobeAsia/>},
-    {key: 6, name: "뷔페", icon: <BiDish/>},
-    {key: 7, name: "카페", icon: <FaCoffee/>},
-    {key: 8, name: "술집", icon: <FaBeer/>}
-  ]
-
-  return(
-    <>
-      <FoodSelectWrap>
-        {
-          MenuLine1.map((elem)=>{
-            return(
-              <>
-                <input type="checkbox" id={"food"+elem.key} name="food"></input>
-                <label for={"food"+elem.key}>{elem.icon}<p>{elem.name}</p></label>
-              </>
-            );
-          })
-        }
-      </FoodSelectWrap>
-      <FoodSelectWrap>
-        {
-            MenuLine2.map((elem)=>{
-              return(
-                <>
-                  <input type="checkbox" id={"food"+elem.key} name="food"></input>
-                  <label for={"food"+elem.key}>{elem.icon}<p>{elem.name}</p></label>
-                </>
-              );
-            })
-         }
-      </FoodSelectWrap>
-    </>
-  )
-}
