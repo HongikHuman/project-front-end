@@ -16,9 +16,6 @@ export default function SearchDataList({ filteredData }) {
                         <div>
                             <Li key={d.key}>
                                 <div>
-                                    <Img src={d.img} alt={d.name} />
-                                </div>
-                                <div>
                                     <div style={{fontSize: "15px"}}>{d.name}</div>
                                 </div>
                                 <Link to={`/product/search?q=${d.key}`}></Link>
