@@ -1,5 +1,6 @@
 {
   "proxy": "http://localhost:8000",
+  "secure": "false",
   "name": "dining",
   "version": "0.1.0",
   "private": true,
