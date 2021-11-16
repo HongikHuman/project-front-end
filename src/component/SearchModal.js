@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import SearchDataList from "./SearchDataList";
 import styled from "styled-components";
 import { BiSearch } from 'react-icons/bi';
-import { ImCancelCircle } from 'react-icons/im';
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 const restaurants = [

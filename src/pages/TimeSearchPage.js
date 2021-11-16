@@ -32,12 +32,12 @@ export default function TimeSearchPage() {
     //Pagination
     const [pageNum, setPageNum] = useState(1);      //현재 페이지
     const [viewNum, setViewNum] = useState(12);     //한번에 보여줄 요소 개수 기본 12
-    const [maxPage, setMaxPage] = useState(1);      // 최대 페이지
+    const [maxPage, setMaxPage] = useState((restaurants.length-1) / viewNum + 1);      // 최대 페이지
     const [pagination, setPagination] = useState([]);   //페이지네이션 jsx 객체
     const [currentData, setCurrentData] = useState([]);
     const [elements, setElements] = useState([]);
 
-    useEffect(()=>{setMaxPage((restaurants.length-1) / viewNum + 1);}, []);
+    useEffect(()=>{setMaxPage((restaurants.length-1) / viewNum + 1);}, [restaurants]);
 
     useEffect(() => {
         const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
