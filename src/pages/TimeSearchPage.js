@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Card, Button, Row } from 'react-bootstrap';
+import { Card, Button, Row, Spinner, Col, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const restaurants = [
@@ -29,116 +29,151 @@ const restaurants = [
 
 export default function TimeSearchPage() {
 
-    const mod = 3 - restaurants.length % 3;
+    //Pagination
+    const [pageNum, setPageNum] = useState(1);      //현재 페이지
+    const [viewNum, setViewNum] = useState(12);     //한번에 보여줄 요소 개수 기본 12
+    const [maxPage, setMaxPage] = useState(1);      // 최대 페이지
+    const [pagination, setPagination] = useState([]);   //페이지네이션 jsx 객체
+    const [currentData, setCurrentData] = useState([]);
+    const [elements, setElements] = useState([]);
 
-    const callEmptyBox = () => {
-        console.log(mod);
-        if (mod === 2){
-            return (
-                <>
-                    <CardBoxWrap className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px' }} />
-                    <CardBoxWrap className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px' }} />
-                </>
-            );
+    useEffect(()=>{setMaxPage((restaurants.length-1) / viewNum + 1);}, []);
+
+    useEffect(() => {
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        renderElements(restaurants);
+        renderPagination(begin);
+    }, [pageNum]);
+
+    const renderPagination = (begin) => {
+        if (begin < 1) begin = 1;
+
+        let item = [];
+        for(let i = begin; i < begin + 5; ++i){
+            if(i > maxPage) break;
+
+            item.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === pageNum}
+                    onClick={()=>{setPageNum(i);}}
+                >
+                    {i}
+                </Pagination.Item>
+            )
         }
-        else if (mod === 1){
-            return (
-                <>
-                    <CardBoxWrap className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px' }} />
-                </>
-            );
-        }
+        setPagination(item);
+        window.scrollTo(0, 0);
     }
 
+    const setNextPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin + 5 >= maxPage) setPageNum(maxPage);
+        else setPageNum(begin+5);
+    }
+
+    const setPrevPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin - 5 < 1) setPageNum(1);
+        else setPageNum(begin-5);
+    }
+
+    const renderElements = (ARRAY)=>{
+        let item = [];
+        let data = [];
+
+        if(ARRAY.length < 1){
+            item.push(
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            );
+            setElements(item);
+          return;
+        } //loading spinner
+
+        const BEGIN = (pageNum-1) * viewNum;
+        const END = pageNum * viewNum;
+
+        const LEN = ARRAY.length < END ? ARRAY.length : END;
+
+        ARRAY.forEach((restaurant, idx)=>{
+            if(BEGIN <= idx && idx < LEN){
+                data.push({key: restaurant.key, name: restaurant.name, img: restaurant.img, univ: restaurant.univ, url: restaurant.url});
+                item.push(
+                <Col>
+                    <Card style={{ width: '400px', margin:'0 auto', display: 'flex' }}>
+                        <Card.Img variant="top" src={restaurant.img} style={{ width: '100%', height: '300px', objectFit: 'cover'}}/>
+                        <Card.Body>
+                            <Card.Title style={{fontSize: '30px'}}>{restaurant.name}</Card.Title>
+                            <Card.Text style={{fontSize: '15px'}}>
+                                {`#${restaurant.univ}맛집`}
+                            </Card.Text>
+                            <Link to={restaurant.url}><Button className="btn-wrap" style={{marginRight:'10px'}} variant="outline-secondary">길찾기</Button></Link>
+                            <Button className="btn-wrap" variant="outline-secondary">상세정보 보기</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>);
+            }
+        });
+        setCurrentData(data);
+        setElements(item);
+    }
+    //pagination
+
     return (
-        <div>
-            <PageWrap className="container">
-                <div className="body-text">
-                    <h1 className="title">바쁜 당신을 위한 타임어택 맛집 추천!</h1>
-                    <p className="text">내 주위의 가까운 맛집을 즐겨보세요!</p>
-                </div>
-                <Row xs={1} md={3} className="g-4" style={{display: 'flex'}}>
-                    {restaurants.map(restaurant => {
-                        return (
-                            <CardBoxWrap  key={restaurant.key} className="col-md-3" style={{display: 'flex', alignItems: 'center', width: '400px'}}>
-                                <Card style={{ width: '100%', alignItems: 'center', display: 'flex' }}>
-                                    <Card.Img variant="top" src={restaurant.img} style={{ width: '100%', height: '300px', objectFit: 'cover'}}/>
-                                    <Card.Body>
-                                        <Card.Title style={{fontSize: '30px'}}>{restaurant.name}</Card.Title>
-                                        <Card.Text>
-                                            {`#${restaurant.univ}맛집`}
-                                        </Card.Text>
-                                        <Link to={restaurant.url}><Button className="btn-wrap" variant="outline-secondary">길찾기</Button></Link>
-                                        <Button className="btn-wrap" variant="outline-secondary">상세정보 보기</Button>
-                                    </Card.Body>
-                                </Card>
-                            </CardBoxWrap>
-                        );
-                    })}
-                    {callEmptyBox()}
+        <div className="container">
+            <TextWrap>
+                <h1 className="title">바쁜 당신을 위한 타임어택 맛집 추천!</h1>
+                <p className="text">내 주위의 가까운 맛집을 즐겨보세요!</p>
+            </TextWrap>
+
+            <ArticleWrap>
+                <Row xs={2} md={3} className="g-4" style={{display:"flex"}}>
+                    {elements}
                 </Row>
-            </PageWrap>
+            </ArticleWrap>
+
+
+            <PaginationWrap>
+                <Pagination>
+                    <Pagination.First onClick={()=>setPageNum(1)}/>
+                    <Pagination.Prev onClick={()=>setPrevPagination()}/>
+                    {pagination}
+                    <Pagination.Next onClick={()=>setNextPagination()}/>
+                    <Pagination.Last onClick={()=>setPageNum(maxPage)}/>
+                </Pagination>
+            </PaginationWrap>
         </div>
     );
 };
 
-const PageWrap = styled.div`
-    align-items: center;
-    margin-bottom: 150px;
-
-    & .g-4 {
-        justify-contents: space-between;
-        align-items: center;
-    }
-
-    & .body-text {
-        border-top: 1px solid #9a9a9a;
-        border-bottom: 1px solid #9a9a9a;
-        height: 250px;
-        margin-bottom: 30px;
-    }
-
-    & .body-text .title {
+const TextWrap = styled.div`
+    border-top: 1px solid #9a9a9a;
+    border-bottom: 1px solid #9a9a9a;
+    height: 250px;
+    margin-bottom: 30px;
+    
+    & .title {
         margin-top: 50px;
         height: 100px;
         font-size: 55px;
     }
 
-    & .body-text .text {
+    & .text {
         font-size: 25px;
     }
-
 `;
 
-const CardBoxWrap = styled.div`
-    float: none;
-    margin: 0 auto;
-    padding: 0;
-    margin-top: 30px;
-    border-radius: 20%;
-    background-color: red;
-
-    & .btn-wrap {
-        margin: 5px;
-    }
+const ArticleWrap = styled.div`
+    font-size: 10px;
+    justify-contents: space-between;
+    align-items: center;
 `;
 
-const CardWrap = styled.div`
-
-`;
-
-const ImageBoxWrap = styled.div`
-
-`;
-
-const CardNameWrap = styled.div`
-
-`;
-
-const CardUrlWrap = styled.div`
-
-`;
-
-const CardSentenceWrap = styled.div`
-
+const PaginationWrap = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
 `;
