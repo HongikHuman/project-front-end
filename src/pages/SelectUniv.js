@@ -1,37 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import UnivLogo from '../component/UniversityLogo';
+import {Link} from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
-
+import univData from '../json/univDButf.json';
 
 export default function SelectUniv(){
-    let [mainData, setMainData] = useState({}); //get db data
-
-    useEffect(()=>{ //set data
-
-        //axios
-        setMainData();
-        window.scrollTo(0, 0);
-
-        console.log(mainData);
-
-    }, []);
-
+    useEffect(()=>{window.scrollTo(0, 0)}, []);
+    
     return(
         <Container>
-            <UniversityList>
+            <UniversityWrap>
                 <h1>관심있는 대학가의 맛집을 알려드립니다!</h1>
-                <UnivLogo/>
-            </UniversityList>
+                <UniversityList>
+                {
+                    univData.university.map((elem, idx)=>{
+                        return(
+                            <Link to={`/univ/${idx}`}>{elem.name}</Link>
+                        );
+                    })
+                }
+                </UniversityList>
+            </UniversityWrap>
         </Container>
     );
 }
 
 //styled components
 
-const UniversityList = styled.div`
+const UniversityWrap = styled.div`
     width: 100%;
     border-top: 1px solid gray;
     color: black;
@@ -40,20 +38,41 @@ const UniversityList = styled.div`
     text-align: center;
     overflow: hidden;
 
-    & img{
-        margin: 20px;
-    }
     & > h1{
         margin: 20px 0 20px 0;
     }
-    & > div{
-        margin: 20px;
-        font-size: 2em;
+`;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+const UniversityList = styled.div`
+    margin: 0 auto;
+    padding: 15px;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
 
-        flex-wrap: wrap;
+    gap: 10px;
+    & > a{
+        width:calc((100% / 3) - 10px);
+        text-align: center;
+        height: 50px;
+        text-decoration: none;
+        color: black;
+        line-height: 45px;
+        font-size: 1.2rem;
+        border: 4px solid orange;
+        border-radius: 40px;
+        font-weight: bold;
+
+        white-space: nowrap;
+        text-overflow: hidden;
+
+        padding: 0 20px 0 20px;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.3s;
     }
+    & > a:hover{ opacity: 1.0; }
+    & > a:visited{ text-decoration: none; }
+
 `;

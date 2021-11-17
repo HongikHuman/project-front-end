@@ -22,25 +22,25 @@ const UnivLogo = (props) =>{
     for(const item in images){
         if(requireAll){
             components.push(
-                <Link to={`univ/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
+                //<Link to={`univ/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
                     <Image src={images[item].default}
-                        style={
+                        style={ props.style??
                             {width: `${!props.width ? 100 : props.width}px`,
                             height: `${!props.height ? 100 : props.height}px`}}
                     >
                     </Image>
-                </Link>
+                //</Link>
             );
         } else{
             if(item.indexOf(props.name) > -1) components.push(
-                <Link to={`univ/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
+                //<Link to={`univ/${item.replace(/\.(png|jpg?g|svg)$/, '')}`}>
                     <Image src={images[item].default}
-                        style={
+                        style={ props.style??
                             {width: `${!props.width ? 100 : props.width}px`,
                             height: `${!props.height ? 100 : props.height}px`}}
                     >
                     </Image>
-                </Link>
+                //</Link>
             );
         }
     }

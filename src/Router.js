@@ -45,10 +45,11 @@ export default function Router(){
 
         <Switch>
           <Route path="/univ" exact component={SelectUniv}/>
-          <Route path="/univ/:universityName" exact component={Univ}/>
-          <Route path="/top10" exact component={Top10_page}/>
+          <Route path="/univ/:univIndex" exact component={Univ}/>
+          
           <Route path="/hotpost" exact component={Hot_Posts}/>
-          <Route path="/restaurant/:res_id" exact component={Restaurants} />
+          <Route path="/places/rank" exact component={Top10_page}/>
+          <Route path="/places/:res_id" exact component={Restaurants} />
           <Route path="/" exact component={Main}/>
 
           <Route path="/time-search/list" exact component={TimeSearchPage}/>

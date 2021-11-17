@@ -68,7 +68,7 @@ export default function Navigationbar () {
             </NavLink>
             <div className="links-wrapper">
               <button><NavLink to="/univ" className="link">대학 맛집</NavLink></button>
-              <button><NavLink to="/top10" className="link">맛집 랭킹</NavLink></button>
+              <button><NavLink to="/places/rank" className="link">맛집 랭킹</NavLink></button>
               <button><NavLink to="/hotpost" className="link">핫 리뷰</NavLink></button>
             </div>
             <div className="click-bar">
@@ -85,6 +85,7 @@ export default function Navigationbar () {
                 <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
               </div>
 
+{/* //로그인 관련 기능
               <Dropdown>
                 <Dropdown.Toggle variant="none" id="dropdown-basic" className="click-my-page">
                   <BsPerson />
@@ -98,6 +99,7 @@ export default function Navigationbar () {
                   <Dropdown.Item><NavLink to="/my/edit" className="my-link"><button style={{width: "100%"}}>마이페이지</button></NavLink></Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
+*/}
             </div>
         </NavbarWrap>
       </div>

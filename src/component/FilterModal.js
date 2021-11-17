@@ -81,7 +81,7 @@ export default function FilterModal(props){
                             <ToggleButton
                               id={"food"+elem.value}
                               value={elem.value}
-                              variant="outline-light"
+                              variant="outline-warning"
                             >
                               {elem.icon}<p>{elem.name}</p>
                             </ToggleButton>
@@ -163,7 +163,8 @@ const FoodSelectWrap = styled.div`
 
       & input[class='btn-check'] + label{
         background: transparent;
-        color: orange;
+        border: 0;
+        color: gray;
         opacity: 1.0;
       }
 
