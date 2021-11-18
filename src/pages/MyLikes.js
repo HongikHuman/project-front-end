@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import LikesCard from '../component/LikesCard';
-import LikesPagination from'../component/LikesPagination';
+import MyPagination from'../component/MyPagination';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
@@ -52,6 +52,7 @@ export default function MyLikes() {
 
     const handlePageChange = (page) => {
         setRestaurants({...restaurants, currentPage: page});
+        window.scrollTo(0, 0);
     };
 
     const paginate = (items, pageNumber, pageSize) => {
@@ -68,7 +69,6 @@ export default function MyLikes() {
 
     const { length: count } = restaurants.info;
     
-    
     const showRestaurants = () => {
         
         let idx = 0; let cnt = 0;
@@ -79,9 +79,7 @@ export default function MyLikes() {
             if (pagedRests[idx] && !pagedRests[idx + 1]) {
                 tmp.push(
                     <CardWrap>
-                        <Link to={`/restaurant/${pagedRests[idx].res_id}`} style={{textDecoration: "none", color: "black"}}>
-                            <LikesCard element={pagedRests[idx]} />
-                        </Link>
+                        <LikesCard element={pagedRests[idx]} />
                         <DummyDiv></DummyDiv>
                     </CardWrap>
                 )
@@ -100,12 +98,8 @@ export default function MyLikes() {
                 tmp.push(
                 
                     <CardWrap>
-                        <Link to={`/restaurant/${pagedRests[idx].res_id}`} style={{textDecoration: "none", color: "black"}}>
-                            <LikesCard element={pagedRests[idx]} />
-                        </Link>
-                        <Link to={`/restaurant/${pagedRests[idx+1].res_id}`} style={{textDecoration: "none", color: "black"}}>
-                            <LikesCard element={pagedRests[idx+1]} />
-                        </Link>
+                        <LikesCard element={pagedRests[idx]} />
+                        <LikesCard element={pagedRests[idx+1]} />
                     </CardWrap>
                 
                 )
@@ -147,7 +141,7 @@ export default function MyLikes() {
             </PageTitle>
             {showRestaurants()}
             <div className="paginationWrap">
-                <LikesPagination 
+                <MyPagination 
                     itemsCount={count}
                     pageSize={restaurants.pageSize}
                     currentPage={currentPage}
@@ -163,7 +157,6 @@ export default function MyLikes() {
 const Container = styled.div`
     margin: 0 auto;
     margin-bottom: 50px;
-
     .paginationWrap {
         display: flex;
         justify-content: center;
@@ -176,12 +169,10 @@ const PageTitle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     & > p {
         font-size: 25px;
         text-align: left;
     }
-
     .resCounts {
         font-size: 20px;
     }
@@ -199,12 +190,9 @@ const NoItems = styled.div`
     align-items: center;
     width: 1296px;
     height: 70vh;
-
     @media only screen and (max-width: 1000px) {
-
         width: 700px;
         height: 70vh;
-
         & > div > img {
             width: 50px;
             height: 50px;
@@ -215,12 +203,10 @@ const NoItems = styled.div`
             font-size: 15px;
         }
     }
-
     & > div > img {
         width: 100px;
         height: 100px;
     }
-
     & > div > p {
         font-weight: 1000;
         font-size: 30px;

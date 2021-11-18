@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 export default function LikesCard( {element} ) {
 
@@ -17,27 +18,35 @@ export default function LikesCard( {element} ) {
 
     return (
         <LikeCard>
-            <ImgBox>
-                <img src={element.img_url} alt="..."/>
-            </ImgBox>
+                <ImgBox>
+                    <Link to={`/places/${element.res_id}`} style={{textDecoration: "none", color: "black"}}>
+                        <img className="image" src={element.img_url} alt="..."/>
+                    </Link>
+                </ImgBox>
             <InfoBox>
                 <TitleBox>
-                    <h2>{element.name}</h2>
+                    <div className="h2Div">
+                    <Link to={`/places/${element.res_id}`} style={{textDecoration: "none", color: "black"}}>
+                        <h2>{element.name}</h2>
+                    </Link>
+                    </div>
                     <button type="button" onClick={handleHeartClick}>{ heartClick ? <AiFillHeart size="32px" color="red"/> : <AiOutlineHeart size="32px" color="red"/> }</button>
                 </TitleBox>
-                <DetailBox>
-                    <div id="schools">
-                        {
-                            schools.map((item) => {
-                                return (
-                                    <span style={{fontSize: '15px', fontWeight: '1000'}}>#{item}</span>
-                                )
-                            })
-                        }
-                    </div>
-                    <span>{element.category}</span>
-                    <span style={{fontSize: '15px'}}>{element.address}</span>
-                </DetailBox>
+                <Link to={`/places/${element.res_id}`} style={{textDecoration: "none", color: "black"}}>
+                    <DetailBox>
+                        <div id="schools">
+                            {
+                                schools.map((item) => {
+                                    return (
+                                        <span style={{fontSize: '15px', fontWeight: '1000'}}>#{item}</span>
+                                    )
+                                })
+                            }
+                        </div>
+                        <span>{element.category}</span>
+                        <span style={{fontSize: '15px'}}>{element.address}</span>
+                    </DetailBox>
+                </Link>
             </InfoBox>
         </LikeCard>
     )
@@ -52,7 +61,7 @@ const LikeCard = styled.div`
 const ImgBox = styled.div`
     width: 40%;
 
-    & > img {
+    .image {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -63,8 +72,8 @@ const TitleBox = styled.div`
     display: flex;
     justify-content: space-between;
 
-    & > h2 {
-        width: 100%;
+    .h2Div {
+        width: 260px;
         text-align: center;
         margin-top: 15px;
     }

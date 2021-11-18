@@ -5,14 +5,16 @@ import HistoryCards from '../component/HistoryCards';
 export default function History() {
 
     let [elements, setElements] = useState(restaurants);
-    const len = elements.length;
+    const len = (elements.length > 12 ? 12 : elements.length);
+
+    const { length: count} = elements;
     
     const showRestaurants = () => {
 
         let idx = 0; let cnt = 0;
         let tmp = []; let result = [];
         
-        while(idx < 12) {   //더 늘릴 수 있음
+        while(idx < len) {   //더 늘릴 수 있음
 
             if(!elements[idx+1] && !elements[idx+2]) {
                 tmp.push(
@@ -49,11 +51,29 @@ export default function History() {
        
         return result;
     }
+
+    if(count === 0) {
+        return (
+            <div>
+                <Container className="container">
+                    <PageTitle className="container">
+                        <p>최근 조회한 음식점</p>
+                    </PageTitle>
+                    <NoItems>
+                        <div>
+                            <img src="https://cdn-icons-png.flaticon.com/512/5893/5893023.png" />
+                            <p>최근 조회한 음식점이 없네요 ㅠ.ㅠ</p>
+                        </div>
+                    </NoItems>
+                </Container>
+            </div>
+        );
+    }
     
     return (
         <div>
             <PageTitle className="container">
-                <p>최근 본 음식점</p>
+                <p>최근 조회한 음식점</p>
                 <p className="resCounts"></p>
             </PageTitle>
             <Container className="container">
@@ -94,6 +114,40 @@ const PageTitle = styled.div`
 const DummyDiv = styled.div`
     width: 400px;
     height: 250px;
+`;
+
+const NoItems = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1296px;
+    height: 70vh;
+
+    @media only screen and (max-width: 1000px) {
+
+        width: 700px;
+        height: 70vh;
+
+        & > div > img {
+            width: 50px;
+            height: 50px;
+        }
+    
+        & > div > p {
+            font-weight: 1000;
+            font-size: 15px;
+        }
+    }
+
+    & > div > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    & > div > p {
+        font-weight: 1000;
+        font-size: 30px;
+    }
 `;
 
 

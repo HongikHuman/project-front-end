@@ -51,7 +51,7 @@ export default function Review({ reviewinfos, reviewphotos }) {
     };
 
     return (
-         <ReviewBox>
+        <ReviewBox>
             <UserInfo>
                 {showUserPhoto()}     
             </UserInfo>
@@ -69,7 +69,7 @@ export default function Review({ reviewinfos, reviewphotos }) {
                         {reviewphotos.map((item, index) => {
                             return (
                                 <PhotoLine>
-                                    <PhotoCard key={index} className="a">
+                                    <PhotoCard key={index}>
                                         <img src={item} />
                                     </PhotoCard>
                                 </PhotoLine>
@@ -141,7 +141,6 @@ const UserPhoto = styled.div`
         width: 70px;
         height: 70px;
         border-radius: 50%;
-        margin-right: 5px;
     }
 `;
 
