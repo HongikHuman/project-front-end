@@ -135,7 +135,9 @@ export default function RestaurantPost ({ Information }) {
                         <ButtonBox>
                             <LikeBox>
                                 <p className="likes">{infos.reviews}</p>
-                                <HiOutlinePencilAlt size='36px' style={{margin: '0 0 0 8px'}}/>
+                                <Link to={`/places/write/${infos.res_id}`} style={{textDecoration: "none", color: "black"}}>
+                                    <HiOutlinePencilAlt size='36px' style={{margin: '0 0 0 0'}}/>
+                                </Link>
                                 <p className="para">리뷰수</p>
                             </LikeBox>
                             <LikeBox>
