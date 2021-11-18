@@ -83,7 +83,7 @@ export default function Navigationbar () {
                   </div>
                 </button>
                 { openSearchModal(modalOn) } */}
-                <button><NavLink to="/writepost" className="click-one"><BiPencil /></NavLink></button>
+                {/* <button><NavLink to="/writepost" className="click-one"><BiPencil /></NavLink></button> */}
                 <button><NavLink to="/my/history" className="click-one"><AiOutlineHistory /></NavLink></button>
               </div>
 
@@ -121,13 +121,14 @@ const NavbarWrap = styled.div`
         color: black;
         font-weight: 600;
         font-size: 100px;
-        width: 20%
+        width: 33.3%;
         text-align: left;
         font-family: 'NanumAGiSaRangCe';
     }
     
     & .links-wrapper {
-      width: 33.3%
+      width: 33.3%;
+      margin-right: 10px;
     }
 
     & .links-wrapper > button {
@@ -156,7 +157,8 @@ const NavbarWrap = styled.div`
 
     & .click-bar {
       display: flex;
-      width: 20%
+      width: 33.3%;
+      justify-content: flex-end;
       flex-direction: row;
       align-items: center;
       margin: 0;
@@ -183,7 +185,7 @@ const NavbarWrap = styled.div`
     & .click-bar .click .click-one {
       text-decoration: none;
       color: black;
-      font-size: 30px;
+      font-size: 35px;
     }
 
     & .click-bar .btn-group > button {
