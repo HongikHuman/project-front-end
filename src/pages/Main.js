@@ -117,8 +117,8 @@ const FamousWrap = styled.div`
     border-top: 1px solid rgb(219,219,219);
     color: black;
     margin: 0 auto;
-    margin-top: 3vh;
-    padding: 20px 0 20px 0;
+    margin-top: 10px;
+    padding: 40px 0 20px 0;
     text-align: center;
 
     & > h1{
@@ -147,7 +147,7 @@ const LinkWrap = styled.div`
     border-top: 1px solid rgb(219,219,219);
     color: black;
     margin: 0 auto;
-    padding: 20px 0 20px 0;
+    padding: 40px 0 40px 0;
     text-align: center;
     user-select: none;
 
@@ -175,5 +175,9 @@ const LinkWrap = styled.div`
     }
     & > a:visited{
         text-decoration: none;
+    }
+
+    &:last-child{
+        margin-bottom: 120px;
     }
 `;

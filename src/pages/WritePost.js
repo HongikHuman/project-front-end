@@ -3,13 +3,20 @@ import styled from 'styled-components';
 
 import {Form, Image, Button} from 'react-bootstrap';
 
-export default function WritePost(){
+export default function WritePost(props){
+    //props.restaurant => 현재 리뷰쓰는 레스토랑 정보 따옴
     
+    const val = props.restaurant ?? { name: 'undefined', index: -1 }
+
     return (
         <Container className="container">
-            <h1>글 쓰기</h1>
             <PostWrap>
+                <h1>글 쓰기</h1>
                 <Form style={{margin: '0 auto'}}>
+                    <Form.Group className="mb-3" controlId="postRestaurant">
+                        <Form.Control type="text" value={val.name} placeholder="식당" disabled />
+                    </Form.Group>
+
                     <Form.Group className="mb-3" controlId="postTitle">
                         <Form.Control type="email" placeholder="제목" />
                     </Form.Group>
@@ -39,10 +46,12 @@ const Container = styled.div`
 
 const PostWrap = styled.div`
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     border-radius: 10px;
-    padding: 50px;
 
+    & h1{
+        padding: 30px;
+    }
     & h2{
        margin-bottom: 30px;
        font-size: 2em;

@@ -33,6 +33,7 @@ const UniversityWrap = styled.div`
     width: 100%;
     border-top: 1px solid gray;
     color: black;
+    padding: 40px;
     margin: 0 auto;
     margin: 2vh 0 5vh 0;
     text-align: center;

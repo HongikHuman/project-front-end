@@ -9,7 +9,7 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { Form } from 'react-bootstrap';
 import { FaSmileBeam, FaRegSmileBeam } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { HiOutlinePencilAlt } from "react-icons/hi";
+import { HiOutlinePencilAlt, HiOutlinePencil } from "react-icons/hi";
 
 export default function RestaurantPost ({ Information }) {
     const [infos, setInfo] = useState(Information);
@@ -135,8 +135,14 @@ export default function RestaurantPost ({ Information }) {
                         <ButtonBox>
                             <LikeBox>
                                 <p className="likes">{infos.reviews}</p>
-                                <HiOutlinePencilAlt size='36px' style={{margin: '0 0 0 8px'}}/>
+                                    <HiOutlinePencilAlt size='36px' style={{margin: '0 0 0 8px'}}/>
                                 <p className="para">리뷰수</p>
+                            </LikeBox>
+                            <LikeBox>
+                                <Link to={`/places/write/${infos.res_id}`} style={{textDecoration: "none", color: "black"}}>
+                                    <HiOutlinePencil size='36px' style={{margin: '0 0 0 0'}}/>
+                                </Link>
+                                <p className="para">리뷰쓰기</p>
                             </LikeBox>
                             <LikeBox>
                                 <p className="likes">{infos.likes}</p>
