@@ -19,5 +19,5 @@ export default function Restaurant( {resInfo} ) {
 };
 
 const RestaurantContainer = styled.div`
-margin: 0 0 150px 0;
+    margin: 0 0 150px 0;
 `;

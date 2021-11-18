@@ -15,8 +15,9 @@ export default function RestaurantPost ({ Information }) {
     const [infos, setInfo] = useState(Information);
     const [thumbClick, setThumbClick] = useState(false);
     const [heartClick, setHeartClick] = useState(false);
+
     const [allReview, setAllReview] = useState([]);
-    const [authReview, setAuthReview] = useState([]);
+    const [authedReview, setAuthedReview] = useState([]);
 
     let authResult = []; let result = [];
 
@@ -42,15 +43,20 @@ export default function RestaurantPost ({ Information }) {
     ];
 
     const sortedReview = hot_reviews.reverse();
-    console.log(sortedReview);
-    const authedReview = sortedReview.filter(review => review.Auth === "true");
-
     const sortedPhoto = review_photo.reverse();
-
+    
     const arrSize = hot_reviews.length;
 
     let [isAuth, setIsAuth] = useState(false); //인증 리뷰만 보여줄것인지
     useEffect(() => {
+        if(isAuth === true) {
+            showAuthReviews();
+            setAuthedReview(authResult);
+        }
+        else {
+            showReviews();
+            setAllReview(result);
+        }
     }, [isAuth]);
 
     // const sortedReview = hot_reviews.sort( function(a, b) {
@@ -108,76 +114,6 @@ export default function RestaurantPost ({ Information }) {
         }
 
     };
-
-    const [pageNum, setPageNum] = useState(1);      //현재 페이지
-    const [viewNum, setViewNum] = useState(5);     //한번에 보여줄 요소 개수 기본 5
-    const [maxPage, setMaxPage] = useState((sortedReview.length-1) / viewNum + 1);      // 최대 페이지
-    const [pagination, setPagination] = useState([]);   //페이지네이션 jsx 객체
-    const [currentData, setCurrentData] = useState([]);
-
-    useEffect(()=>{setMaxPage((sortedReview.length-1) / viewNum + 1);}, [sortedReview]);
-
-    useEffect(() => {
-        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        renderElements(sortedReview);
-        renderPagination(begin);
-    }, [pageNum]);
-
-    const renderPagination = (begin) => {
-        if (begin < 1) begin = 1;
-
-        let item = [];
-        for(let i = begin; i < begin + 5; ++i){
-            if(i > maxPage) break;
-
-            item.push(
-                <Pagination.Item
-                    key={i}
-                    active={i === pageNum}
-                    onClick={()=>{setPageNum(i);}}
-                >
-                    {i}
-                </Pagination.Item>
-            )
-        }
-        setPagination(item);
-        window.scrollTo(0, 1200);
-    }
-
-    const setNextPagination = ()=>{
-        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        if(begin + 5 >= maxPage) setPageNum(maxPage);
-        else setPageNum(begin+5);
-    }
-
-    const setPrevPagination = ()=>{
-        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        if(begin - 5 < 1) setPageNum(1);
-        else setPageNum(begin-5);
-    }
-
-    const renderElements = (ARRAY)=>{
-        let item = [];
-        let data = [];
-
-        const BEGIN = (pageNum-1) * viewNum;
-        const END = pageNum * viewNum;
-
-        const LEN = ARRAY.length < END ? ARRAY.length : END;
-
-        ARRAY.forEach((review, idx)=>{
-            if(BEGIN <= idx && idx < LEN) {
-                data.push({key: review.key, date: review.date, Auth: review.Auth, views: review.views, user_name: review.user_name, user_id: review.user_id, title: review.title, user_img: review.user_img_url, review: review.review, });
-                item.push(
-                    <ReviewBox>
-                        <Review reviewinfos={review} reviewphotos={sortedPhoto[0].img}/>
-                    </ReviewBox>
-                );
-            }
-        });
-        setCurrentData(data);
-        setAllReview(item);
-    }
 
     return (
         <ColumnContents className="columncontents">
@@ -242,16 +178,7 @@ export default function RestaurantPost ({ Information }) {
                             />
                         </Form>
                     </div>
-                    {allReview}
-                    <PaginationWrap>
-                        <Pagination>
-                            <Pagination.First onClick={()=>setPageNum(1)}/>
-                            <Pagination.Prev onClick={()=>setPrevPagination()}/>
-                            {pagination}
-                            <Pagination.Next onClick={()=>setNextPagination()}/>
-                            <Pagination.Last onClick={()=>setPageNum(maxPage)}/>
-                        </Pagination>
-                    </PaginationWrap>
+                    { isAuth ? authedReview : allReview }
                 </ReviewContainer>
             </Inner>
             <SideWrap className="sidewrap">

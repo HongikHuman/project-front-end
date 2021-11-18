@@ -48,7 +48,7 @@ export default function HotPost ({ hotpost }){
                     </Review>
                 </ReviewContentBox>
                 <SeeMorePostDiv>
-                    <Link to={`/restaurant/${hotpost.res_id}`}><SeeMorePost>이 음식점에 대한 리뷰 더보기></SeeMorePost></Link>
+                    <Link to={`/places/${hotpost.res_id}`}><SeeMorePost>이 음식점에 대한 리뷰 더보기></SeeMorePost></Link>
                 </SeeMorePostDiv>
             </TextBox>
         </PostBox>

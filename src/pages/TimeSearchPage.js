@@ -134,7 +134,6 @@ export default function TimeSearchPage() {
                 </Row>
             </ArticleWrap>
 
-
             <PaginationWrap>
                 <Pagination>
                     <Pagination.First onClick={()=>setPageNum(1)}/>
