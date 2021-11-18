@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import _ from 'lodash';
 
-const LikesPagination = (props) => {
+const MyPagination = (props) => {
     const { itemsCount, pageSize, currentPage, onPageChange } = props; // 각각 아이템(영화목록) 개수, 한 페이지에 보여줄 아이템(영화목록) 개수
 
     const pageCount = Math.ceil(itemsCount / pageSize); // 몇 페이지가 필요한지 계산
@@ -37,4 +37,4 @@ const LikesPagination = (props) => {
     );
 };
 
-export default LikesPagination;
+export default MyPagination;
