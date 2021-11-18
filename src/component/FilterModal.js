@@ -30,8 +30,7 @@ export default function FilterModal(props){
     ]
 
     useEffect(()=>{
-      console.log(sortType);
-      console.log(category);
+
     }, [])
 
     return (
@@ -93,15 +92,39 @@ export default function FilterModal(props){
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="warning" onClick={()=>{
-                props.onHide();
-                const filter = {
-                  sorting: sortType,
-                  category: category,
-                }
-                window.localStorage.setItem('jmt.filter', JSON.stringify(filter));
-                props.setFilter(filter);
-              }}>적용</Button>
+              <div style={{flexGrow: '1', textAlign: 'start'}}>
+                <Button
+                  variant="light"
+                  onClick={()=>{
+                    props.onHide();
+                    setSortType('1');
+                    setCategory([]);
+                    const filter = {
+                      sorting: '1',
+                      category: [],
+                    }
+                    window.localStorage.setItem('jmt.filter', JSON.stringify(filter));
+                    props.onFilter(filter);
+                  }}
+                >
+                  초기화
+                </Button>
+              </div>
+
+              <Button
+                variant="warning"
+                onClick={()=>{
+                  props.onHide();
+                  const filter = {
+                    sorting: sortType,
+                    category: category,
+                  }
+                  window.localStorage.setItem('jmt.filter', JSON.stringify(filter));
+                  props.onFilter(filter);
+                }}
+              >
+                적용
+              </Button>
               <Button variant="light" onClick={props.onHide}>닫기</Button>
             </Modal.Footer>
           </Modal>

@@ -26,30 +26,39 @@ export default function Univ(){
     const [selectUnivModalShow, setSelectUnivModalShow] = useState(false); //모달창 상태
 
     const [db, setDb] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
     const [currentData, setCurrentData] = useState([]);
 
-    const [filter, setFilter] = useState(
-        JSON.parse(window.localStorage.getItem('jmt.filter'))
-        ?? {
-        
-            /*
-                sorting - 1:최신순, 2:가까운순, 3:좋아요순
-                category - []: 전체, [1, 2, 3, ...]: 해당 음식 종류만
-            */
-            sorting: '1',
-            category: [],
-        }
-    );
+    
+    const getFilter = ()=>{
+        return(
+            JSON.parse(window.localStorage.getItem('jmt.filter'))
+            ?? {
+            
+                /*
+                    sorting - 1:최신순, 2:가까운순, 3:좋아요순
+                    category - []: 전체, [1, 2, 3, ...]: 해당 음식 종류만
+                */
+                sorting: '1',
+                category: [],
+            }
+        );
+    }
+    const [filter, setFilter] = useState(getFilter());
+    
     //필터링 요소
-    useEffect(()=>{}, [filter])
+    useEffect(()=>{
+        console.log(filter);
+    }, [filter])
 
 
     const fetchData = async ()=>{
         await axios.get('http://localhost:8888/restaurants')
         .then((res)=>{
-            setMaxPage(((res.data.length) -1) / viewNum + 1)
+            setMaxPage(Math.floor((res.data.length -1) / viewNum) + 1);
             setDb(res.data);
-            setCurrentData(res.data);
+            setFilter(getFilter());
+            setFilteredData(res.data);
         })
         .catch((err)=>console.log(err));
     }
@@ -60,34 +69,40 @@ export default function Univ(){
         setTargetUniv(univData.university[univIndex] ?? {name:'null', lng: 0, lat:0});
     }, [univIndex]);
 
+    
     useEffect(()=>{
-        renderElements(db);
-        renderPagination(1);
-    }, [db]);
-
-    /*
-    useEffect(()=>{
-        let filteredData = [];
-        if(filter.category.indexOf('1'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="한식"));
-        if(filter.category.indexOf('2'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="중국식"));
-        if(filter.category.indexOf('3'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="일식"));
-        if(filter.category.indexOf('4'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="경양식"));
-        if(filter.category.indexOf('5'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="외국음식전문점(인도태국등)"));
-        if(filter.category.indexOf('6'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="뷔페식"));
-        if(filter.category.indexOf('7'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="까페"));
-        if(filter.category.indexOf('8'> -1))
-            filteredData = filteredData.concat(db.filter((item)=>item.category==="호프/통닭"));
-        setMaxPage((filteredData.length-1) / viewNum + 1);
-        setCurrentData(filteredData);
+        let processedData = [];
+        if(filter.category.length < 1){
+            processedData = db;
+        }
+        else{
+            if(filter.category.indexOf(1)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="한식"));
+            if(filter.category.indexOf(2)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="중국식"));
+            if(filter.category.indexOf(3)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="일식"));
+            if(filter.category.indexOf(4)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="경양식"));
+            if(filter.category.indexOf(5)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="외국음식전문점(인도태국등)"));
+            if(filter.category.indexOf(6)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="뷔페식"));
+            if(filter.category.indexOf(7)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="까페"));
+            if(filter.category.indexOf(8)> -1)
+                processedData = processedData.concat(db.filter((item)=>item.category==="호프/통닭"));
+        }
+        setMaxPage(Math.floor((processedData.length-1) / viewNum) + 1);
+        setPageNum(1);
+        setFilteredData(processedData);
     }, [filter]);
-    */
+   
+    useEffect(()=>{
+        renderElements(filteredData);
+        renderPagination(1);
+    }, [filteredData]);
+ 
 
     //Pagination
     const [pageNum, setPageNum] = useState(1);    //현재 페이지
@@ -97,7 +112,7 @@ export default function Univ(){
 
     useEffect(()=>{
         const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
-        renderElements(db);
+        renderElements(filteredData);
         renderPagination(begin);
     }, [pageNum]);
 
@@ -116,8 +131,14 @@ export default function Univ(){
                 >
                     {i}
                 </Pagination.Item>
-            )
+            );
         }
+        item.push(
+            <>
+            <Pagination.Next onClick={()=>setNextPagination()}/>
+            <Pagination.Last onClick={()=>setPageNum(maxPage)}/>
+            </>
+        )
         setPagination(item);
         window.scrollTo(0, 0);
     }
@@ -190,7 +211,7 @@ export default function Univ(){
                 show={filterModalShow}
                 onHide={() => setFilterModalShow(false)}
                 default={filter}
-                setFilter={setFilter}
+                onFilter={(p)=>setFilter(p)}
             />
             <SelectUnivModal
                 show={selectUnivModalShow}
@@ -223,8 +244,6 @@ export default function Univ(){
                     <Pagination.First onClick={()=>setPageNum(1)}/>
                     <Pagination.Prev onClick={()=>setPrevPagination()}/>
                     {pagination}
-                    <Pagination.Next onClick={()=>setNextPagination()}/>
-                    <Pagination.Last onClick={()=>setPageNum(maxPage)}/>
                 </Pagination>
             </PaginationWrap>
         </Container>
