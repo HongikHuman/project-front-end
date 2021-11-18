@@ -15,6 +15,7 @@ export default function RestaurantPost ({ Information }) {
     const [infos, setInfo] = useState(Information);
     const [thumbClick, setThumbClick] = useState(false);
     const [heartClick, setHeartClick] = useState(false);
+
     const [allReview, setAllReview] = useState([]);
     const [authedReview, setAuthedReview] = useState([]);
 
@@ -42,6 +43,10 @@ export default function RestaurantPost ({ Information }) {
     ];
     const sortedReview = hot_reviews.reverse();
     const sortedPhoto = review_photo.reverse();
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 0499437f89e8ab96a157f429e23d4ddaa5de9aab
     const arrSize = hot_reviews.length;
 
     let [isAuth, setIsAuth] = useState(false); //인증 리뷰만 보여줄것인지
