@@ -20,7 +20,7 @@ export default function Footer() {
                     <div className="keyword_wrap">
                         <span className="keyword">자맛추 지원 학교</span>
                         <br /><br />
-                        {univData.Sheet1.map((univ, idx) => {
+                        {univData.university.map((univ, idx) => {
                             return (
                                 <span className="keyword" key={idx}>
                                     {univ.name}

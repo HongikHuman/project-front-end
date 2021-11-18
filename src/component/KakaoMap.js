@@ -94,6 +94,7 @@ export default function KakaoMap(props){
             key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
             position={marker.position}
             onMouseOver={() => setInfo(marker)}
+            onMouseOut={()=>setInfo(null)}
             onClick={()=>{if(marker.linkTo) history.push(`/restaurant/${marker.linkTo}`)}}
           >
             {info &&info.content === marker.content && (
