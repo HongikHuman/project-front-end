@@ -122,7 +122,7 @@ export default function TimeSearchPage() {
     //pagination
 
     return (
-        <div className="container">
+        <div className="container" style={{marginBottom: '150px'}}>
             <TextWrap>
                 <h1 className="title">바쁜 당신을 위한 타임어택 맛집 추천!</h1>
                 <p className="text">내 주위의 가까운 맛집을 즐겨보세요!</p>
