@@ -185,7 +185,7 @@ const NavbarWrap = styled.div`
     & .click-bar .click .click-one {
       text-decoration: none;
       color: black;
-      font-size: 30px;
+      font-size: 35px;
     }
 
     & .click-bar .btn-group > button {
