@@ -50,11 +50,10 @@ export default function Router(){
           <Route path="/hotpost" exact component={Hot_Posts}/>
           <Route path="/places/rank" exact component={Top10_page}/>
           <Route path="/places/:res_id" exact component={Restaurants} />
+          <Route path="/places/write/:res_id" exact component={WritePost} />
           <Route path="/" exact component={Main}/>
 
           <Route path="/time-search/list" exact component={TimeSearchPage}/>
-
-          <Route path="/writepost" exact component={WritePost}/>
           <Route path="/likes" exact component={MyLikes}></Route>
           <Route path="/register" exact component={Register}/>
 

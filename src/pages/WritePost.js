@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-
+import { useParams } from 'react-router-dom';
 import {Form, Image, Button} from 'react-bootstrap';
 
 export default function WritePost(props){
     //props.restaurant => 현재 리뷰쓰는 레스토랑 정보 따옴
-    
-    const val = props.restaurant ?? { name: 'undefined', index: -1 }
-
+    let val = props.location.state.restaurant ?? { name: undefined };
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    }, []);
     return (
         <Container className="container">
             <PostWrap>

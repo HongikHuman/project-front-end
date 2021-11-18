@@ -139,7 +139,14 @@ export default function RestaurantPost ({ Information }) {
                                 <p className="para">리뷰수</p>
                             </LikeBox>
                             <LikeBox>
-                                <Link to={`/places/write/${infos.res_id}`} style={{textDecoration: "none", color: "black"}}>
+                                <Link to={{
+                                        pathname: `/places/write/${infos.res_id}`,
+                                        state:{
+                                            restaurant: infos,
+                                        }
+                                    }}
+                                    style={{textDecoration: "none", color: "black"}}
+                                >
                                     <HiOutlinePencil size='36px' style={{margin: '0 0 0 0'}}/>
                                 </Link>
                                 <p className="para">리뷰쓰기</p>
