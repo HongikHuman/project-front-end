@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { BiSearch, BiPencil } from 'react-icons/bi';
 import { BsPerson } from 'react-icons/bs';
+import { AiOutlineHistory } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import SearchModal from './SearchModal';
 import LoginModal from './LoginModal';
@@ -73,6 +74,7 @@ export default function Navigationbar () {
             </div>
             <div className="click-bar">
               <div className="click">
+                {/* 검색 기능
                 <button 
                   onClick={handleShow}
                 >
@@ -80,9 +82,9 @@ export default function Navigationbar () {
                     <BiSearch />
                   </div>
                 </button>
-                { openSearchModal(modalOn) }
+                { openSearchModal(modalOn) } */}
                 <button><NavLink to="/writepost" className="click-one"><BiPencil /></NavLink></button>
-                <button><NavLink to="/likes" className="click-one"><AiOutlineHeart /></NavLink></button>
+                <button><NavLink to="/my/history" className="click-one"><AiOutlineHistory /></NavLink></button>
               </div>
 
 {/* //로그인 관련 기능

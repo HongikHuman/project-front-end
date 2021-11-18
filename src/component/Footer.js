@@ -97,7 +97,7 @@ const InnerWrap = styled.div`
 
     & .sitemap-location-keywords .keyword_wrap .keyword {
         color: #9b9b9b;
-        padding: 0 10px 0 10px
+        padding: 0 10px 0 10px;
     }
 
     & .language-copyrights {
