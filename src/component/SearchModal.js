@@ -71,6 +71,12 @@ export default function SearchModal({ modalOn, handleClose, handleShow, handleSe
         setFilteredData([]);
     };
 
+    // const onKeyPress = e => {
+    //     if (e.key === 'Enter'){
+    //       onclick();
+    //     }
+    // };
+
     useEffect(() => {
       handleSearch(keyWord);
     }, [keyWord]);
@@ -80,13 +86,13 @@ export default function SearchModal({ modalOn, handleClose, handleShow, handleSe
         <Offcanvas show={modalOn} onHide={handleClose} placement="top">
           <Offcanvas.Header closeButton>
             <SearchWrap>
-              <BiSearch size="35" color="gray"/>
               <SearchInput
                   type="text"
                   placeholder="대학교명, 음식점 이름 등"
                   onChange={keyWordInput}
                   value={keyWord}
               />
+              <BiSearch size="35" color="gray" style={{marginLeft: '20px'}} />
             </SearchWrap>
           </Offcanvas.Header>
           <Offcanvas.Body>
