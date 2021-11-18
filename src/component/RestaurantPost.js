@@ -16,9 +16,10 @@ export default function RestaurantPost ({ Information }) {
     const [thumbClick, setThumbClick] = useState(false);
     const [heartClick, setHeartClick] = useState(false);
     const [allReview, setAllReview] = useState([]);
-    const [authedReview, setAuthedReview] = useState([]);
+    const [authReview, setAuthReview] = useState([]);
 
     let authResult = []; let result = [];
+
     const category = ['주소', '전화번호', '음식 종류', '주차가능여부', '예약가능여부', '영업시간', '식당 사이트', '대표메뉴', '휴무일'];
     const hot_reviews = [
         {key: "1", date: '2021-10-15', Auth: "true", views: '109', user_name: '노경민', user_id: "noh", title: '노경민의 맛집추천', user_img_url: 'https://mblogthumb-phinf.pstatic.net/20150427_261/ninevincent_1430122791768m7oO1_JPEG/kakao_1.jpg?type=w2', review: "한강 눈에 비친 서울은 리빌딩 올림픽 대로는 터질 듯이 막혀 siri Play me something chill It's 6pm 노을 빛은 핑크색 도로 위에 줄 지은 빨간색 실 I'm stressing out I was stressing out 못 가 제시간에 하지만 괜찮아 남보다 느린 대신에 사고만 안 나면 됐잖아 Back when I was in 철원 그 느린 시간도 때웠잖아 Man fuck time 나는 벽 타듯이 시간을 넘어왔다 이걸 너가 모른다면 난 너랑 할 말 없다 드디어 봄날 옴 고마워 기다려줘서 날 Still having good time"},
@@ -39,20 +40,17 @@ export default function RestaurantPost ({ Information }) {
         {key: "7", img: ['https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa', 'https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa']}, {key: "8", img: ['https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa', 'https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa']}, 
         {key: "9", img: ['https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa', 'https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa']}, {key: "10", img: ['https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa', 'https://cdn-icons-png.flaticon.com/512/3601/3601002.png', 'https://cdn-icons.flaticon.com/png/512/3840/premium/3840738.png?token=exp=1636781874~hmac=b81c323e8b73d35e73ec55d48d04c103', 'https://cdn-icons-png.flaticon.com/512/179/179351.png', 'https://cdn-icons.flaticon.com/png/512/3841/premium/3841729.png?token=exp=1636781874~hmac=096b86465c3c637276defaefdedab5fa']}, 
     ];
+
     const sortedReview = hot_reviews.reverse();
+    console.log(sortedReview);
+    const authedReview = sortedReview.filter(review => review.Auth === "true");
+
     const sortedPhoto = review_photo.reverse();
+
     const arrSize = hot_reviews.length;
 
     let [isAuth, setIsAuth] = useState(false); //인증 리뷰만 보여줄것인지
     useEffect(() => {
-        if(isAuth === true) {
-            showAuthReviews();
-            setAuthedReview(authResult);
-        }
-        else {
-            showReviews();
-            setAllReview(result);
-        }
     }, [isAuth]);
 
     // const sortedReview = hot_reviews.sort( function(a, b) {
@@ -110,6 +108,76 @@ export default function RestaurantPost ({ Information }) {
         }
 
     };
+
+    const [pageNum, setPageNum] = useState(1);      //현재 페이지
+    const [viewNum, setViewNum] = useState(5);     //한번에 보여줄 요소 개수 기본 5
+    const [maxPage, setMaxPage] = useState((sortedReview.length-1) / viewNum + 1);      // 최대 페이지
+    const [pagination, setPagination] = useState([]);   //페이지네이션 jsx 객체
+    const [currentData, setCurrentData] = useState([]);
+
+    useEffect(()=>{setMaxPage((sortedReview.length-1) / viewNum + 1);}, [sortedReview]);
+
+    useEffect(() => {
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        renderElements(sortedReview);
+        renderPagination(begin);
+    }, [pageNum]);
+
+    const renderPagination = (begin) => {
+        if (begin < 1) begin = 1;
+
+        let item = [];
+        for(let i = begin; i < begin + 5; ++i){
+            if(i > maxPage) break;
+
+            item.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === pageNum}
+                    onClick={()=>{setPageNum(i);}}
+                >
+                    {i}
+                </Pagination.Item>
+            )
+        }
+        setPagination(item);
+        window.scrollTo(0, 1200);
+    }
+
+    const setNextPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin + 5 >= maxPage) setPageNum(maxPage);
+        else setPageNum(begin+5);
+    }
+
+    const setPrevPagination = ()=>{
+        const begin = Math.floor((pageNum-1) / 5) * 5 + 1;
+        if(begin - 5 < 1) setPageNum(1);
+        else setPageNum(begin-5);
+    }
+
+    const renderElements = (ARRAY)=>{
+        let item = [];
+        let data = [];
+
+        const BEGIN = (pageNum-1) * viewNum;
+        const END = pageNum * viewNum;
+
+        const LEN = ARRAY.length < END ? ARRAY.length : END;
+
+        ARRAY.forEach((review, idx)=>{
+            if(BEGIN <= idx && idx < LEN) {
+                data.push({key: review.key, date: review.date, Auth: review.Auth, views: review.views, user_name: review.user_name, user_id: review.user_id, title: review.title, user_img: review.user_img_url, review: review.review, });
+                item.push(
+                    <ReviewBox>
+                        <Review reviewinfos={review} reviewphotos={sortedPhoto[0].img}/>
+                    </ReviewBox>
+                );
+            }
+        });
+        setCurrentData(data);
+        setAllReview(item);
+    }
 
     return (
         <ColumnContents className="columncontents">
@@ -174,7 +242,16 @@ export default function RestaurantPost ({ Information }) {
                             />
                         </Form>
                     </div>
-                    { isAuth ? authedReview : allReview }
+                    {allReview}
+                    <PaginationWrap>
+                        <Pagination>
+                            <Pagination.First onClick={()=>setPageNum(1)}/>
+                            <Pagination.Prev onClick={()=>setPrevPagination()}/>
+                            {pagination}
+                            <Pagination.Next onClick={()=>setNextPagination()}/>
+                            <Pagination.Last onClick={()=>setPageNum(maxPage)}/>
+                        </Pagination>
+                    </PaginationWrap>
                 </ReviewContainer>
             </Inner>
             <SideWrap className="sidewrap">
@@ -199,7 +276,6 @@ const Inner = styled.div`
     justify-content: flex-end;
     box-sizing: border-box;
     margin-right: 5px;
-
     .paginationWrap {
         padding: 10px 0 0 0;
         margin-bottom: -10px;
@@ -216,7 +292,6 @@ const RestaurantDetail = styled.div`
     margin: 20px 0 0 -20px;
     padding: 0 0 20px 0;
     border-bottom: 1px solid rgb(219, 219, 219);
-
     & .InfoName {
         text-align: left;
         font-weight: 500;
@@ -240,7 +315,6 @@ const LikeBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: end;
-
     & > button {
         background: none;
         border: none;
@@ -248,13 +322,11 @@ const LikeBox = styled.div`
         height: 36px;
         margin-left: 3px;
     }
-
     & .likes {
         width: 50px;
         margin: 0 0 -3px 0;
         font-size: 15px;
     }
-
     & .para {
         width: 50px;
         font-size: 10px;
@@ -264,7 +336,6 @@ const LikeBox = styled.div`
 const ReviewBox = styled.div`
     display: flex;
     flex-direction: column;
-
     & > span {
         margin-top: -15px;
     }
